@@ -1,0 +1,18 @@
+es:
+  agencies: 
+    show: 
+      others_say: "Lo que otros tienen que decir:"
+      score: Puntuación
+
+  debts: 
+    debts: 
+      index: 
+        debts: Deudas
+        new_debt: "Nueva deuda"
+        manage_debts: "Gestionar su deudas"
+        debts_repository: "Deudas Repositorio"
+        outstanding_debts: "Excepcional deudas"
+        resolved_debts: "Resuelto deudas"
+        manage_debts: "Gestionar deudas"
+        total_debts: "Total deudas"
+

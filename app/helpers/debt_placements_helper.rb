@@ -1,0 +1,2 @@
+module DebtPlacementsHelper
+end

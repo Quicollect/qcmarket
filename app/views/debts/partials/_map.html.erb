@@ -1,0 +1,18 @@
+<div class="<%=cls if defined? cls%>">
+
+<% if markers %>
+	<%= gmaps(:markers => { "data" => markers }) %>
+
+<% else %>
+
+	<%= gmaps(:map_options => {"auto_zoom" => false, "zoom" => 12}, 
+	          :markers => { "data" => resource.to_gmaps4rails }) %>
+	
+
+	<script>
+	$(function() {
+	    asjustMap(<%=resource.latitude%>, <%=resource.longitude%>);
+	});
+	</script>
+<% end %>
+</div>

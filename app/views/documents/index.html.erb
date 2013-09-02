@@ -1,0 +1,66 @@
+<div class="widget widget-heading-simple widget-body-white basic">
+	<div class="widget-head heading-buttons">
+		<h1><i class="icon-folder-open text-primary icon-fixed-width"></i>
+			Documents
+	    </h1>
+
+	    <div class="buttons pull-right">
+			<%= link_to '#fileuploads', :'data-toggle' => "modal", class: "btn btn-primary btn-icon glyphicons upload no-spinner" do %>
+				<i></i> New Files
+			<% end %>
+		</div>
+	</div>
+
+	<div class="separator bottom"></div>
+	
+	<div class="widget-body">
+
+		<%= form_tag documents_path, :method => 'get', :id => "live-search" do %>
+			<!-- Total products & Sort by options -->
+			<div class="form-inline separator bottom">
+				<div class="row-fluid">
+					<div class="span8">
+						<h4 id="total-documents" class="heading"> Total documents: <%=@total_documents%> </h4>
+					</div>
+					<div class="span4">
+						<div class="input-append pull-right">
+							<%= text_field_tag :search, params[:search], "placeholder" => "Search..." %>
+							<span class="add-on"><i class="icon-search"></i></span>
+						</div>
+			         </div>
+			     </div>
+			</div>
+		<% end %>
+
+		<!-- // Tabs END -->
+		
+		<div id="live-results">
+			<%= render 'documents' %>
+		</div>
+	</div>
+</div>
+
+<div id="fileuploads" class="modal hide fade" style="min-width:800px;margin-left: -400px;">
+  <div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  <h3>Upload Files</h3>
+  </div>
+  <div class="modal-body">
+    <div class="row-fluid">  
+      <div class="span12">
+        <%= render 'resources/resource' %> 
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn" data-dismiss="modal">Close</button>
+  </div>
+</div>
+
+<script>
+$('#fileuploads').on('hidden', function () {
+    $('input#search').keyup();
+    $('#fileupload table tbody').children('tr').remove();
+})
+
+</script>

@@ -1,0 +1,65 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	<h3>Assign debt to agency</h3>
+</div>
+<%= simple_form_for([@debt, @debt_placement], url: debt_debt_placements_path([@debt.id, @debt_placement]), :html => {class: "well form-vertical" }) do |f| %>
+	<div class="modal-body">
+		<%=f.input :agency_id, as: :hidden, input_html: { :value => @debt_placement.agency_id } %>
+		<%=f.input :price_model_id, as: :hidden, input_html: { :value => @debt_placement.price_model_id } %>
+		<%=f.input :agency_contract_id, as: :hidden, input_html: { :value => @agency_contract.id } %>
+
+		You are about to assign debt <strong id="debtname"></strong> to agency <strong id="agencyname"></strong>. By pressing "Approve" you are agreeing for the following terms:
+		<div class="separator text-center"></div>
+
+		<p><strong>Quicollect terms and conditions</strong></p>
+
+		N/A
+
+		<div class="separator text-center"></div>
+
+		<p><strong>Agency terms and conditions</strong></p>
+
+		<%= @agency_contract.content.length > 0 ? @agency_contract.content.html_safe : "N/A"%>
+		
+		<div class="separator text-center"></div>
+
+		<label class="checkbox-label">
+			<input id="accept" value="accept" name="topic" type="checkbox" onClick="termsAgreementChange();">
+			I accept the terms &amp; conditions
+		</label>
+		
+		<p class="separator text-center"></p>
+		
+		<div class="pull-right">
+			<%= button_tag(type: 'submit', disabled: "disabled", id: "submit-btn", class: "btn btn-primary btn-icon glyphicons ok text-center form-submit") do %>
+    			<i></i> Approve
+  			<% end %>
+
+			<%= link_to '#', :'data-dismiss' => "modal", class: "btn btn-default btn-icon glyphicons ban text-center" do %>
+			    <i></i> Cancel
+		  	<% end %>
+		</div>
+	</div>
+<% end %>
+
+<script>
+
+function termsAgreementChange()
+{
+	if ($("#accept").attr('checked'))
+	{
+		$("#submit-btn").removeAttr("disabled");
+		//$("#span-checkbox").addClass('checked');
+	}
+	else
+	{
+		$("#submit-btn").attr("disabled", "disabled"); 
+		//$("#span-checkbox").removeClass('checked');    
+	}
+
+}
+
+
+</script>
+
+

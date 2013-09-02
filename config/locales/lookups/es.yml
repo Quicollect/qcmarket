@@ -1,0 +1,43 @@
+es: 
+  lookups: 
+    debtstatus: 
+      accepted: 
+        long: "Aceptado por %{account}"
+        short: aceptado
+      assigned: 
+        long: "Asignado a%{account}"
+        short: Asignado
+      closed: 
+        long: "Cerrado por %{account}"
+        short: cerrado
+      deleted: 
+        long: "Eliminado por %{account}"
+        short: Suprimido
+      draft: 
+        long: "Proyecto (no asignada )"
+        short: borrador
+      inforequired: 
+        long: "%{account} solicitando información adicional"
+        short: "Información requerida"
+      rejected: 
+        long: "Rechazado por %{account}"
+        short: rechazado
+      resolved: 
+        long: "Resuelto por %{account}"
+        short: resuelto
+    eventtype: 
+      creation: 
+        long: "fue creado por %{account}"
+        short: creado
+      delete: 
+        long: "fue borrado"
+        short: Suprimido
+      statuschange: 
+        long: "tenido cambio de estado por %{account}"
+        short: "El estado cambió"
+      update: 
+        long: "se actualizará por %{account}"
+        short: actualizado
+      userevent: 
+        long: "fue comentado por %{account}"
+        short: Comentadas

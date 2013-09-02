@@ -1,0 +1,30 @@
+
+<tr>
+  <td class="table-thumbnail">
+      <%= image_tag account_row.thumbnail %>
+  </td>
+  <td>
+  	<div rel="tooltip" title="<%=account_row.name%>">
+  	<%=link_to(truncate(h(account_row.name), :length=>50, :separator => ' ', :omission=>"..."), account_row)%>
+	</div>
+  </td>
+<<<<<<< HEAD
+  <td><%=Country.find_ex(account_row.country_id).i18n_name%></td>
+  <td><%=link_to(account_row.website, "http://" + account_row.website, :target => '_blank') if account_row.website%>
+  </td>
+=======
+  <td><%=Country.find_ex(account_row.country_id).name%></td>
+  <td><%=link_to(account_row.website, "http://" + account_row.website, :target => '_blank') if account_row.website%>
+  </td>
+  <td>
+    <% if (defined? account_row.reviews) %> 
+    <% path = eval("new_#{account_row.class.name.downcase}_review_path(account_row)")%>
+    <a href="<%=path%>" class="btn btn-primary no-spinner" role="button" 
+                      data-toggle="modal" modal-title="Rate <%=account_row.name%>">
+            Rate 
+            <i class="icon-white icon-star"></i>
+        </a>
+    <% end %>
+  </td>
+>>>>>>> e74b7e8... first commit to the market place app
+</tr>

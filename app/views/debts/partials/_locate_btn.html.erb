@@ -1,0 +1,6 @@
+<% if debt.allowed_actions.include? :located %>
+  <% no_text = false if local_assigns[:no_text].nil? %> 
+  <%= link_to find_debt_agency_path(debt) + "#agencies-list", class: "#{no_text ? 'btn-action' : 'btn btn-icon text-center'} btn-primary glyphicons screenshot", title: "#{'Locate Agency' if no_text}" do %>
+    <i></i> <%= "Locate Agency" if !no_text %>
+  <% end %>
+<% end %>

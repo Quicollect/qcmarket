@@ -1,0 +1,11 @@
+<div class="row-fluid">
+	<div rel="tooltip" title="<%=resource.address%>">
+		<%= image_tag("location-icon.png", class: "icon_row thumbnail", title: "Location") %>
+<<<<<<< HEAD
+		<%= Country.find_ex(resource.country_id).i18n_name %>
+=======
+		<%= Country.find_ex(resource.country_id).name %>
+>>>>>>> e74b7e8... first commit to the market place app
+		<%= image_sprite resource.country_id %>
+	</div>
+</div>

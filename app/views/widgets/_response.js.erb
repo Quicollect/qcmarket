@@ -1,0 +1,4 @@
+
+// updateing the table results
+$('#<%=action_name.gsub("_","-")%>-widget').html('<%= escape_javascript(render partial: "widgets/#{action_name}/content", 
+		locals: { resources: resources } ) %>');

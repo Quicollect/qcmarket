@@ -1,0 +1,55 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	<h3>Add debt payment</h3>
+</div>
+<%= simple_form_for([@debt, @debt_payment], url: debt_debt_payments_path([@debt.id, @debt_payment]), :html => {class: "well form-vertical" }) do |f| %>
+	<div class="modal-body">
+		You are about to add a payment for debt <%=link_to @debt.name, debt_path(@debt)%>
+		<div class="separator bottom"></div>
+		<div class="widget-body uniformjs collapse in">
+			<div class="control-group">
+		        <%= f.label :amount, class: 'control-label' %>
+		        <div class="controls">
+		          <div class="input-prepend">
+		            <span class="add-on"><%=currency_symbol(@debt.amount_currency)%></span>
+		            <%= f.text_field :amount, "placeholder" => "insert debt amount.." %>
+		          </div>
+		        </div>
+		    </div>
+			
+			<div class="control-group">
+		        <%= f.label :payment_date, class: 'control-label' %>
+		        <div class="controls">
+		        	<div class="input-append date" id="datetimepicker">
+            			<%= f.text_field :payment_date, "placeholder" => "Click to add date" %>
+            			<span class="add-on"><i class="icon-calendar"></i></span>
+          			</div>
+		        </div>
+		    </div>
+
+			<%= f.input :description, input_html: { class: "span12", rows: 4 }%>
+		</div>
+		
+		<div class="separator bottom"></div>
+		
+		<div class="pull-right">
+			<%= button_tag(type: 'submit', class: "btn btn-primary btn-icon glyphicons ok text-center form-submit") do %>
+    			<i></i> Approve
+  			<% end %>
+
+			<%= link_to '#', :'data-dismiss' => "modal", class: "btn btn-default btn-icon glyphicons ban text-center" do %>
+			    <i></i> Cancel
+		  	<% end %>
+		</div>
+	</div>
+<% end %>
+
+<<<<<<< HEAD
+<script>
+init_datetimepickers();
+</script>
+=======
+>>>>>>> e74b7e8... first commit to the market place app
+
+
+

@@ -1,0 +1,35 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  <h3>Review <%=@agency.name%></h3>
+</div>
+
+<%= simple_form_for([@debt_placement ,@review], url: debt_placement_review_path(@debt_placement.id, @review), :html => {class: "well form-vertical"}) do |f| %>
+<div class="modal-body">
+  Please provide review information about the agency and your latest expirience with it regadring
+  Debt <%=link_to @debt.title, debt_path(@debt) %>
+  <div class="separator bottom"></div>
+  <div class="widget-body uniformjs collapse in">
+    <%= f.input :debt_placement_id, as: :hidden%>
+    <%= f.input :description, input_html: { class: "span12", rows: 4 }, label: false%>
+    
+    <%= stars_review_select(f, @review, :review_level) %>
+    <%= stars_review_select(f, @review, :service_level) %>
+    <%= stars_review_select(f, @review, :aggresive_level) %>
+    <%= stars_review_select(f, @review, :speed_level) %>
+
+  </div>
+  
+  <div class="separator bottom"></div>
+  
+  <div class="pull-right">
+    <%= button_tag(type: 'submit', class: "btn btn-primary btn-icon glyphicons ok text-center form-submit") do %>
+        <i></i> Post
+      <% end %>
+
+    <%= link_to '#', :'data-dismiss' => "modal", class: "btn btn-default btn-icon glyphicons ban text-center" do %>
+        <i></i> Cancel
+      <% end %>
+  </div>
+</div>
+<% end %>
+

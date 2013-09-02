@@ -1,0 +1,67 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *
+ *
+ *  !-- Bootstrap -->
+ *= require ./bootstrap/bootstrap
+ *= require ./bootstrap/responsive
+ *
+ * <!-- Glyphicons Font Icons -->
+ *= require ./theme/fonts/glyphicons/css/glyphicons
+ *= require ./theme/fonts/font-awesome/css/font-awesome
+ * <!-- Uniform Pretty Checkboxes -->
+ * REMOVED require ./theme/plugins/forms/pixelmatrix-uniform/css/uniform.default
+
+ * <!-- PrettyPhoto -->
+ *= require ./theme/plugins/gallery/prettyphoto/css/prettyPhoto
+
+ * <!-- Bootstrap Extended -->
+ *= require ./bootstrap/extend/jasny-fileupload/css/fileupload
+ *= require ./bootstrap/extend/bootstrap-wysihtml5/css/bootstrap-wysihtml5-0.0.2
+ *= require ./bootstrap/extend/bootstrap-select/bootstrap-select
+ *= require ./bootstrap/extend/bootstrap-toggle-buttons/static/stylesheets/bootstrap-toggle-buttons
+
+ * <!-- DateTimePicker Plugin -->
+ *= require ./theme/plugins/forms/bootstrap-datetimepicker/css/datetimepicker
+
+ * <!-- JQueryUI -->
+ *= require ./theme/plugins/system/jquery-ui/css/smoothness/jquery-ui-1.9.2.custom
+
+ * <!-- MiniColors ColorPicker Plugin -->
+ *= require ./theme/plugins/color/jquery-miniColors/jquery.miniColors
+
+ * <!-- Notyfy Notifications Plugin -->
+ *= require ./theme/plugins/notifications/notyfy/jquery.notyfy
+ *= require ./theme/plugins/notifications/notyfy/themes/default
+
+ * <!-- Gritter Notifications Plugin -->
+ *= require ./theme/plugins/notifications/Gritter/css/jquery.gritter
+
+ * <!-- Easy-pie Plugin -->
+ *= require ./theme/plugins/charts/easy-pie/jquery.easy-pie-chart
+
+ * <!-- Google Code Prettify Plugin -->
+ *= require ./theme/plugins/other/google-code-prettify/prettify
+
+ * <!-- Select2 Plugin -->
+ *= require ./theme/plugins/forms/select2/select2
+
+ 
+ * <!-- Bootstrap Image Gallery -->
+ *= require ./bootstrap/extend/bootstrap-image-gallery/css/bootstrap-image-gallery.min
+
+ * <!-- Main Theme Stylesheet :: CSS -->
+ *= require ./theme/css/style-default-menus-dark
+ *
+ *= require_directory ./extra/
+ *= require ./theme/plugins/sliders/jQRangeSlider/css/iThing
+ *= require ./custom
+ */

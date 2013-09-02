@@ -1,0 +1,12 @@
+en:
+  widgets:
+    recent_reviews:
+      widget:
+        recent_reviews: "Recent Reviews"
+    recent_activities:
+      widget:
+        recent_activities: "Recent Activities"
+      content:
+        was_update: "was updated by"
+        next: "next"
+        previous: "previous"

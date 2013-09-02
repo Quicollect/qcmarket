@@ -1,0 +1,64 @@
+<div class="separator bottom"> </div>
+
+<div style="min-height: 200px" class="row-fluid row-merge border-top border-bottom">
+  <div class="span4">
+      <%= render partial: 'dashboard/widgets/actions' %>
+  </div>
+  
+  <div class="span4">
+    <div class="innerLR innerT">
+        <%= render partial: 'widgets/dated_debts/widget' %>
+    </div>
+  </div>
+  
+  <div class="span4">
+    <div class="innerLR innerT">
+      <%= render partial: 'widgets/recent_activities/widget' %>
+    </div>
+  </div>
+</div>
+
+<div class="row-fluid row-merge border-top border-bottom">
+
+  <div class="span6">
+    <% if current_user.has_role? :creditor %>
+      <div class="innerLR innerT">
+        <div class="row-fluid">
+          <%= render partial: 'widgets/non_reviewed_debts/widget' %>
+        </div>
+      </div>
+    <% end %>
+    <% if current_user.has_role? :agency %>
+      <% if current_user.has_role? :creditor %>
+        <div class="row-fluid row-merge border-bottom">
+          <div style="min-height:50px" class="separator bottom"> </div>
+        </div>
+      <%end%>
+
+      <div class="innerLR innerT">
+        <div class="row-fluid">
+          <%= render partial: 'widgets/recent_reviews/widget' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="span6">
+    <div class="innerLR innerT">
+      <h2 class="margin-none separator bottom">
+<<<<<<< HEAD
+      <i class="icon-map-marker text-primary icon-fixed-width"></i> 
+        <%=t (:'dashboard.open-debts')%>
+=======
+      <i class="icon-map-marker text-primary icon-fixed-width"></i> Open Debts
+>>>>>>> e74b7e8... first commit to the market place app
+      </h2> 
+      <% pending_debts = Debts::Debt.viewable_debts(current_user).where.not(debt_status_id: Debts::DebtStatus.lookup(:closed)) %>
+      <%= render partial: 'debts/partials/map', 
+          locals: { markers: pending_debts.to_gmaps4rails } %>
+    </div>
+  </div>
+
+</div>
+
+<div class="separator bottom"> </div>

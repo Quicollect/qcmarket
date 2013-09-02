@@ -1,0 +1,9 @@
+New registration!
+=================
+ 
+A new user has registered to the site. 
+username is: <%= @user.name %>
+email address is: <%= @user.email %>
+account: <%= "#{Account.find(@user.account_id).name} (#{@user.account_id})" %>
+ 
+To view more details goto <%= user_url(@user) %> (required login)

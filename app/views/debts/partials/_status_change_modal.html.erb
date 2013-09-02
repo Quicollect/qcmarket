@@ -1,0 +1,26 @@
+
+<div id="status-change" class="modal hide fade">
+  <div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  <h3 id="modal-title"></h3>
+  </div>
+	<%= simple_form_for :debt_event, url: status_change_debt_path(@debt), 
+				:html => {class: "well form-vertical" } do |f| %>
+	  <div class="modal-body">
+	    <div class="row-fluid">  
+	      <div class="span12">
+	      	You are about to <span id="modal-action"></span> the follwoing debt:
+	      	<strong>'<%=@debt.title%>'</strong> by <%= link_to Account.find(@debt.account_id).name, account_path(@debt.account_id) %>.
+	      	
+	        <%= f.input :note, label: "Please provide additional explansion for the action:", as: :text, 
+	        		input_html: { rows: "4" }, input_html: { class: "span12"}%>
+	      	<%= f.hidden_field :debt_status_id, id: "debt_status_id" %>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="modal-footer">
+	    <%= f.submit 'Ok', class: "btn btn-primary"%>
+	    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+	  </div>
+  <% end %>
+</div>

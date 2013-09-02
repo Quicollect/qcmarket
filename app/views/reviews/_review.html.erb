@@ -1,0 +1,79 @@
+<div class="row-fluid">
+<<<<<<< HEAD
+  <div class="span1">
+=======
+  <div class="span2">
+>>>>>>> e74b7e8... first commit to the market place app
+    <% account = Account.find(User.find(review.user_id).account_id) %>
+    <%= image_tag(account.thumbnail, class: "thumbnail thumbnail-small") %>
+  </div>
+
+<<<<<<< HEAD
+  <div class="span8"> 
+=======
+  <div class="span6"> 
+>>>>>>> e74b7e8... first commit to the market place app
+    <div class="review popover right">
+      <div class="arrow"></div>
+      <div class="popover-title">
+        <%= image_sprite account.country_id %>
+        <strong><%=account.name.upcase%> Says:</strong>
+        <div class="comment"> <%=time_ago_in_words(review.created_at)%> ago</div>
+      </div>
+      <div id="review<%=review.id%>" class="highlight popover-content">
+        <p>
+          <em>"<%=truncate(h(review.description), :length=>500, :omission=>"...")%>"</em>
+        </p>
+      </div>
+    </div>
+  </div>
+<<<<<<< HEAD
+  <div class="span3">
+    <div class="widget widget-heading-simple widget-body-gray margin-none widget-flat">
+        <div class="widget-body">
+=======
+  <div class="span4">
+    <div class="widget widget-heading-simple widget-body-gray margin-none widget-flat">
+        <div class="widget-body center">
+>>>>>>> e74b7e8... first commit to the market place app
+        <div class="row-fluid">
+          <div class="span6" style="overflow:hidden;">
+            Overall:
+          </div>
+          <div class="span6"> 
+            <%= stars_review(review.review_level, :small) %>
+          </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span6" style="overflow:hidden;">
+              Service:
+            </div>
+            <div class="span6">
+              <%= stars_review(review.service_level, :small) %>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span6" style="overflow:hidden;">
+              Aggresivness: 
+            </div>
+            <div class="span6">
+              <%= stars_review(review.aggresive_level, :small) %>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span6" style="overflow:hidden;">
+              Speed:
+            </div>
+            <div class="span6">
+              <%= stars_review(review.speed_level, :small) %>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span12">
+    <hr></hr>
+  </div>
+</div>

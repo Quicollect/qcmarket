@@ -1,0 +1,10 @@
+<% if object.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      The form contains <%= pluralize(object.errors.count, "error")%>
+       (see details below).
+       <a class="close no-spinner" data-dismiss="alert">&#215;</a>
+    </div>
+  </div>
+<% end %>
+

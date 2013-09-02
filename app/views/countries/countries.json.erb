@@ -1,0 +1,8 @@
+{"results": [
+	<% @items.each_with_index do | item, i | %>
+		<%= i == 0 ? "": "," %> 
+		{ "id": "<%=item.id%>", "text": "<%=item.name%>", 
+			"thumbnail_html": "<%=raw(image_sprite(item.id).gsub('"', '\\"'))%>" } 
+	<% end %>
+	],
+"more": <%=has_more(@items)%> }

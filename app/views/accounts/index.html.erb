@@ -1,0 +1,56 @@
+<% resource_name = controller.model_name.downcase %>
+<div class="heading-buttons" style="margin-top: 0px;">
+      <h1>Manage <%=resource_name.pluralize.humanize%> <span></span></h1>
+      <div class="buttons pull-right" style="margin-top: 15px;">
+        <% if can? :create, resource_name.classify.constantize %>
+          <%= link_to eval("new_#{resource_name}_path"), class: "btn btn-primary btn-icon glyphicons circle_plus" do %>
+            <i></i> New <%=resource_name.humanize%>
+          <% end %>
+        <% end %>
+
+        <% if can? :map, resource_name.classify.constantize %>
+          <%= link_to eval("#{resource_name.pluralize}_map_path"), class: "btn btn-primary btn-icon glyphicons google_maps" do %>
+            <i></i> Map All
+          <% end %>
+        <% end %> 
+      </div>
+      <div class="clearfix"></div>
+</div>
+
+
+<div class="innerLR">
+  <!-- Widget -->
+  <div class="widget widget-heading-simple widget-body-white">
+  
+    <!-- Widget heading -->
+    <div class="widget-head">
+    </div>
+    <!-- // Widget heading END -->
+    
+    <div class="widget-body">
+    
+      <%= form_tag eval("#{resource_name.pluralize}_path"), :method => 'get', :id => "live-search" do %>
+        <!-- Total products & Sort by options -->
+        <div class="form-inline separator bottom">
+          <div class="row-fluid">
+            <div class="span8">
+              <h4 class="heading"> Total <%=resource_name.pluralize%>: <%= @resources.total_entries %> </h4>
+            </div>
+            <div class="span4">
+              <div class="input-append pull-right">
+                <%= text_field_tag :search, params[:search], "placeholder" => "Search..." %>
+                <span class="add-on"><i class="icon-search"></i></span>
+              </div>
+                 </div>
+             </div>
+        </div>
+      <% end %>
+    
+      <div id="live-results">
+        <%= render partial: 'accounts/accounts', locals: { resources: @resources, resource_name: resource_name } %>
+      </div>
+    </div>
+  </div>
+</div>  
+
+

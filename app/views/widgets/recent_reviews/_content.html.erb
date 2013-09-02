@@ -1,0 +1,36 @@
+<table class="table table-striped table-condensed table-borderless">
+  <tbody>
+    <% resources.each do | review | %>
+      <tr>
+        <% creditor = Account.find(User.find(review.user_id).account_id) %>
+        <td><%= stars_review(review.review_level, :small) %></td>
+<<<<<<< HEAD
+        <td><%=t('by')%> <%=link_to creditor.name, account_path(creditor) %></td>
+        <td><%=t('updated')%> <%=time_ago_in_words_ex(review.updated_at)%></td>
+=======
+        <td>By <%=link_to creditor.name, account_path(creditor) %></td>
+        <td>Updated <%=time_ago_in_words_ex(review.updated_at)%></td>
+>>>>>>> e74b7e8... first commit to the market place app
+        <td>
+            <%=link_to agency_path(Agency.find(review.agency_id))+"#review#{review.id}" do%>
+                <i class="spinner icon-circle-arrow-right icon-2x"></i>
+            <% end %>
+        </td>
+      </tr>
+    <% end %>
+
+    <% if resources.length == 0 %> 
+      <tr>
+        <td>No reviews!</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>  
+
+<% if resources.length > 0 %> 
+  <% account = Account.find(current_user.account_id)%>
+  <%= link_to "#{eval(account.class.name.downcase + '_path(' + current_user.account_id.to_s + ')')}#reviews" do%>
+    <span class="text-underline">view all</span> 
+      <i class="icon-circle-arrow-right"></i>
+  <%end%>
+<% end %>

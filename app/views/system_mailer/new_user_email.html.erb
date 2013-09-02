@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>New registration!</h1>
+    <p>
+      A new user has registered to the site. 
+      <p>username is: <%= @user.name %> </p>
+	    <p>email address is: <%= @user.email %>.</p>
+      <p>account: <%= "#{Account.find(@user.account_id).name} (#{@user.account_id})" %>.</p>
+    </p>
+    <p>
+		To view more details goto <%= user_url(@user) %> (required login)
+    </p>
+  </body>
+</html>

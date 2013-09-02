@@ -1,0 +1,7 @@
+{"results": [
+	<% @items.each_with_index do | item, i | %>
+		<%= i == 0 ? "": "," %> 
+		{ "id": "<%=item.id%>", "text": "<%=item.name%>" } 
+	<% end %>
+	],
+"more": <%=has_more(@items)%> }

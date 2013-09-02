@@ -1,0 +1,52 @@
+<div class="relativeWrap overflow-hidden">
+	<div class="row-fluid row-merge border-bottom border-top layout-timeline">
+		<div class="span4"></div>
+		<div class="span8">
+			<div class="innerAll">
+				<ul class="timeline">
+					
+					<li id="nowevent" class="active">
+						<div class="separator bottom">
+							<span class="date box-generic">Now</span>
+							<%= link_to '#nowevent', 
+	                            class: "glyphicons circle_plus btn btn-primary btn-icon no-spinner addcomment" do %>
+	                        	<i></i> Add event
+	                    	<% end %>
+						</div>
+					</li>
+
+					<% last_date = nil %>
+
+					<% events.each do | event | %>
+						<%= render partial: 'shared/timeline_event', 
+								locals: { event: event, last_date: last_date} %>  
+						<% last_date = event.created_at.to_date %>
+					<% end %>
+
+					<% if !last_date.nil? %>
+					<li class="<%= 'active' if last_date == Date.today %> ">		
+						<div class="separator">
+							<span class="date box-generic">
+								<strong><%=last_date.day%></strong><%= last_date.strftime("%B")%>
+							</span>
+						</div>
+					</li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+  // check if we don't alerady have a new comment open and open it
+  $(".addcomment").click(function(event) {
+          if ($('#new-comment').length == 0)
+          {
+	          element = $('#nowevent').append(
+	          	'<%= escape_javascript(render partial: "shared/comment", locals: { event: Timeline::Event.new(entity_id: entity_id, entity_type: entity_type)} ) %>');
+	      }
+          
+          return true;
+      });
+ </script>

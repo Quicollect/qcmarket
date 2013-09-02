@@ -1,0 +1,91 @@
+
+<!-- debts table -->
+<table class="table table-bordered table-condensed table-striped table-primary table-vertical-center checkboxs js-table-sortable">
+	<thead>
+		<tr>
+<<<<<<< HEAD
+			<th><%= sortable "title", Debts::Debt %></th>
+			<th class="center"><%= sortable "debt_status_id", Debts::Debt %></th>
+			<th class="center"><%= sortable "country_id", Debts::Debt %></th>
+			<th class="center"><%= t('activerecord.attributes.debts/debt.amount')%></th>
+			<th class="center"><%= sortable "charge_date", Debts::Debt %></th>
+			<th class="center"><%= sortable "updated_at", Debts::Debt %></th>
+			<th class="center"><%= t('actions') %></th>
+=======
+			<th><%= sortable "title", "Title" %></th>
+			<th class="center"><%= sortable "debt_status_id", "Status" %></th>
+			<th class="center"><%= sortable "country_id", "Location" %></th>
+			<th class="center">Amount</th>
+			<th class="center"><%= sortable "charge_date", "Age" %></th>
+			<th class="center"><%= sortable "updated_at", "Last Updated" %></th>
+			<th class="center">Actions</th>
+>>>>>>> e74b7e8... first commit to the market place app
+		</tr>
+	</thead>
+	<tbody>
+		<% debts.each do | debt | %> 
+		<tr class="">
+			<td class="important">
+				<%= "<del>".html_safe if debt.deleted %>
+				<%= link_to debt.title, debt_path(debt) %>
+				<%= "</del>".html_safe if debt.deleted %>
+			</td>
+			<td class="center">
+<<<<<<< HEAD
+				<span rel="tooltip" title="<%=Debts::DebtStatus.short_text(debt.debt_status_id)%>" class="glyphicons standard <%=status_to_glyphicon(debt.debt_status_id)%>"><i></i></span>
+			</td>
+			<td class="center" rel="tooltip" title="<%=debt.address%>">
+                <%= Country.find_ex(debt.country_id).i18n_name %>
+=======
+				<span rel="tooltip" title="<%=Debts::DebtStatus.find(debt.debt_status_id).name%>" class="glyphicons standard <%=status_to_glyphicon(debt.debt_status_id)%>"><i></i></span>
+			</td>
+			<td class="center" rel="tooltip" title="<%=debt.address%>">
+                <%= Country.find_ex(debt.country_id).name %>
+>>>>>>> e74b7e8... first commit to the market place app
+                <%= image_sprite debt.country_id %>
+			</td>
+			<td class="center">
+				<%=humanized_money_with_symbol debt.amount %>
+			</td>
+<<<<<<< HEAD
+			<td class="center"><%=days_ago_in_words(debt.charge_date) %></td>
+			<td class="center"><%=time_ago_in_words_ex( debt.updated_at ) %></td>
+=======
+			<td class="center"><%=debt.age %> days</td>
+			<td class="center"><%=time_ago_in_words_ex(debt.updated_at) %></td>
+>>>>>>> e74b7e8... first commit to the market place app
+			<td>
+				<span class="pull-right">
+					<% if !debt.deleted %>
+
+						<% if can? :edit, Debts::Debt %>
+							<%= link_to edit_debt_path(debt), 
+<<<<<<< HEAD
+									title: t("edit"), class: "btn-action glyphicons pencil btn-success" do%>
+=======
+									title: "Edit", class: "btn-action glyphicons pencil btn-success" do%>
+>>>>>>> e74b7e8... first commit to the market place app
+								<i></i>
+							<% end %>
+						<% end %>	
+
+						<%= render partial: 'shared/delete_resource', object: debt%>
+					<% end %>
+				</span>
+			</td>
+		</tr>
+	<% end %>	
+	</tbody>
+</table>
+<!-- // Products table END -->
+
+<!-- Options -->
+<div class="form-inline small">
+	
+	<div class="pagination pagination-small pull-right">
+		<%= will_paginate debts %>
+	</div>
+	
+	<div class="clearfix"></div>
+	
+</div>

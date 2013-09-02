@@ -1,0 +1,44 @@
+<% etype = Timeline::EventType.symbol(event.event_type) %>
+<% account = Account.find(event.account_id) %>
+<% event_date = event.created_at.to_date %>
+
+
+<li class="<%= 'active' if event.created_at.to_date == Date.today %> ">		
+	
+	
+	<div class="separator">
+		<% if !last_date.nil? && last_date != event_date %>
+			<span class="date box-generic">
+				<strong><%=last_date.day%></strong><%= last_date.strftime("%B")%>
+			</span>
+		<% end %>
+
+		<span class="type glyphicons <%= event_to_glyphicon(event) %>"><i></i>
+			<span class="time"><%= event.created_at.strftime('%H:%M')%></span>
+		</span>
+	</div>	
+
+	<div class="widget widget-heading-simple widget-body-white margin-none">
+		<div id="<%="event#{event.id}"%>" class="highlight widget-body">
+			<div class="">
+				<p class="">
+					<%= split_text(event.text) %>
+				</p>
+			</div>
+
+			<div class="alert alert-gray">
+				<p class="glyphicons circle_info margin-none"><i></i> 
+<<<<<<< HEAD
+					<%= Timeline::EventType.long_text(event.event_type, account) %> (<%= User.find(event.user_id).name%>) 
+=======
+					<%= event_type_to_text(event.event_type) %> by 
+					<%= link_to account.name, '' %> 
+					(<%= User.find(event.user_id).name%>) 
+>>>>>>> e74b7e8... first commit to the market place app
+				</p>
+			</div>								
+											
+			<!--a class="glyphicons single pencil"><i></i></a-->
+		</div>
+	</div>
+</li>

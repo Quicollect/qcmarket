@@ -1,0 +1,16 @@
+en:
+  agencies:
+    show:
+      others_say: "What others had to say:"
+      score: "Score"
+  debts:
+    debts:
+      index:
+        debts: "Debts"
+        new_debt: "New Debt"
+        manage_debts: "Manage your debts"
+        debts_repository: "Debts Repository"
+        outstanding_debts: "Outstanding debts"
+        resolved_debts: "Resolved debts"
+        manage_debts: "Manage debts"
+        total_debts: "Total debts"

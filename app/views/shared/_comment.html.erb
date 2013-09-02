@@ -1,0 +1,31 @@
+<li id="new-comment" class="active">
+	<div class="widget widget-heading-simple widget-body-white margin-none">
+		<div class="widget-body">
+			<p class="glyphicons user margin-none"><i></i> 
+				<strong><%= Account.find(current_user.account_id).name %> (<%=current_user.name%>) says
+				</strong>:
+
+				<% if event.new_record? %>
+					<div class="row-fluid">
+						<%= simple_form_for(event.becomes(Timeline::Event), :html => {class: "" }) do |f| %>
+							<%= f.input :entity_id, as: :hidden %> 
+							<%= f.input :entity_type, as: :hidden %> 
+							<%= f.input :text, as: :text, input_html: { style: "resize: none;", rows: "3", 
+		                placeholder: "Add your comments...", class: "span12" }, label: false %>
+
+		                <div class="control-group">
+						    <div class="controls">
+						      <%= button_tag(type: 'submit', class: "glyphicons ok btn btn-primary btn-icon btn-small") do %>
+						          <i></i> Post
+						        <% end %>
+						      </div>
+						  </div>
+		                <% end %>
+					</div>
+				
+				<% else %>
+					<%= event.text %>
+				<% end %>
+		</div>
+	</div>
+</li>

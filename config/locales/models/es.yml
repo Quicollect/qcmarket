@@ -1,0 +1,21 @@
+es: 
+  activerecord: 
+    attributes: 
+      user: 
+        account_id: Cuenta
+        created: Creado
+        email: "Correo electrónico"
+        failed_attempts: "Intentos de conexión fallidos"
+        last_sign_in: "Última sesión"
+        name: Nombre
+        password: Contraseña
+        password_confirmation: "Confirme Contraseña"
+        roles: Papeles
+        updated: Actualizado
+      debts/debt:
+        title: "Título"
+        debt_status_id: "Estado"
+        country_id: "País"
+        charge_date: "Edad de la deuda"
+        updated_at: "Última actualización"
+        amount: "Cantidad"

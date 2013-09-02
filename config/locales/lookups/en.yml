@@ -1,0 +1,43 @@
+en:
+  lookups:
+    eventtype:
+      creation:
+        short: "Created"
+        long: "was created by %{account}"
+      update:
+        short: "Updated"
+        long: "was update by %{account}"
+      statuschange:
+        short: "Status Changed"
+        long: "had status change by %{account}"
+      userevent:
+        short: "Commented"
+        long: "was commented by %{account}"
+      delete:
+        short: "Deleted"
+        long: "was deleted by %{account}"
+    debtstatus:
+      draft:
+        short: "Draft"
+        long: "Draft (not assigned)"
+      assigned:
+        short: "Assigned"
+        long: "Assigned to %{account}"
+      accepted:
+        short: "Accepted"
+        long: "Accepted by %{account}"
+      rejected:
+        short: "Rejected"
+        long: "Rejected by %{account}"
+      inforequired:
+        short: "Info Required"
+        long: "%{account} requesting additional info"
+      resolved:
+        short: "Resolved"
+        long: "Resolved by %{account}"
+      closed:
+        short: "Closed"
+        long: "Closed by %{account}"
+      deleted:
+        short: "Deleted"
+        long: "Deleted by %{account}"

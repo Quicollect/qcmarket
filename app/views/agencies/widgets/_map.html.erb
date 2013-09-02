@@ -1,0 +1,21 @@
+<div class="widget widget-heading-simple widget-body-white">
+
+    <!-- Widget heading -->
+    <div class="widget-head">
+        <h3 class="heading center">Location on map</h3>
+    </div>
+    <!-- // Widget heading END -->
+    
+    <div class="widget-body">
+    
+        <!-- Pie Chart -->
+        <% if account.geocoded? %>
+            <div class="small-map">
+              <%= gmaps(:map_options => {"auto_zoom" => false, "zoom" => 12}, 
+                        :markers => { "data" => account.to_gmaps4rails }) %>
+            </div>
+        <% else %>
+        	<div class="center">N/A</div>
+        <% end %>
+    </div>
+</div>

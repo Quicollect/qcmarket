@@ -1,0 +1,56 @@
+<div class="widget widget-heading-simple widget-body-simple">
+  <div class="widget-body">
+
+    <div class="widget widget-tabs widget-tabs-icons-only-2 widget-activity margin-none widget-tabs-gray">
+      <div class="widget-body">
+        <ul class="list">  
+          <% resources.each do | e | %>
+            <li onclick='location.href="<%=debt_path(e.entity_id) + "#event#{e.id}"%>";' class="double">
+              <span class="glyphicons activity-icon <%= event_to_glyphicon(e)%>"><i></i></span>
+              <span class="ellipsis">
+                <% account = Account.find(e.account_id) %>
+                '<%=  Debts::Debt.find(e.entity_id).name %>'
+<<<<<<< HEAD
+                <%= Timeline::EventType.long_text(e.event_type, account) %> (<%= User.find(e.user_id).name %>)
+                <span class="meta">on <%= e.created_at.strftime("%d %B, %Y") %>
+                  <span><%=time_ago_in_words_ex(e.created_at)%></span></span>
+=======
+                <%= event_type_to_text(e.event_type) %> by 
+                <%= link_to account.name, '' %> (<%= User.find(e.user_id).name %>)
+                <span class="meta">on <%= e.created_at.strftime("%d %B, %Y") %>
+                  <span><%=time_ago_in_words(e.created_at)%> ago</span></span>
+>>>>>>> e74b7e8... first commit to the market place app
+              </span>
+              <div class="clearfix"></div>
+            </li>
+          <% end %>     
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row-fluid">
+      <% if resources.current_page.to_i > 1 %>
+<<<<<<< HEAD
+        <%= link_to recent_activities_path(format: :js, page: (resources.current_page.to_i - 1).to_s), class: "ajax-reload" do%>
+          <i class="icon-circle-arrow-left"></i>
+          <span class="text-underline"><%=t('.previous')%></span>  
+        <%end%>
+      <%end%>
+      <% if has_more(resources) %> 
+        <%= link_to recent_activities_path(format: :js, page: (resources.current_page.to_i + 1).to_s), class: "ajax-reload pull-right" do%>
+          <span class="text-underline"><%=t('.next')%></span> 
+=======
+        <%= link_to recent_activities_path + ".js?page=#{resources.current_page.to_i - 1}", class: "ajax-reload" do%>
+          <i class="icon-circle-arrow-left"></i>
+          <span class="text-underline">previous</span>  
+        <%end%>
+      <%end%>
+      <% if has_more(resources) %> 
+        <%= link_to recent_activities_path + ".js?page=#{resources.current_page.to_i + 1}", class: "ajax-reload pull-right" do%>
+          <span class="text-underline">next</span> 
+>>>>>>> e74b7e8... first commit to the market place app
+          <i class="icon-circle-arrow-right"></i>
+        <%end%>
+      <% end %>
+  </div>
+</div>

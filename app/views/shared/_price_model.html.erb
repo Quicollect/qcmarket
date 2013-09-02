@@ -1,0 +1,26 @@
+<tr>
+  <td>
+      <i class="icon-white <%= price_model.enabled? ? 'icon-thumbs-up' : 'icon-thumbs-down'%>">
+      </i>
+      <i class="icon-white <%= 'icon-lock' if price_model.system?%>"></i>
+  </td>
+  <td> 
+    <a href="#" class="no-spinner editable-cell" id="name<%=price_model.id%>" data-type="text" data-pk="<%=price_model.id%>" data-url="" data-title="Enter name">
+      <%=price_model.name%></a>
+  </td>
+  <td><%= price_model.amount_range %></td>
+  <td><%= price_model.age_range %></td>
+  <td>
+    <a href="#" class="no-spinner editable-cell" id="fee<%=price_model.id%>" data-type="text" data-pk="<%=price_model.id%>" data-url="" data-title="Enter name">
+     <%= price_model.fee_precentage %>
+     </a>%
+   </td>
+  <td>
+		<%= link_to([@agency, price_model], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-mini #{'disabled' if price_model.system?}") do %>
+        Delete <i class='icon-white icon-trash icon-large pull-down'></i>
+    <%end%>
+	</td>
+</tr>
+
+
+

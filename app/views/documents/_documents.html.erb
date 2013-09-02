@@ -1,0 +1,31 @@
+<!-- Gallery -->
+<div class="gallery">
+	<ul class="row-fluid" data-toggle="modal-gallery" data-target="#modal-gallery" id="gallery-3" data-delegate="#gallery-3">
+
+		<% @documents.each do | document | %>
+			<li class="span2">
+				<div style="margin-bottom: 13px; opacity: 1;" class="widget widget-heading-simple widget-body-primary widget-pinterest">
+					<div class="widget-body padding-none" title="<%=document.display_name%>">
+						<a class="thumb no-spinner" href="<%=document.resource.url(:medium)%>" data-gallery="gallery" data-download="<%=document.resource.url(:original)%>">
+								<img src="<%=document.resource.url(:thumb)%>" alt="<%=document.display_name%>" 
+								style="width:100px; height:100px; display: block; margin-left: auto; margin-right: auto;">
+						</a>
+
+						<div class="description minimal-padding">
+							<span class="text-uppercase strong qc-ellipsis text-center"><%=document.display_name%></span>
+							<p class="text-center">
+								<%="#{document.resource_content_type} (#{number_to_human_size(document.resource_file_size)})"%>
+							</p>
+						</div>
+					</div>
+				</div>
+			</li>
+		<% end %>				
+	</ul>
+</div>
+<!-- // Gallery END -->
+
+<span class="innerLR">
+	<%= will_paginate %>
+</span>
+

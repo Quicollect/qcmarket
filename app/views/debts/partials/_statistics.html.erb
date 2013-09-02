@@ -1,0 +1,43 @@
+
+<h2 class="margin-none separator bottom">
+	<i class="icon-external-link-sign icon-fixed-width text-primary"></i>
+  Statistics
+</h2>
+
+<a class="widget-stats widget-stats-primary widget-stats-4" href=""><span class="txt">
+      Amount due
+    </span>
+    <span class="count"><%= humanized_money_with_symbol debt.amount%></span>
+    <span class="glyphicons coins"><i></i></span>
+    <div class="clearfix"></div>
+    <i class="icon-play-circle"></i>
+</a>
+
+
+<div class="separator bottom"></div>
+
+<% paid_precentage = (debt.amount_paid*100.0 / debt.amount).round %>
+<a class="widget-stats widget-stats-default widget-stats-4" href=""><span class="txt">
+      Paid
+    </span>
+    <span class="count"><%= humanized_money_with_symbol debt.amount_paid %></span>
+    <div data-percent="<%=paid_precentage%>" class="easy-pie primary easyPieChart pull-right"><span class="value"><%=paid_precentage%></span>%</div>
+    <div class="clearfix"></div>
+    
+</a>
+
+<div class="separator bottom"></div>
+
+<% age_precentage = (debt.age*100.0 / 720).round %>
+<a class="widget-stats widget-stats-inverse widget-stats-4" href="">
+	<span class="txt">
+      Debt Age
+    </span>
+    <span class="count"><%= debt.age %><div class="txt" style="display:inline"> days</div></span>
+    <span class="glyphicons history"><i></i></span>
+    <div class="clearfix"></div>
+    <i class="icon-play-circle"></i>
+</a>
+
+
+<div class="separator bottom"></div>

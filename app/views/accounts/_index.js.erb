@@ -1,0 +1,9 @@
+// updateing the table results
+$('#live-results').html('<%= escape_javascript(render partial: "accounts/accounts", 
+		locals: { resources: resources, resource_name: resource_name } ) %>');
+$('.footable').footable();
+_hook_modal();
+
+// updating the map
+// json = <%=raw resources.to_gmaps4rails%>
+// Gmaps.map.replaceMarkers(json)

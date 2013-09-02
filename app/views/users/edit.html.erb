@@ -1,0 +1,37 @@
+<% provide(:title, @user.new_record? ? 'New User' : 'User ' + @user.name) %>
+
+<div class="row-fluid">
+
+  <div class="buttons pull-left">
+
+    <%= link_to '#', class: "btn btn-primary btn-icon glyphicons ok text-center form-submit" do %>
+      <i></i> Save
+    <% end %>
+
+<<<<<<< HEAD
+    <%= link_to users_path, class: "btn btn-default btn-icon glyphicons ban text-center" do %>
+=======
+    <%= link_to root_path, class: "btn btn-default btn-icon glyphicons ban text-center" do %>
+>>>>>>> e74b7e8... first commit to the market place app
+      <i></i> Cancel
+    <% end %>
+
+    <% if !@user.new_record? && can?(:delete, @user) %>
+      <%= link_to user_path(@user), method: :delete, data: 
+          { confirm: "Are you sure you want to delete user '#{@user.name}'?" }, 
+        class: "btn btn-danger btn-icon glyphicons bin text-center no-spinner" do%>
+        <i></i> Delete
+      <% end %>
+    <% end %>
+
+  </div>
+</div>
+
+<div class="separator bottom"> </div>
+
+<div class="row-fluid">
+  <div class="span12">
+	<%= render 'form' %>
+  </div>
+</div>
+

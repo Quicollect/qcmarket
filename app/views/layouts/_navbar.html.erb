@@ -1,0 +1,171 @@
+    <!-- Top navbar -->
+<div class="navbar main">
+
+  <!-- Menu Toggle Button -->
+  <button type="button" class="btn btn-navbar pull-left visible-phone">
+    <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+  </button>
+  
+  <% if signed_in? %>
+  <!-- // Menu Toggle Button END -->
+  
+  <!-- Full Top Style -->
+  <ul class="topnav pull-left">
+<<<<<<< HEAD
+    <li style="width:150px">
+      <%= image_tag 'quicollect-logo-light-small.png', style: "margin-left: 25px" %>
+    </li>
+    <li class="<%= 'active' if params[:controller] == 'dashboard' %>">
+        <%= link_to root_path, class: "glyphicons home" do %>
+          <i></i> <%=t 'menus.home' %>
+=======
+    <li class="<%= 'active' if params[:controller] == 'dashboard' %>">
+        <%= link_to root_path, class: "glyphicons home" do %>
+          <i></i> Home
+>>>>>>> e74b7e8... first commit to the market place app
+        <% end %>
+    </li>
+    <li class="<%= 'active' if params[:controller] == 'debts/debts' %>">
+        <%= link_to debts_path, class: "glyphicons coins" do %>
+<<<<<<< HEAD
+          <i></i> <%=t 'menus.debts' %>
+        <% end %>
+    </li>
+    <li class="dropdown dd-1 <%= 'active' if ['accounts', 'agencies', 'users', 'documents'].include? params[:controller]%>">
+      <a class="glyphicons nameplate_alt no-spinner" data-toggle="dropdown" href=""><i></i>
+          <%=t 'menus.company' %> 
+=======
+          <i></i> Debts
+        <% end %>
+    </li>
+    <li class="dropdown dd-1 <%= 'active' if ['accounts', 'agencies', 'users'].include? params[:controller]%>">
+      <a class="glyphicons adress_book no-spinner" data-toggle="dropdown" href=""><i></i>
+          Profile 
+>>>>>>> e74b7e8... first commit to the market place app
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu pull-left">
+        <li>
+            <%= link_to account_edit_path(current_user.account_id), class: "glyphicons pencil" do %>
+<<<<<<< HEAD
+               <%=t('menus.edit')%><i></i>
+=======
+               Edit<i></i>
+>>>>>>> e74b7e8... first commit to the market place app
+              <% end %>
+        </li>
+        <li>
+          <% if Account.find(current_user.account_id).class.name == 'Agency' %>
+            <%= link_to agency_path(current_user.account_id), class: "glyphicons globe" do %>
+<<<<<<< HEAD
+               <%=t('menus.public')%><i></i>
+=======
+               Public view<i></i>
+>>>>>>> e74b7e8... first commit to the market place app
+              <% end %>
+          <% end %>
+        </li>
+        <% if can? :index, User %>
+        <li>
+            <%= link_to users_path, class: "glyphicons group" do %>
+<<<<<<< HEAD
+               <%=t('menus.users')%><i></i>
+              <% end %>
+        </li>
+        <% end %>
+        <li>
+            <%= link_to documents_path, class: "glyphicons blog" do %>
+              <%=t('menus.documents')%><i></i>
+            <% end %>
+        </li>
+=======
+               Users<i></i>
+              <% end %>
+        </li>
+        <% end %>
+>>>>>>> e74b7e8... first commit to the market place app
+      </ul>
+    </li>
+  </ul>
+  <!-- // Full Top Style END -->
+        
+  <!-- // Not Blank Page END -->
+        
+        
+        <!-- Top Menu Right -->
+  <ul class="topnav pull-right hidden-phone">
+    <% if current_user.is_admin_origin?%>
+      <li>
+        <input class="optional switch-user bigdrop span2" id="users-select" step="1" type="hidden" />
+      </li>
+    <% end %>
+
+    <!-- Profile / Logout menu -->
+    <li class="account dropdown dd-1">
+        <a data-toggle="dropdown" href="" class="glyphicons logout lock no-spinner">
+          <span class="hidden-tablet hidden-phone hidden-desktop-1">
+          <%=current_user.name%></span><i></i>
+        </a>
+      <ul class="dropdown-menu pull-right">
+        <li>
+          <%= link_to account_edit_path(current_user.account_id), class: "glyphicons cogwheel" do %>
+<<<<<<< HEAD
+           <%=t('menus.company_setting')%> <i></i>
+=======
+           Profile Settings<i></i>
+>>>>>>> e74b7e8... first commit to the market place app
+          <% end %>
+        </li>
+        <li class="profile">
+          <span>
+            <a href="my_account_advanced.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-default-menus-dark&amp;sidebar_type=collapsible" class="img thumb">
+              <img data-src="holder.js/31x31/dark" alt="Avatar" />
+            </a>
+            <span>
+              <%= link_to user_path(current_user) do %>
+                <div class="strong"><%= current_user.name %></div>
+                <div><%= current_user.email %></div>
+              <% end %> 
+            </span>
+            <span class="clearfix"></span>
+          </span>
+        </li>
+
+        <li>
+          <span>
+            <%= link_to "Sign out", destroy_user_session_path, class: "btn btn-default btn-mini pull-right", method: "delete" %>
+          </span>
+        </li>
+      </ul>
+              </li>
+    <!-- // Profile / Logout menu END -->
+    
+  </ul>
+  <!-- // Top Menu Right END -->
+  
+  <!--ul class="topnav pull-right hidden-phone">
+    <li><a href="" class="glyphicons envelope single-icon"><i></i><span class="badge fix badge-primary">5</span></a></li>
+    <li><a href="" class="glyphicons cup single-icon"><i></i><span class="badge fix badge-primary">7</span></a></li>
+    <li class="hidden-tablet"><a href="" class="glyphicons comments single-icon"><i></i><span class="badge fix badge-primary">3</span></a></li>
+  </ul-->
+
+  <% end %>
+
+  <div class="clearfix"></div>
+  
+</div>
+<!-- Top navbar END -->
+
+<% if signed_in? && current_user.is_admin_origin? %>
+  <script>
+  register_select2({
+        id: "users-select",
+        url: "<%=users_switch_index_path%>.json",
+        placeholder: "Switch user...",
+        selectedText: '<%=current_user.id%>',
+        onSelectionChange: function(item) {
+          location.href = '/switch_user?scope_identifier=user_' + item.id;
+        },
+        per_page: 5} );
+  </script>
+<% end %>

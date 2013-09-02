@@ -1,0 +1,14 @@
+<%= form_tag debts_path, :method => 'get', :id => "live-search" do %>
+  <div class="row-spacing controls">
+  <a href="<%=new_agency_price_model_path(@agency)%>" class="btn btn-primary">
+          New <i class="icon-white icon-plus"></i>
+        </a>
+  </div>
+
+
+  <div class="row row-spacing"></div>
+
+  <div id="live-results">
+    <%= render 'shared/price_models' %>
+  </div>
+<% end %>

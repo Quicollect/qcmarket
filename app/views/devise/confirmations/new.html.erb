@@ -1,0 +1,44 @@
+<% provide(:title, 'Email Confirmation') %>
+
+<div class="row-fluid">
+  <div class="span6 offset3">
+    <%= form_for(resource,
+                  as: resource_name,  
+                  url: confirmation_path(resource_name), 
+                  html: {class: "form-horizontal well"}) do |f| %>
+      
+      <%= render 'shared/error_messages', object: f.object%>
+
+      <div class="control-group">
+        <h2 class="center">Resend confirmation instructions</h2>
+      </div>
+      
+      <div class="control-group">
+        <%= f.label :email, class: 'control-label' %>
+        <div class="controls">
+          <%= f.email_field :email, class: 'span9' %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="controls buttons-row">
+          <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+            Resend Confirmation Email <i class="icon-ok icon-white"></i>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="controls">
+          <%= render :partial => "devise/shared/links" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+   
+
+
+
+
+

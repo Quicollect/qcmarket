@@ -1,0 +1,11 @@
+<tr>
+  <td class="center">
+      <i class="icon-large <%=status_icon(user)%>"></i>
+  </td>
+  <td><%= link_to(user.name, user) %></td>
+  <td><%= Account.find(user.account_id).name %></td>
+  <td><%= user.email %></td>
+  <td><%= user.last_sign_in_at ? time_ago_in_words(user.last_sign_in_at) : "n/a" %></td>
+  <td><%= user.failed_attempts %></td>
+</tr>
+

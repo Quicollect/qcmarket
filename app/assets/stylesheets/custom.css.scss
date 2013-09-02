@@ -1,0 +1,286 @@
+/* override defaults */
+
+#menu .profile a {
+	background: none repeat scroll 0% 0%;
+}
+
+
+.icon_row {
+	display: inline;
+}
+
+<<<<<<< HEAD
+html.csstransitions.csstransforms3d.animations.no-touch .score-widget .score-text,
+html.csstransitions.csstransforms3d.animations.no-touch .score-widget .score,
+html.csstransitions.csstransforms3d.animations.no-touch .score-widget .rating
+{
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+html.csstransitions.csstransforms3d.animations.no-touch .score-widget:hover .score {
+    -webkit-transform: scale(1.4);
+    -moz-transform: scale(1.4);
+    -o-transform: scale(1.4);
+    -ms-transform: scale(1.4);
+    transform: scale(1.4);
+}
+
+html.csstransitions.csstransforms3d.animations.no-touch .score-widget:hover .score-text {
+    -webkit-transform: scale(0.6);
+    -moz-transform: scale(0.6);
+    -o-transform: scale(0.6);
+    -ms-transform: scale(0.6);
+    transform: scale(0.6);
+}
+
+
+html.csstransitions.csstransforms3d.animations.no-touch .score-widget:hover .rating {
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+=======
+.score-widget:hover .score-text{
+    transform: scale(0.6);
+    transition: all 300ms ease 0s;
+}
+
+.score-widget:hover .score {
+    transform: scale(1.4);
+    transition: all 300ms ease 0s;
+}
+
+.score-widget:hover .rating {
+    transform: scale(1.2);
+    transition: all 300ms ease 0s;
+>>>>>>> e74b7e8... first commit to the market place app
+}
+
+.overlay {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #FFFFFF;
+    opacity: 0.8;
+    z-index: 500000;
+    top: 0;
+    left: 0;
+}
+
+.range-slider {
+    width: 250px; 
+    margin-top: 5px;
+}
+
+.review.right .arrow {
+    top: 50px;
+}
+
+.review.popover {
+    position: relative;
+    display: block;
+    float: left;
+    margin: 0px 0px 0px 20px;
+    max-width: 99999px;
+    width:90%;
+}
+
+
+td.table-thumbnail img {
+    border: medium none;
+    width: 60px;
+    height: 60px;
+    padding: 0px;
+    background: none repeat scroll 0% 0%;
+}
+
+td.table-thumbnail {
+	width: 60px;
+    height: 60px;	
+}
+
+.editable-container {
+    border-radius: 3px 3px 3px 3px;
+    border: 2px solid rgb(199, 50, 38);
+}
+
+.profile-thumb {
+    width: 90%;
+    height: auto;
+    margin-left: 5%;      
+}
+
+span.star {
+	display: inline !important;
+}
+
+.star-selectable:hover {
+    cursor: pointer;
+}
+
+.text-medium {
+  font-size: 25px !important;
+  line-height: 30px !important;
+}
+
+
+.post-glyphicons {
+    margin-left: 10px;
+}
+
+
+.fileinput-button {
+    position: relative;
+    overflow: hidden;
+    margin: 10px 10px 10px 0px;
+}
+.fileinput-button input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+a.glyphicons.btn-icon {
+    padding: 5px 15px 5px 30px;
+}
+
+a.glyphicons.btn-icon.icon-only {
+    padding: 5px 15px 10px 20px;
+}
+
+.icon-text {
+    display: inline;
+}
+
+.icon-text i {
+    display: inline !important;
+    padding: 0px 10px 0px 0px;
+}
+
+
+span.help-inline {
+    display: block;
+    margin-bottom: 20px;
+    padding-left: 0px;
+}
+
+.minimal-padding {
+    padding: 0px 5px 5px 5px !important;
+}
+
+.qc-ellipsis {
+    display:block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* override flatkit default - don't show slideshow button*/
+.modal-slideshow {
+    display: none !important;
+}
+
+.widget.basic > .widget-head{
+    height: 35px !important;
+}
+
+.error-overlay {
+    float: right;
+    margin-right: 30px;
+    z-index: 100000;
+}
+
+/* remove right border for a select element in the side bar */
+html.sidebar-full #menu .slim-scroll > ul, html.sidebar-full #menu > ul {
+    border-right: 0px solid rgb(51, 51, 51) !important;
+}
+
+/* prevent the drop down from being bold */
+button.btn .filter-option {
+    font-weight: 100;
+}
+
+
+#login .wrapper {
+    max-width: 400px;
+    min-width: 300px;
+    margin: 0px auto;
+    position: relative;
+}
+
+
+/* this is critical for inside modal window */
+.datetimepicker
+{
+    z-index:200002 !important;
+}
+
+/* this is to fix the x-editable with select2 display when placed with input-append*/
+.select2-container {
+    height: 26px;
+}
+
+
+label.checkbox-label input[type=checkbox]{
+    position: relative;
+    vertical-align: middle;
+    bottom: 3px;
+}
+
+/* fix multiple select height*/
+.select2-container-multi
+{
+    height: auto;
+}
+
+/* fixing coloring for sortable columned table */
+.table-primary thead th a {
+  border-color: #C73226;
+  background-color: #C73226;
+  color: #fff;
+  font-size: 14px;
+}
+
+
+.switch-user {
+    margin-top: 7px;
+}
+
+
+.alert-notice {
+    background-color: #05484d;
+    border-color: #05484d;
+}
+
+
+.highlight:target {
+   background: #ffa !important;
+}
+
+
+.ajax-widget {
+    min-height: 80px;
+<<<<<<< HEAD
+}
+
+
+
+.translation_missing {
+    font-size: 100% !important;
+    color: #FFF !important;
+    background-color: #F00 !important;
+=======
+>>>>>>> e74b7e8... first commit to the market place app
+}

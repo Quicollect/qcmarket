@@ -1,0 +1,48 @@
+<div class="row-fluid">
+  <div class="span12">
+    <a href="<%=edit_agency_price_model_path(@agency, @price_model)%>" 
+      class="btn btn-primary <%='disabled' if @price_model.system?%>">
+      Edit <i class="icon-white icon-pencil"></i>
+    </a>
+  </div>
+</div>
+
+<div class="row-fluid row-spacing">
+  <div class="span2"><strong>Name:</strong></div>
+  <div class="span8"><%= @price_model.name %></div>
+</div>
+
+<div class="row-fluid row-spacing">
+  <div class="span2"><strong>Status:</strong></div>
+  <div class="span8">
+    <%= @price_model.enabled? ? 'Enabled' : 'Disabled' %>
+    <%= if @price_model.system? ; ', Locked (System)'  end %>
+  </div>
+</div>
+
+<div class="row-fluid row-spacing">
+  <div class="span2"><strong>Debt Type(s):</strong></div>
+  <div class="span8">
+    <%= @price_model.debt_type.collect { |a| a.name }.join (', ')%>
+  </div>
+</div>
+
+<div class="row-fluid row-spacing">
+  <div class="span2"><strong>Age Range:</strong></div>
+  <div class="span8"><%=@price_model.age_range %></div>
+</div>
+
+<div class="row-fluid row-spacing">
+  <div class="span2"><strong>Amount:Range:</strong></div>
+  <div class="span8"><%= @price_model.amount_range%></div>
+</div>
+
+<div class="row-fluid row-spacing">
+  <div class="span2"><strong>Fee:</strong></div>
+  <div class="span8"><%= @price_model.fee_precentage %> %</div>
+</div>
+
+<div class="row-fluid row-spacing">
+  <div class="span2"><strong>Description:</strong></div>
+  <div class="span8"><%= @price_model.description %></div>
+</div>

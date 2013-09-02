@@ -1,0 +1,43 @@
+<div class="row-fluid">
+  <div class="span3">
+    <strong>Company Services</strong>
+    <p class="muted">Please select all the services supported by your company</p>
+  </div>
+  <div class="span9">
+    <div class="row-fluid">
+       <div class="control-group">
+        Commercial Services
+        <div class="controls">
+          <input class="span8" id="select-commercial" multiple="multiple" 
+            name="agency[agency_commercial_services]" 
+            placeholder="click to select services" size="50" type="text">
+          </input>
+        </div>
+      </div>
+    </div>
+    <div class="separator bottom"></div>
+    
+    <div class="row-fluid">
+      <div class="control-group">
+        Consumer Services
+        <div class="controls">
+          <input class="span8" id="select-consumer" multiple="multiple" 
+            name="agency[agency_consumer_services]" 
+            placeholder="click to select services" size="50" type="text">
+          </input>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+register_select("select-commercial", 
+                  <%= (Debts::DebtSegment.all.collect { |a| {id: a.id, text: a.name} } ).to_json.html_safe %>,
+                  <%= (agency.services(:commercial).all.collect {|a| a.debt_segment_id }).to_s.html_safe %>);
+
+register_select("select-consumer", 
+                  <%= (Debts::DebtSegment.all.collect {|a| {id: a.id, text: a.name} }).to_json.html_safe %>,
+                  <%= (agency.services(:consumer).all.collect {|a| a.debt_segment_id }).to_s.html_safe %>);
+</script>

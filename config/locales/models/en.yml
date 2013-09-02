@@ -1,0 +1,21 @@
+en:
+  activerecord:
+    attributes:
+      user:
+        name: "Name"
+        email: "Email"
+        account_id: "Account"
+        roles: "Roles"
+        password: "Password"
+        password_confirmation: "Password Confirmation"
+        created: "Created"
+        updated: "Updated"
+        last_sign_in: "Last Sign In"
+        failed_attempts: "Failed login attempts"
+      debts/debt:
+        title: "Title"
+        debt_status_id: "Status"
+        country_id: "Country"
+        charge_date: "Debt Age"
+        updated_at: "Last Updated"
+        amount: "Amount"

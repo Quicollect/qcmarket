@@ -1,0 +1,53 @@
+<div class="separator bottom">
+  <%= render partial: 'accounts/edit/buttons', locals: {account: @account} %>
+</div>
+
+<%= simple_nested_form_for(@account, :html => {class: "well form-vertical" }) do |f| %>
+
+<div class="row-fluid">
+  <%= render 'shared/error_messages', object: f.object%>
+</div>
+
+<div class="wizard">
+  <div class="widget widget-tabs widget-tabs-double widget-tabs-vertical row-fluid row-merge widget-tabs-gray">
+  
+    <!-- Widget heading -->
+    <div class="widget-head span3">
+      <ul>
+        <%= generate_tab('general', @account, [:name, :logo_resource_id, :website, :notes],
+                {class: 'active' , icon: 'user' ,title: 'General', detailts: 'Who are you?' }) %>
+
+        <%= generate_tab('contact', @account, 
+                [:phone, :fax, :email, :address, :city, :zipcode, :state_id, :country_id],
+                {icon: 'globe_af' ,title: 'Contact Information', detailts: 'Where are you located?', id: 'contact-tab' }) %>
+      </ul>
+    </div>
+    <!-- // Widget heading END -->
+    
+    <div class="widget-body span9">
+      <div class="tab-content">
+      
+        <div class="tab-pane active" id="general">
+          <%= render partial: 'accounts/edit/general', locals: {f: f, account: @account} %>
+        </div>
+
+        <div class="tab-pane" id="contact">
+           <%= render partial: 'shared/contact', locals: {f: f, resource: @account, 
+                  options: 
+                  {main_title: 'How can you be reached?', 
+                   channels_title: 'Contact Channels',
+                   channels_explain: 'How people can contact you',
+                   address_title: 'Comapny\'s Address',
+                   address_explain: 'Please provide your full address',
+                    }    
+            } %>
+        </div>
+
+        <div class="clearfix"></div> 
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+

@@ -1,0 +1,20 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+
+<table class="table table-bordered table-striped table-primary table-condensed footable">
+  <thead>
+    <tr>
+      <th class="center" data-class="expand">Status</th>
+      <th><%= sortable "name", "Name" %></th>
+      <th><%= sortable "account_id", "Account" %></th>
+      <th><%= sortable "email", "Email"%></th>
+      <th><%= sortable "last_sign_in_at", "Last login"%></th>
+      <th data-hide="phone"><%= sortable "failed_attempts", "Failed attempts"%></th>
+    </tr>
+  </thead>
+  <tbody>
+	    <%= render :partial => 'user', collection: @users %>
+  </tbody>
+</table>
+
+<%= will_paginate %>

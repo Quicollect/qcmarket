@@ -1,0 +1,8 @@
+{"results": [
+	<% @documents.each_with_index do | document, i | %>
+		<%= i == 0 ? "": "," %> 
+		{ "id": "<%=document.id%>", "text": "<%=document.display_name%>", 
+			"thumbnail": "<%=document.resource.url(:thumb)%>" } 
+	<% end %>
+	],
+"more": <%=has_more(@documents)%> }

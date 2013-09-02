@@ -1,0 +1,217 @@
+<div class="row-fluid">
+    <!-- Profile General Data-->
+    <div class="span8">
+        <div class="widget widget-heading-simple widget-body-gray margin-none">
+            <div class="separator bottom">
+                <h2 class="heading pull-left"><i class="icon-external-link-sign icon-fixed-width text-primary"></i> 
+                    <%= "<del>".html_safe if @debt.deleted %>
+                    <%=@debt.title.upcase%>
+                    <%= "</del>".html_safe if @debt.deleted %>
+                </h2>
+                <span class="pull-right">
+                    <div class="btn-group" style="margin: 5px 0px 5px 0px;">
+                        <button class="btn btn-primary dropdown-toggle clearfix" data-toggle="dropdown">
+                            <span class="filter-option pull-left"><strong>What's next?</strong></span>
+                            &nbsp;<span class="caret"></span>
+                        </button>
+
+                        <ul class="dropdown-menu pull-left">
+                            <% if can?(:edit, @debt) %>
+                            <li>
+                                <%= link_to edit_debt_path(@debt), 
+                                    class: "btn-icon glyphicons pencil" do %>
+                                    <i></i> Edit
+                                <% end %>
+                            </li>
+                            <% end %>
+
+                            <li>
+                                <%= link_to '#nowevent', 
+                                    class: "btn-icon glyphicons comments no-spinner addcomment" do %>
+                                    <i></i> Add event
+                                <% end %>
+                            </li>
+                            
+                            <% if can?(:create, Debts::DebtPayment.new(debt_id: @debt.id)) &&
+                                Debts::DebtStatus.symbol(@debt.debt_status_id) == :accepted 
+                                %>
+                                <li>
+                                    <%= link_to new_debt_debt_payment_path( 
+                                                debt_id: @debt.id),
+                                                    :method=> :get,
+                                                class: "btn-icon glyphicons coins no-spinner",
+                                                :'data-toggle'=> "modal" do %>
+                                            <i></i> Add Payment
+                                    <% end %>
+                                </li>
+
+                            <% end %>
+
+                            <% allowed_actions = @debt.allowed_actions %>
+                            <% if @results.nil? && allowed_actions.include?(:assigned)%> 
+                                <% if @debt.is_active_placement? %>
+                                    <%= debt_action(:assigned, "Reassign") %>
+                                <% else %>
+                                    <li>
+                                        <%= link_to find_debt_agency_path(@debt) + "#agencies-list", 
+                                                class: "btn-icon glyphicons screenshot" do %>
+                                            <i></i> Locate Agency
+                                        <% end %>
+                                    </li>
+                                <% end %>
+                            <% end %>
+
+                            <% if allowed_actions.include? :accepted %>
+                                <%= debt_action(:accepted, "Accept") %>
+                            <% end %>
+
+                            <% if allowed_actions.include? :rejected %>
+                                <%= debt_action(:rejected, "Reject") %>
+                            <% end %>
+
+                            <% if allowed_actions.include? :inforequired %>
+                                <%= debt_action(:inforequired, "Info Request", "Request additional info for") %>
+                            <% end %>
+
+                            <% if allowed_actions.include? :resolved %>
+                                <%= debt_action(:resolved, "Resolve") %>
+                            <% end %>
+
+                            <% if allowed_actions.include? :closed %>
+                                <%= debt_action(:closed, "Close") %>
+                            <% end %>
+
+                            <% if can?(:delete, @debt) && allowed_actions.include?(:deleted) %>
+                                <li class="divider"></li>
+                                <li>
+                                    <%= link_to edit_debt_path(@debt), 
+                                        class: "btn-icon glyphicons bin" do %>
+                                        <i></i> Delete
+                                    <% end %>
+                                </li>
+                            <% end %>
+                        </ul>
+                    </div>
+                </span>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="widget widget-heading-simple widget-body-gray">
+                        <div class="widget-body list products">
+                            <ul>
+                                <li>
+                                    <span class="glyphicons standard <%=status_to_glyphicon(@debt.debt_status_id)%>"><i></i></span>
+                                    <span class="title post-glyphicons"> debt status <br/>
+<<<<<<< HEAD
+                                        <strong> <%=Debts::DebtStatus.long_text(@debt.debt_status_id, @debt.current_assigned_agency)%>
+                                        </strong>
+                                    </span>
+=======
+                                        <strong> <%=@debt.deleted? ? "Deleted" : debt_status_description(@debt)%> </strong></span>
+>>>>>>> e74b7e8... first commit to the market place app
+                                    <span class="count"></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="widget-body" style="min-height: 520px;">
+
+                <ul class="icons-ul">
+                    <li rel="tooltip" title="<%=@debt.address%>">
+                        <i class="icon-home icon-li icon-fixed-width"></i>
+<<<<<<< HEAD
+                        <%= Country.find_ex(@debt.country_id).i18n_name %>
+=======
+                        <%= Country.find_ex(@debt.country_id).name %>
+>>>>>>> e74b7e8... first commit to the market place app
+                        <%= image_sprite @debt.country_id %>
+                    </li>
+                    <li>
+                        <i class="icon-calendar icon-li icon-fixed-width"></i>
+                        posted at <%=@debt.created_at.strftime("%B %Y")%>
+                    </li>
+                </ul>
+
+                <div class="separator bottom"></div>
+
+                <div class="widget widget-heading-simple widget-body-white margin-none">
+                    <div class="widget-body">
+                        <p><%=@debt.description%></p>
+                    </div>
+                </div>
+
+                <div class="separator bottom"></div>
+                <div class="separator bottom"></div>
+
+                <div class="widget widget-heading-simple widget-body-white margin-none">
+                    <div class="widget-header">
+                        <h4 class="heading glyphicons briefcase"><i></i>
+                          Supporting Documents
+                        </h4>
+                    </div>
+                    <div class="widget-body">
+                    
+                        <div class="row-fluid">
+                            <% if @debt.resources.length > 0 %>
+                                <% @debt.resources.each_with_index do | r, i |  %>
+
+                                <%= link_to r.resource.url(:original), class: "glyphicons paperclip" do %>
+                                  <i></i> <%="#{r.display_name} (#{number_to_human_size(r.resource_file_size)})" %>
+                                <% end %>
+
+                                <%= i == @debt.resources.length-1 ? "" : "&nbsp;&nbsp;".html_safe %>
+
+                                <% end %>
+                            <% else %>
+                            N/A
+                            <% end %>
+                            <div id="attached_resources">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Profile Performence Data-->
+    <div class="span4 tablet-column-reset">
+        
+        <%= render partial: 'debts/partials/statistics', locals: { debt: @debt } %>
+        <%= render partial: 'debts/partials/map', locals: { cls: "small-map", resource: @debt, markers: @json } %>
+
+    </div>
+</div>
+
+
+<div class="separator bottom"></div>
+
+<% if !@debt_events.nil? %>
+    <div id="timeline" class="separator bottom"></div>
+    
+    <h2><i class="icon-list text-primary icon-fixed-width"></i>
+       Debt History
+    </h2>
+
+    <%= render partial: 'shared/timeline', locals: {events: @debt_events, entity_id: @debt.id, entity_type: Timeline::DebtEvent.to_s} %>
+<% end %>
+
+<div class="separator bottom"></div>
+
+<% if !@results.nil? %>
+    
+    <div id="agencies-list" class="row-fluid">
+        <%= render partial: 'debts/partials/agencies', locals: { results: @results, debt: @debt } %>
+    </div>
+
+<% end %>
+
+<%= render 'debts/partials/status_change_modal' %>
+
+
+

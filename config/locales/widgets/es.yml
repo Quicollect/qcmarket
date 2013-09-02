@@ -1,0 +1,12 @@
+es: 
+  widgets: 
+    recent_activities: 
+      content: 
+        was_update: "se actualizó por"
+        next: "próximo"
+        previous: "anterior"
+      widget: 
+        recent_activities: "Actividades recientes"
+    recent_reviews: 
+      widget: 
+        recent_reviews: "Comentarios recientes"

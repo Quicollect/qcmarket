@@ -1,0 +1,10 @@
+[{text:"Main Currencies", children: [
+	<% major_currencies.each_with_index do |(key, value), i | %>
+		<%= i == 0 ? "": "," %>
+		{ id: "<%=key.upcase%>", text: "<%="#{value[:iso_code]} (#{value[:symbol]})"%>", symbol: "<%=value[:symbol]%>"}
+	<% end %> ] },
+ {text:"Other Currencies", children: [
+	<% other_currencies.each_with_index do |(key, value), i | %>
+		<%= i == 0 ? "": "," %>
+		{ id: "<%=key.upcase%>", text: "<%="#{value[:iso_code]} (#{value[:symbol]})"%>", symbol: "<%=value[:symbol]%>"}
+	<% end %> ] } ]

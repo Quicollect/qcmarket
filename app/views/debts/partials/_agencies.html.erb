@@ -1,0 +1,55 @@
+<table id="find-results" class="table table-striped table-vertical-center table-projects table-bordered">
+	<thead>
+		<tr>
+			<th colspan="2">List of Agencies</th>
+			<th class="center" width="100"></th>
+			<th class="center" width="100"></th>
+			<th class="center" width="100"></th>
+			<th class="center" width="140"></th>
+			<th class="center" width="120"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% results.each do | result | %>
+		<% 	
+			agency = result[:agency]
+			price_model = result[:price_model]
+		%>
+		<tr>
+			<td class="center table-thumbnail">
+				<span class="thumb">
+					<%= image_tag agency.thumbnail %>
+				</span>
+			</td>
+			<td class="important"><h5><%=link_to agency.name, agency_path(agency)%></h5></td>
+			<td class="center stats">
+				<span class="count">
+					<%=agency.distance.round(2)%>
+				</span>
+				<span>miles away</span>
+			</td>
+			<td class="center stats"><span>Fee</span>
+				<span class="count"><%=price_model.fee_precentage.round(0)%>%</span>
+			</td>
+			<td class="center stats"><span>Score</span>
+				<span class="count"><%=score_display(agency)%></span>
+			</td>
+			<td class="center stats"><span>Rating</span><span class="count">
+				<%= stars_review(agency.avg_rating, :small) %></span>
+			</td>
+			<td class="center">
+			<%= link_to new_debt_debt_placement_path( 
+						debt_id: debt.id, debts_debt_placement: 
+						{agency_id: agency.id, price_model_id: price_model.id } ), 
+							:method=> :get,
+						class: "btn btn-primary btn-icon glyphicons pushpin text-center no-spinner",
+						:'data-toggle'=> "modal" do %>
+					<i></i> Assign
+			<% end %>
+			</td>
+		</tr>
+		<% end %>	
+	</tbody>
+</table>
+
+<%= will_paginate results, :params => { :anchor => "find-results" } %> 

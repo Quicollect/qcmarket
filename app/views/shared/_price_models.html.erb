@@ -1,0 +1,22 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+
+<table class="table table-bordered table-striped table-hover footable">
+  <thead>
+    <tr>
+      <th data-class="expand"><%= sortable "enable", "Status" %></th>
+      <th><%= sortable "name", "Name" %></th>
+      <th data-hide="phone"><%= sortable "min_amount", "Amount Range"%></th>
+      <th data-hide="phone"><%= sortable "max_age", "Age Range"%></th>
+      <th><%= sortable "fee_precentage", "Fee"%></th>
+      <th data-hide="phone,tablet"></th>
+    </tr>
+  </thead>
+  <tbody>
+	    <%= render :partial => 'shared/price_model', collection: @agency.price_models %>
+  </tbody>
+</table>
+
+<% 
+#will_paginate(@price_models)
+%>

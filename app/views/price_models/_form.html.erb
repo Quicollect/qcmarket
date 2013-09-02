@@ -1,0 +1,74 @@
+
+<%= form_for([@agency,@price_model], :html => {:class => "form-horizontal well"}) do |f| %>
+  <%= render 'shared/error_messages', object: f.object%>
+
+  <div class="control-group">
+    <%= f.label :name, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="controls">
+      <%= f.label :enabled do %>
+        <%= f.check_box :enabled %>
+        Enabled
+      <% end %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :debt_type, class: 'control-label' %>
+    <div class="controls">
+      <%= f.select :debt_type_ids, 
+                  Debts::DebtType.all.collect {|a| [a.name, a.id ] },
+                  {},
+                  {class: "selectpicker", multiple:"", title:"Select debt types"} %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label 'Amount Range', class: 'control-label' %>
+    <div class="controls controls-range">
+        <%= f.number_field :min_amount %> - 
+        <%= f.number_field :max_amount %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label 'Age Range:', class: 'control-label' %>
+    <div class="controls controls-range">
+      <%= f.number_field :min_age %> -
+      <%= f.number_field :max_age %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :fee_precentage, class: 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :fee_precentage %>
+    </div>
+  </div>
+   
+  
+
+  <div class="control-group">
+    <%= f.label :description, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :description, rows: "3" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="controls buttons-row">
+      <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+        Save <i class="icon-ok icon-white"></i>
+      <% end %>
+
+      <%= button_tag "Cancel",:type => 'button',:class => "btn", :onclick => "location.href = '#{agency_price_models_path(@agency)}'" %>
+    </div>
+  </div>
+
+
+<% end %>

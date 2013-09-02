@@ -1,0 +1,24 @@
+es: 
+  na: "N/A"
+  save: Guardar
+  time_ago: "Hace %{time}"
+  updated: Actualizado
+  by: Por
+  edit: Editar
+  delete: "Borrar"
+  status: "Estado"
+  actions: "Acciones"
+  out_of: "de"
+  search: "Búsqueda"
+  dashboard: 
+    open-debts: "Deudas abiertas"
+  menus: 
+    company: Empresa
+    company_setting: "Empresa Configuración"
+    debts: Deudas
+    documents: Documentos
+    edit: Editar
+    here: "Usted está aquí:"
+    home: Casa
+    public: "Vista pública"
+    users: Usuarios

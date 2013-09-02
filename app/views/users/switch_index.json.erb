@@ -1,0 +1,8 @@
+{"results": [
+	<% @users.each_with_index do | user, i | %>
+		<%= i == 0 ? "": "," %> 
+		{ "id": "<%=user.id%>", "text": "<%=user.name%> (<%=Account.find(user.account_id).name%>)", 
+		"thumbnail": "" } 
+	<% end %>
+	],
+"more": <%=has_more(@users)%> }

@@ -1,0 +1,8 @@
+{"results": [
+	<% @resources.each_with_index do | account, i | %>
+		<%= i == 0 ? "": "," %> 
+		{ "id": "<%=account.id%>", "text": "<%=account.name%> (<%=account.accountable_type%>)", 
+		"thumbnail": "" } 
+	<% end %>
+	],
+"more": <%=has_more(@resources)%> }

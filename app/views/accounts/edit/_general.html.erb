@@ -1,0 +1,69 @@
+<div class="row-fluid">
+  <div class="span9">
+    <div class="row-fluid">
+      <div class="span4">
+        <strong>Comapny Name</strong>
+        <p class="muted">here is some help...</p>
+      </div>
+      <div class="span8">
+        <%= f.input :name, input_html: { class: "span8"} %>
+      </div>
+    </div>
+
+    <div class="separator bottom"></div>
+
+    <div class="row-fluid">
+      <div class="span4">
+        <strong>Comapny Logo</strong>
+        <p class="muted">Recommended size 240x240 for best display</p>
+      </div>
+      <div class="span8">
+        <%= f.input :logo_resource_id, label: "Logo", 
+            input_html: {class: "bigdrop span8", type: "hidden", id: "logo-select"} %>
+      </div>
+    </div>
+    
+   <div class="separator bottom"></div>
+
+    <div class="row-fluid">
+      <div class="span4">
+        <strong>Comapny Website Address</strong>
+        <p class="muted">e.g. www.yourcompany.com <br />(http:// is not required)</p>
+      </div>
+      <div class="span8">
+         <%= f.input :website , input_html: { class: "span8"}%>
+      </div>
+    </div>
+
+    <div class="separator bottom"></div>
+
+  </div>
+  <div class="span3">
+      <div class="row-fluid center">
+        <strong>Company Logo</strong>
+      </div>
+      <%= image_tag(account.thumbnail, id: "selection-display", class: "center thumbnail profile-thumb") %>
+  </div>
+</div>
+
+<div class="row-fluid">
+  <div class="span3">
+    <strong>Description</strong>
+    <p class="muted">This is your chance to explain to potential customers what makes your company special.</p>
+  </div>
+  <div class="span9">
+     <%= f.input :notes, label: "Description", as: :text, input_html: { rows: "4", class: "span12"}%>
+  </div>
+</div>
+
+<script>
+register_select2({
+      id: "logo-select",
+      url: "<%=documents_path%>.json",
+      placeholder: "search for logo...",
+      selectedText: '<%=account.logo_resource_id ? Resource.find(account.logo_resource_id).display_name : ""%>',
+      onSelectionChange: function(item) {
+            $('#selection-display').attr('src', item.thumbnail );
+      },
+      per_page: 5} );
+</script>

@@ -1,0 +1,23 @@
+<% if @breadcrumbs %>
+	<ul class="breadcrumb">
+<<<<<<< HEAD
+	  	<li> <%= t('menus.here')%> </li>
+=======
+	  	<li> You are here: </li>
+>>>>>>> e74b7e8... first commit to the market place app
+
+	  	<li><%= link_to(@breadcrumbs.first.last, class: "glyphicons home") do %>
+				<i> </i><%=h(@breadcrumbs.first.first)%> 
+			<% end %>
+		</li>
+		<% @breadcrumbs[1..-2].each do |txt, path| %>
+			<li class="divider"><i class="icon-caret-right"></i></li>
+			<li>
+				<%= link_to(h(txt), path) %>
+			</li>
+		<% end %>
+		<li class="divider"><i class="icon-caret-right"></i></li>
+		<li>
+			<%= h(@breadcrumbs.last.first) %>
+		</li>
+<% end %>

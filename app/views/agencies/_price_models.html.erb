@@ -1,0 +1,70 @@
+<h4>You company's price models</h4>
+<p>We allow you to define various tiers for the fees you charge based on debt age and amount. The first 6 configurations are Quicollect defaults and recommendation. You cannot delete those but you can create your own and disabled the defaults.</p>
+
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+
+<table id="price-models-table" class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th data-class="expand"><%= sortable "enable", "Enabled" %></th>
+      <th><%= sortable "name", "Name" %></th>
+      <th data-hide="phone"><%= sortable "min_amount", "Amount Range"%></th>
+      <th data-hide="phone"><%= sortable "max_age", "Age Range"%></th>
+      <th><%= sortable "fee_precentage", "Fee"%></th>
+      <th data-hide="phone,tablet"></th>
+    </tr>
+  </thead>
+  <tbody class="x-editable">
+
+	<%= f.fields_for :price_models, :wrapper => false do |pm| %>
+		<% p = pm.object %>
+		<tr class="fields">
+		  <td class="center">
+		  	<%= pm.input :enabled, label:false%>
+		  </td>
+		  <td> 
+		  	<%= cell_info(pm, :name, :text) %>
+		  </td>
+		  <td>
+		  	<%= pm.input :min_amount, as: :hidden %>
+		  	<%= pm.input :max_amount, as: :hidden %>
+		  	<a class='no-spinner editable-cell' <%='readonly' if p.system? %> non-linear="true" min-value="0" max-value="10000000" href="#" data-type="range_slider">
+			<%= p.amount_range %>	
+		  	</a> $
+		  	
+		  </td>
+		  <td>
+		  	<%= pm.input :min_age, as: :hidden %>
+		  	<%= pm.input :max_age, as: :hidden %>
+		  	<a class='no-spinner editable-cell' <%='readonly' if p.system? %> non-linear="true" min-value="0" max-value="3650" data-input="age" href="#" data-type="range_slider">
+		  	<%= p.age_range %>
+		  	</a> days
+		  </td>
+		  <td>
+		  	<%= cell_info(pm, :fee_precentage, :text, "%") %>
+		   </td>
+		  <td>
+			<%= pm.link_to_remove("Delete", class: "no-spinner btn btn-primary btn-mini #{'disabled' if p.system?}")  %>
+		        	
+		  </td>
+		</tr>
+	<% end %>
+  </tbody>
+</table>
+
+<%= f.link_to_add "Add Price Model", :price_models, class: "no-spinner", :data => { :target => "#price-models-table" } %>
+
+<script>
+
+$('form a.add_nested_fields').live('click', function() {
+	editableTable();
+});
+
+
+$("#price-models-tab").live('click', function() {
+    editableTable();
+});
+
+
+</script>
