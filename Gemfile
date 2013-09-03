@@ -13,13 +13,10 @@ gem 'nokogiri'
 gem 'mysql2'
 gem 'passenger'
 
-<<<<<<< HEAD
 # localization
 gem 'rails-i18n', '~> 4.0.0.pre'
 gem 'i18n-country-translations'
 
-=======
->>>>>>> e74b7e8... first commit to the market place app
 # currency
 gem 'money-rails'
 gem 'eu_central_bank'
@@ -33,11 +30,7 @@ gem 'bootstrap-sass'
 gem 'twitter-bootstrap-rails'
 
 # for authentication and authorization
-<<<<<<< HEAD
 gem 'devise', '~>3.0.0'#, :git => 'https://github.com/plataformatec/devise.git'
-=======
-gem 'devise', '~>3.0.0', :git => 'https://github.com/plataformatec/devise.git'
->>>>>>> e74b7e8... first commit to the market place app
 gem 'cancan'
 gem 'role_model'
 gem 'rolify'
@@ -49,9 +42,7 @@ gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'paperclip', '~> 3.0'
 gem 'jquery-fileupload-rails'
 
-
 group :development, :test do
-<<<<<<< HEAD
   gem 'rspec'
   gem 'rspec-rails', '2.13.0'
   gem 'better_errors'
@@ -60,16 +51,6 @@ group :development, :test do
 end
 
 group :test do
-  
-=======
-  gem 'rspec-rails', '2.13.0'
-  gem 'better_errors'
-  gem 'binding_of_caller'
-end
-
-group :test do
-  gem 'selenium-webdriver', '2.0'
->>>>>>> e74b7e8... first commit to the market place app
   gem 'capybara', '2.1.0.beta1'
 end
 

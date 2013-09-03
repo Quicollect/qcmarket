@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-=======
-GIT
-  remote: https://github.com/plataformatec/devise.git
-  revision: 3cdbf15fe9fe8f9763ec9e983624763f418b4186
-  specs:
-    devise (3.0.1)
-      bcrypt-ruby (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 3.2.6, < 5)
-      thread_safe (~> 0.1)
-      warden (~> 1.2.3)
-
->>>>>>> e74b7e8... first commit to the market place app
 GEM
   remote: https://rubygems.org/
   specs:
@@ -40,22 +26,14 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     arel (4.0.0)
-<<<<<<< HEAD
     atomic (1.1.13)
-=======
-    atomic (1.1.10)
->>>>>>> e74b7e8... first commit to the market place app
     bcrypt-ruby (3.0.1)
     better_errors (0.9.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-<<<<<<< HEAD
     bootstrap-sass (2.3.2.2)
-=======
-    bootstrap-sass (2.3.2.1)
->>>>>>> e74b7e8... first commit to the market place app
       sass (~> 3.2)
     bootstrap-will_paginate (0.0.9)
       will_paginate
@@ -73,7 +51,7 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.1)
       climate_control (>= 0.0.3, < 1.0)
-    coderay (1.0.9)
+    coderay (1.1.0)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0.beta, < 5.0)
@@ -84,66 +62,41 @@ GEM
     commonjs (0.2.6)
     daemon_controller (1.1.5)
     debug_inspector (0.0.2)
-<<<<<<< HEAD
     devise (3.0.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
       warden (~> 1.2.3)
-=======
->>>>>>> e74b7e8... first commit to the market place app
     diff-lcs (1.2.4)
     erubis (2.7.0)
     eu_central_bank (0.3.6)
       money (>= 5.0.0)
       nokogiri
-<<<<<<< HEAD
     execjs (2.0.1)
-=======
-    execjs (1.4.0)
-      multi_json (~> 1.0)
->>>>>>> e74b7e8... first commit to the market place app
     ffi (1.9.0)
     geocoder (1.1.8)
     gmaps4rails (1.5.6)
     hike (1.2.3)
-<<<<<<< HEAD
     i18n (0.6.5)
     i18n-country-translations (1.0.1)
       i18n (~> 0.5)
       railties (>= 3.0.0)
-=======
-    i18n (0.6.4)
->>>>>>> e74b7e8... first commit to the market place app
     jquery-fileupload-rails (0.4.1)
       actionpack (>= 3.1)
       railties (>= 3.1)
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-<<<<<<< HEAD
     less (2.3.3)
-=======
-    json_pure (1.8.0)
-    less (2.3.2)
->>>>>>> e74b7e8... first commit to the market place app
       commonjs (~> 0.2.6)
     less-rails (2.3.3)
       actionpack (>= 3.1)
       less (~> 2.3.1)
-<<<<<<< HEAD
     libv8 (3.16.14.3)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mime-types (1.24)
-=======
-    libv8 (3.11.8.17)
-    mail (2.5.4)
-      mime-types (~> 1.16)
-      treetop (~> 1.4.8)
-    mime-types (1.23)
->>>>>>> e74b7e8... first commit to the market place app
+    mime-types (1.25)
     mini_portile (0.5.1)
     minitest (4.7.5)
     money (5.1.1)
@@ -152,30 +105,18 @@ GEM
       activesupport (>= 3.0)
       money (~> 5.1.0)
       railties (>= 3.0)
-<<<<<<< HEAD
     multi_json (1.7.9)
-=======
-    multi_json (1.7.7)
->>>>>>> e74b7e8... first commit to the market place app
     mysql2 (0.3.13)
     nested_form (0.3.2)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     orm_adapter (0.4.0)
-<<<<<<< HEAD
     paperclip (3.5.1)
-=======
-    paperclip (3.5.0)
->>>>>>> e74b7e8... first commit to the market place app
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.0)
       mime-types
-<<<<<<< HEAD
     passenger (4.0.14)
-=======
-    passenger (4.0.10)
->>>>>>> e74b7e8... first commit to the market place app
       daemon_controller (>= 1.1.0)
       rack
       rake (>= 0.8.1)
@@ -191,12 +132,9 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.0.0)
       sprockets-rails (~> 2.0.0)
-<<<<<<< HEAD
     rails-i18n (4.0.0.pre2)
       i18n (~> 0.6)
       rails (~> 4.0.0)
-=======
->>>>>>> e74b7e8... first commit to the market place app
     railties (4.0.0)
       actionpack (= 4.0.0)
       activesupport (= 4.0.0)
@@ -207,13 +145,10 @@ GEM
     ref (1.0.5)
     role_model (0.8.1)
     rolify (3.2.0)
-<<<<<<< HEAD
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
-=======
->>>>>>> e74b7e8... first commit to the market place app
     rspec-core (2.13.1)
     rspec-expectations (2.13.0)
       diff-lcs (>= 1.1.3, < 2.0)
@@ -231,19 +166,11 @@ GEM
       railties (>= 4.0.0.beta, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
-<<<<<<< HEAD
     selenium-webdriver (2.35.1)
       childprocess (>= 0.2.5)
       multi_json (~> 1.0)
       rubyzip (< 1.0.0)
       websocket (~> 1.0.4)
-=======
-    selenium-webdriver (2.0.0)
-      childprocess (>= 0.1.9)
-      ffi (>= 1.0.7)
-      json_pure
-      rubyzip
->>>>>>> e74b7e8... first commit to the market place app
     simple_form (1.4.1)
     sprockets (2.10.0)
       hike (~> 1.2)
@@ -255,32 +182,19 @@ GEM
       activesupport (>= 3.0)
       sprockets (~> 2.8)
     switch_user (0.9.3)
-<<<<<<< HEAD
     therubyracer (0.12.0)
       libv8 (~> 3.16.14.0)
-=======
-    therubyracer (0.11.4)
-      libv8 (~> 3.11.8.12)
->>>>>>> e74b7e8... first commit to the market place app
       ref
     thor (0.18.1)
     thread_safe (0.1.2)
       atomic
     tilt (1.4.1)
-<<<<<<< HEAD
     treetop (1.4.15)
-=======
-    treetop (1.4.14)
->>>>>>> e74b7e8... first commit to the market place app
       polyglot
       polyglot (>= 0.3.1)
     turbolinks (1.0.0)
       coffee-rails
-<<<<<<< HEAD
     twitter-bootstrap-rails (2.2.8)
-=======
-    twitter-bootstrap-rails (2.2.7)
->>>>>>> e74b7e8... first commit to the market place app
       actionpack (>= 3.1)
       execjs
       rails (>= 3.1)
@@ -291,10 +205,7 @@ GEM
       multi_json (>= 1.0.2)
     warden (1.2.3)
       rack (>= 1.0)
-<<<<<<< HEAD
     websocket (1.0.7)
-=======
->>>>>>> e74b7e8... first commit to the market place app
     will_paginate (3.0.4)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -311,18 +222,11 @@ DEPENDENCIES
   cancan
   capybara (= 2.1.0.beta1)
   coffee-rails (~> 4.0.0.beta1)
-<<<<<<< HEAD
   devise (~> 3.0.0)
   eu_central_bank
   geocoder
   gmaps4rails
   i18n-country-translations
-=======
-  devise (~> 3.0.0)!
-  eu_central_bank
-  geocoder
-  gmaps4rails
->>>>>>> e74b7e8... first commit to the market place app
   jquery-fileupload-rails
   jquery-rails (= 2.2.1)
   less-rails
@@ -333,7 +237,6 @@ DEPENDENCIES
   paperclip (~> 3.0)
   passenger
   rails (~> 4.0.0.rc1)
-<<<<<<< HEAD
   rails-i18n (~> 4.0.0.pre)
   recaptcha
   role_model
@@ -342,14 +245,6 @@ DEPENDENCIES
   rspec-rails (= 2.13.0)
   sass-rails (~> 4.0.0.beta1)
   selenium-webdriver (~> 2.35.1)
-=======
-  recaptcha
-  role_model
-  rolify
-  rspec-rails (= 2.13.0)
-  sass-rails (~> 4.0.0.beta1)
-  selenium-webdriver (= 2.0)
->>>>>>> e74b7e8... first commit to the market place app
   simple_form
   switch_user
   therubyracer

@@ -6,11 +6,7 @@
         <% debt = Debts::Debt.find(dp.debt_id) %>
         <td><%= link_to debt.title, debt_path(debt) %></td>
         <td><%= link_to agency.name, agency_path(agency) %></td>
-<<<<<<< HEAD
         <td><%=t('updated')%> <%=time_ago_in_words_ex(debt.updated_at)%></td>
-=======
-        <td>Last updated <%=time_ago_in_words_ex(debt.updated_at)%></td>
->>>>>>> e74b7e8... first commit to the market place app
         <td>
             <%= link_to new_debt_placement_review_path(dp), class: "no-spinner", role: "button", :"data-toggle" => "modal", :"modal-title" => "Rate #{agency.name}" do %>
               <i class="icon-star icon-2x"></i>

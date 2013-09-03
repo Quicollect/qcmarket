@@ -5,13 +5,9 @@ module Debts
     load_and_authorize_resource class: Debts::Debt
     before_action :set_debt, only: [:show, :edit, :update, :destroy]
 
-<<<<<<< HEAD
     before_filter do 
       add_breadcrumb I18n.t('menus.debts'), :debts_path
     end
-=======
-    add_breadcrumb "Debts", :debts_path
->>>>>>> e74b7e8... first commit to the market place app
 
     helper_method :sort_column, :sort_direction
 
@@ -59,10 +55,6 @@ module Debts
     # GET /debts/new
     def new
       @debt = Debts::Debt.new(account_id: current_user.account_id, debt_status_id: Debts::DebtStatus.lookup(:draft))
-<<<<<<< HEAD
-      @debt.id = -1
-=======
->>>>>>> e74b7e8... first commit to the market place app
       add_breadcrumb 'New'
       render 'edit'
     end

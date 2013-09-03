@@ -4,13 +4,8 @@
       <tr>
         <% creditor = Account.find(User.find(review.user_id).account_id) %>
         <td><%= stars_review(review.review_level, :small) %></td>
-<<<<<<< HEAD
         <td><%=t('by')%> <%=link_to creditor.name, account_path(creditor) %></td>
         <td><%=t('updated')%> <%=time_ago_in_words_ex(review.updated_at)%></td>
-=======
-        <td>By <%=link_to creditor.name, account_path(creditor) %></td>
-        <td>Updated <%=time_ago_in_words_ex(review.updated_at)%></td>
->>>>>>> e74b7e8... first commit to the market place app
         <td>
             <%=link_to agency_path(Agency.find(review.agency_id))+"#review#{review.id}" do%>
                 <i class="spinner icon-circle-arrow-right icon-2x"></i>

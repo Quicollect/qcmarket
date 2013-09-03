@@ -59,58 +59,6 @@ module DebtsHelper
 		splitted.join('').html_safe
 	end
 
-<<<<<<< HEAD
-=======
-	# move to language file
-	def debt_status_description(debt)
-		symbol = Debts::DebtStatus.symbol(debt.debt_status_id)
-		
-		placement = debt.debt_placements.last
-		if (placement)
-			@agency = Agency.find(placement.agency_id)
-		end
-
-		case symbol
-			when :draft
-				"Draft (not assigned yet)"
-			when :assigned
-				"Assigned to #{link_to @agency.name.upcase, agency_path(@agency)}".html_safe
-			when :accepted
-				"Accepted by #{link_to @agency.name.upcase, agency_path(@agency)}".html_safe
-			when :rejected
-				"Rejected by #{link_to @agency.name.upcase, agency_path(@agency)}".html_safe
-			when :inforequired
-				"#{link_to @agency.name.upcase, agency_path(@agency)} requesting additional info".html_safe
-			when :resolved
-				"Resoved by #{link_to @agency.name.upcase, agency_path(@agency)}".html_safe
-			when :closed
-				"Debt is closed"
-			when :deleted
-				"Debt is deleted"
-			else
-				""
-		end
-	end
-
-	def event_type_to_text(type)
-		symbol = Timeline::EventType.symbol(type)
-		case symbol
-			when :creation
-				"was created"
-			when :update
-				"was updated"
-			when :statuschange
-				"had status change"
-			when :userevent
-				"was commented"
-			when :delete
-				"was deleted"
-			else
-				""
-		end 
-	end
-
->>>>>>> e74b7e8... first commit to the market place app
 	def debt_action(action, action_str, title=nil)
 		title = action_str if !title
 		code = link_to "<i></i> #{action_str}".html_safe, '#status-change', 

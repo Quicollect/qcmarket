@@ -20,26 +20,18 @@
 //= require_directory ./qc/
 
 
-<<<<<<< HEAD
 function init_datetimepickers()
 {
   $("#datetimepicker").datetimepicker({
-=======
-$(function(){
-   $("#datetimepicker").datetimepicker({
->>>>>>> e74b7e8... first commit to the market place app
         autoclose: true,
         format: 'yyyy-mm-dd',
         minView: 2, // this forces the picker to not go any further than days view
         pickerPosition: "bottom-left"
     });
-<<<<<<< HEAD
 }
 
 $(function(){
    init_datetimepickers();
-=======
->>>>>>> e74b7e8... first commit to the market place app
 });
 
 
@@ -74,11 +66,7 @@ $(function() {
 
   $('body').on('click', '.form-submit', function(e) {
       e.preventDefault();
-<<<<<<< HEAD
       submit_form(this);
-=======
-      submit_form();
->>>>>>> e74b7e8... first commit to the market place app
       return false;
   });
 });
@@ -94,18 +82,12 @@ function activate_spinner()
     $('.overlay').css('display', 'block');
 }
 
-<<<<<<< HEAD
 function submit_form(element)
 {
   var target = document.forms[0];
   if ($(element).parents('form').length > 0)
     target = $(element).parents('form').get(0)
 
-=======
-function submit_form()
-{
-  var target = document.forms[0];
->>>>>>> e74b7e8... first commit to the market place app
   target.submit(); 
 }
 

@@ -41,15 +41,9 @@ QCMarket::Application.routes.draw do
   resources :resources
 
   get "debt_placements/new"
-<<<<<<< HEAD
   #post "debt_placements/create"
   get "debt_payments/new"
   #post "debt_payments/create"
-=======
-  #get "debt_placements/create"
-  get "debt_payments/new"
-  #get "debt_payments/create"
->>>>>>> e74b7e8... first commit to the market place app
 
   get "debt_payments/:id/reviews/new", to: 'reviews#new', as: 'new_debt_placement_review'
   post "debt_payments/:id/reviews", to: 'reviews#create', as: 'debt_placement_review'

@@ -20,13 +20,10 @@ module QCMarket
 
     config.cache_store = :file_store, 'tmp/cache/data'
 
-<<<<<<< HEAD
     config.generators do |g|
         g.test_framework :rspec
     end
 
-=======
->>>>>>> e74b7e8... first commit to the market place app
     # Load application ENV vars and merge with existing ENV vars. Loaded here so can use values in initializers.
     yaml = YAML.load_file('config/application.yml')
     ENV.update(yaml["all"]) rescue {}
@@ -37,11 +34,7 @@ module QCMarket
     # config.time_zone = 'Central Time (US & Canada)'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-<<<<<<< HEAD
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
-=======
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
->>>>>>> e74b7e8... first commit to the market place app
     # config.i18n.default_locale = :de
     end
 end

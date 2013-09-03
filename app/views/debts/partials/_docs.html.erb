@@ -11,11 +11,7 @@
 
 	<div class="widget-body">
 	  <div class="innerLR">
-<<<<<<< HEAD
 	    <%= render partial: 'resources/resource', locals: { list_url: debt.new_record? ? '' :debt_resources_path(debt) } %>
-=======
-	    <%= render partial: 'resources/resource', locals: { list_url: debt_resources_path(debt)} %>
->>>>>>> e74b7e8... first commit to the market place app
 	  </div>
 	</div>
 	<div id="attached_resources"> 
@@ -31,11 +27,7 @@ $("#fileupload").bind("fileupload", function (e, data) {
     file.attr('id', 'fileinput' + data.id)
     file.attr('type', 'hidden');
     file.attr('value', data.id);
-<<<<<<< HEAD
     file.attr('name', 'debts_debt[debt_files_attributes][' + data.id + '][resource_id]');
-=======
-    file.attr('name', 'debt[debt_files_attributes][' + data.id + '][resource_id]');
->>>>>>> e74b7e8... first commit to the market place app
     $("#attached_resources").append(file);
 });
 

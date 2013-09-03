@@ -11,64 +11,40 @@
   
   <!-- Full Top Style -->
   <ul class="topnav pull-left">
-<<<<<<< HEAD
     <li style="width:150px">
       <%= image_tag 'quicollect-logo-light-small.png', style: "margin-left: 25px" %>
     </li>
     <li class="<%= 'active' if params[:controller] == 'dashboard' %>">
         <%= link_to root_path, class: "glyphicons home" do %>
           <i></i> <%=t 'menus.home' %>
-=======
-    <li class="<%= 'active' if params[:controller] == 'dashboard' %>">
-        <%= link_to root_path, class: "glyphicons home" do %>
-          <i></i> Home
->>>>>>> e74b7e8... first commit to the market place app
         <% end %>
     </li>
     <li class="<%= 'active' if params[:controller] == 'debts/debts' %>">
         <%= link_to debts_path, class: "glyphicons coins" do %>
-<<<<<<< HEAD
           <i></i> <%=t 'menus.debts' %>
         <% end %>
     </li>
     <li class="dropdown dd-1 <%= 'active' if ['accounts', 'agencies', 'users', 'documents'].include? params[:controller]%>">
       <a class="glyphicons nameplate_alt no-spinner" data-toggle="dropdown" href=""><i></i>
           <%=t 'menus.company' %> 
-=======
-          <i></i> Debts
-        <% end %>
-    </li>
-    <li class="dropdown dd-1 <%= 'active' if ['accounts', 'agencies', 'users'].include? params[:controller]%>">
-      <a class="glyphicons adress_book no-spinner" data-toggle="dropdown" href=""><i></i>
-          Profile 
->>>>>>> e74b7e8... first commit to the market place app
         <span class="caret"></span>
       </a>
       <ul class="dropdown-menu pull-left">
         <li>
             <%= link_to account_edit_path(current_user.account_id), class: "glyphicons pencil" do %>
-<<<<<<< HEAD
                <%=t('menus.edit')%><i></i>
-=======
-               Edit<i></i>
->>>>>>> e74b7e8... first commit to the market place app
               <% end %>
         </li>
         <li>
           <% if Account.find(current_user.account_id).class.name == 'Agency' %>
             <%= link_to agency_path(current_user.account_id), class: "glyphicons globe" do %>
-<<<<<<< HEAD
                <%=t('menus.public')%><i></i>
-=======
-               Public view<i></i>
->>>>>>> e74b7e8... first commit to the market place app
               <% end %>
           <% end %>
         </li>
         <% if can? :index, User %>
         <li>
             <%= link_to users_path, class: "glyphicons group" do %>
-<<<<<<< HEAD
                <%=t('menus.users')%><i></i>
               <% end %>
         </li>
@@ -78,12 +54,6 @@
               <%=t('menus.documents')%><i></i>
             <% end %>
         </li>
-=======
-               Users<i></i>
-              <% end %>
-        </li>
-        <% end %>
->>>>>>> e74b7e8... first commit to the market place app
       </ul>
     </li>
   </ul>
@@ -109,11 +79,7 @@
       <ul class="dropdown-menu pull-right">
         <li>
           <%= link_to account_edit_path(current_user.account_id), class: "glyphicons cogwheel" do %>
-<<<<<<< HEAD
            <%=t('menus.company_setting')%> <i></i>
-=======
-           Profile Settings<i></i>
->>>>>>> e74b7e8... first commit to the market place app
           <% end %>
         </li>
         <li class="profile">

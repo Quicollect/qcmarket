@@ -27,30 +27,18 @@
         <% if !@user.id.nil? %>
             <div class="separator bottom"> </div>
             <div class="row-fluid">
-<<<<<<< HEAD
               <strong><%=t('status')%>: </strong><i class="icon-large <%=status_icon(@user)%>"> </i>
-=======
-              <strong>Status: </strong><i class="icon-large <%=status_icon(@user)%>"> </i>
->>>>>>> e74b7e8... first commit to the market place app
             </div>
             <% ['created', 'updated', 'last_sign_in'].each do |member| %>
               <div class="separator bottom"> </div>
               <div class="row-fluid">
-<<<<<<< HEAD
                 <strong><%=User.human_attribute_name(member)%>: </strong><%=time_ago_in_words_ex(@user["#{member}_at".to_sym])%>
-=======
-                <strong><%=member.humanize%>: </strong><%=time_ago_in_words_ex(@user["#{member}_at".to_sym])%>
->>>>>>> e74b7e8... first commit to the market place app
               </div>
             <% end %>
 
             <div class="separator bottom"> </div>
             <div class="row-fluid">
-<<<<<<< HEAD
               <strong><%=User.human_attribute_name('failed_attempts')%>: </strong><%=@user.failed_attempts%>
-=======
-              <strong>Failed login attempts: </strong><%=@user.failed_attempts%>
->>>>>>> e74b7e8... first commit to the market place app
             </div>
         <% else %>
           <strong>Please fill in all fields</strong>
@@ -66,11 +54,7 @@
 
         <% if current_user.is_admin? %>
         <div class="row-fluid">
-<<<<<<< HEAD
             <%= f.input :account_id, input_html: {class: "bigdrop span4", type: "hidden", id: "account-select"} %>
-=======
-            <%= f.input :account_id, label: "Account", input_html: {class: "bigdrop span4", type: "hidden", id: "account-select"} %>
->>>>>>> e74b7e8... first commit to the market place app
         </div>
         <% end %>
         

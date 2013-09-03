@@ -1,7 +1,6 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-<<<<<<< HEAD
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
@@ -9,21 +8,6 @@ Devise.setup do |config|
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
-=======
-  # The secret key used by Devise. Devise uses this key to generate
-  # random tokens. Changing this key will render invalid all existing
-  # confirmation, reset password and unlock tokens in the database.
-  config.secret_key = 'd473a8b52a775a5288541f37254b4a2b12a06c89d30e09d8694938847293578da7d71b776665cbbbcccb5bc5e9ab5539f190f6c41f4e4cb9888d997e52ef439c'
-
-  # ==> Mailer Configuration
-  # Configure the e-mail address which will be shown in Devise::Mailer,
-  # note that it will be overwritten if you use your own mailer class
-  # with default "from" parameter.
-  config.mailer_sender = 'support@quicollect.com'
-
-  # Configure the class responsible to send e-mails.
-  # config.mailer = 'Devise::Mailer'
->>>>>>> e74b7e8... first commit to the market place app
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
@@ -77,13 +61,8 @@ Devise.setup do |config|
   # If http headers should be returned for AJAX requests. True by default.
   # config.http_authenticatable_on_xhr = true
 
-<<<<<<< HEAD
   # The realm used in Http Basic Authentication. "Application" by default.
   # config.http_authentication_realm = "Application"
-=======
-  # The realm used in Http Basic Authentication. 'Application' by default.
-  # config.http_authentication_realm = 'Application'
->>>>>>> e74b7e8... first commit to the market place app
 
   # It will change confirmation, password recovery and other workflows
   # to behave the same regardless if the e-mail provided was right or wrong.
@@ -113,11 +92,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-<<<<<<< HEAD
   # config.pepper = "7ca0f746fed64d7eae8ff23f92eeea485f54a624c7b73ff71860c3c2acdbb8413605a14c43097eab79fcdb8aecc2b7b8dc0fa5e209bd8a0b02a9e2cf58b62e63"
-=======
-  # config.pepper = "b27dc23e419bd7ee71b6a053f61406ae36714fe7bc51a6d610f4f365303af6bdafe0db17a07c107699b15be6bc5b9136b88cd6d8b990c875a89fdaac3712a1e7"
->>>>>>> e74b7e8... first commit to the market place app
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -203,11 +178,7 @@ Devise.setup do |config|
   # Time interval you can reset your password with a reset password key.
   # Don't put a too small interval or your users won't have the time to
   # change their passwords.
-<<<<<<< HEAD
   config.reset_password_within = 6.hours
-=======
-  config.reset_password_within = 3.hours
->>>>>>> e74b7e8... first commit to the market place app
 
   # ==> Configuration for :encryptable
   # Allow you to use another encryption algorithm besides bcrypt (default). You can use
@@ -246,11 +217,7 @@ Devise.setup do |config|
   # should add them to the navigational formats lists.
   #
   # The "*/*" below is required to match Internet Explorer requests.
-<<<<<<< HEAD
   # config.navigational_formats = ["*/*", :html]
-=======
-  # config.navigational_formats = ['*/*', :html]
->>>>>>> e74b7e8... first commit to the market place app
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
@@ -274,28 +241,15 @@ Devise.setup do |config|
   # is mountable, there are some extra configurations to be taken into account.
   # The following options are available, assuming the engine is mounted as:
   #
-<<<<<<< HEAD
   #     mount MyEngine, at: "/my_engine"
-=======
-  #     mount MyEngine, at: '/my_engine'
->>>>>>> e74b7e8... first commit to the market place app
   #
   # The router that invoked `devise_for`, in the example above, would be:
   # config.router_name = :my_engine
   #
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
-<<<<<<< HEAD
   # config.omniauth_path_prefix = "/my_engine/users/auth"
-=======
-  # config.omniauth_path_prefix = '/my_engine/users/auth'
-
->>>>>>> e74b7e8... first commit to the market place app
   config.warden do |manager|
     manager.failure_app = CustomFailure
   end
 end
-<<<<<<< HEAD
-
-=======
->>>>>>> e74b7e8... first commit to the market place app

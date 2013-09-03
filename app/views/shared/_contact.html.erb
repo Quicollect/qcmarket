@@ -101,11 +101,7 @@ register_select2({
       id: "country-select",
       url: "/countries",
       placeholder: "Select country...",
-<<<<<<< HEAD
       selectedText: '<%=resource.country_id ? Country.find_ex(resource.country_id).i18n_name : ""%>',
-=======
-      selectedText: '<%=resource.country_id ? Country.get_name(resource.country_id) : ""%>',
->>>>>>> e74b7e8... first commit to the market place app
       per_page: 10} );
 
 

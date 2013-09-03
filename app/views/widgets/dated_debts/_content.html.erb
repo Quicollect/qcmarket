@@ -3,11 +3,7 @@
     <% resources.each do | debt | %>
       <tr>
         <td><%= link_to debt.title, debt_path(debt) %></td>
-<<<<<<< HEAD
         <td><%=t('updated')%> <%=time_ago_in_words_ex(debt.updated_at)%></td>
-=======
-        <td>Last updated <%=time_ago_in_words_ex(debt.updated_at)%></td>
->>>>>>> e74b7e8... first commit to the market place app
       </tr>
     <% end %>
 
@@ -19,12 +15,8 @@
   </tbody>
 </table>  
 
-<% if resources.length > 0 %> 
-<<<<<<< HEAD
+<% if resources.length > 0 %>
   <%= link_to debts_path(sort: "updated_at", direction: "asc") do%>
-=======
-  <%= link_to debts_path + "?sort=updated_at&direction=asc" do%>
->>>>>>> e74b7e8... first commit to the market place app
     <span class="text-underline">view all</span> 
       <i class="icon-circle-arrow-right"></i>
   <%end%>

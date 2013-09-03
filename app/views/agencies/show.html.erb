@@ -19,12 +19,8 @@
 						
 						<ul class="icons-ul">
 		                    <li rel="tooltip" title="<%=@account.address%>">
-		                        <i class="icon-home icon-li icon-fixed-width"></i>
-<<<<<<< HEAD
+		                        <i class="icon-home icon-li icon-fixed-width"></i>	
 		                        <%= Country.find_ex(@account.country_id).i18n_name %>
-=======
-		                        <%= Country.find_ex(@account.country_id).name %>
->>>>>>> e74b7e8... first commit to the market place app
 		                        <%= image_sprite @account.country_id %>
 		                    </li>
 		                    <li>
@@ -70,11 +66,7 @@
 			<div class="span4">
 				<div class="score-widget widget widget-heading-simple widget-body-gray margin-none widget-flat">
 					<div class="widget-body center">
-<<<<<<< HEAD
 						<h2 class="score-text strong muted text-uppercase"><%=t('.score')%></h2>
-=======
-						<h2 class="score-text strong muted text-uppercase">Score</h2>
->>>>>>> e74b7e8... first commit to the market place app
 						<div class="row-fluid">
 							<h1 class="score" ><%=score_display(@account)%></h1>
 							<%= stars_review(@account.avg_rating) %>
@@ -107,27 +99,12 @@
 <p id="reviews" class="separator text-center"><i class="icon-ellipsis-horizontal icon-3x"></i></p>
 
 <div class="row-fluid">
-<<<<<<< HEAD
 	<div class="span12">
 		<h2 class="margin-none separator bottom">
 		  <i class="icon-thumbs-up text-primary icon-fixed-width"></i>
 		  <i class="icon-thumbs-down text-primary icon-fixed-width"></i> <%=t('.others_say')%>
 		</h2>
 		<div class="separator bottom"></div>
-=======
-	<div class="span3">
-		<div class="row-fluid">
-			<div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
-			    <ul class="nav nav-pills nav-stacked">
-				    <li class="active"><a class="no-spinner" href="#reviews">Reviews</a></li>
-				    <li><a class="no-spinner" href="#">Price Models</a></li>
-				    <li><a class="no-spinner" href="#">Offices</a></li>
-				 </ul>
-			</div>
-		</div>
-	</div>
-	<div class="span9">
->>>>>>> e74b7e8... first commit to the market place app
 		<!-- reviews -->
 		<div class="row-fluid">
 			<%= render :partial => 'reviews/review', collection: @account_reviews %>

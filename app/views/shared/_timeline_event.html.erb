@@ -27,14 +27,8 @@
 			</div>
 
 			<div class="alert alert-gray">
-				<p class="glyphicons circle_info margin-none"><i></i> 
-<<<<<<< HEAD
+				<p class="glyphicons circle_info margin-none"><i></i>
 					<%= Timeline::EventType.long_text(event.event_type, account) %> (<%= User.find(event.user_id).name%>) 
-=======
-					<%= event_type_to_text(event.event_type) %> by 
-					<%= link_to account.name, '' %> 
-					(<%= User.find(event.user_id).name%>) 
->>>>>>> e74b7e8... first commit to the market place app
 				</p>
 			</div>								
 											

@@ -1,17 +1,13 @@
 <%= hidden_field_tag :direction, params[:direction] %>
 <%= hidden_field_tag :sort, params[:sort] %>
-
+<% cls = resource_name.classify.constantize %>
 <table class="table table-bordered table-striped table-hover footable">
   <thead>
     <tr>
       <th data-class="expand">Logo</th>
-      <th><%= sortable "name", "Name"%></th>
-      <th><%= sortable "country_id", "Country"%></th>
-      <th data-hide="phone"><%= sortable "website", "Website"%></th>
-<<<<<<< HEAD
-=======
-      <th data-hide="phone,tablet"></th>
->>>>>>> e74b7e8... first commit to the market place app
+      <th><%= sortable "name", cls %></th>
+      <th><%= sortable "country_id", cls %></th>
+      <th data-hide="phone"><%= sortable "website", cls %></th>
     </tr>
   </thead>
   <tbody>

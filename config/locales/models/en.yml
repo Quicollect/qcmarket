@@ -10,8 +10,8 @@ en:
         password_confirmation: "Password Confirmation"
         created: "Created"
         updated: "Updated"
-        last_sign_in: "Last Sign In"
-        failed_attempts: "Failed login attempts"
+        last_sign_in_at: "Last sign in"
+        failed_attempts: "Failed logins"
       debts/debt:
         title: "Title"
         debt_status_id: "Status"

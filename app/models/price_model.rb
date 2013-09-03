@@ -32,11 +32,7 @@ class PriceModel < ActiveRecord::Base
     end
 
     scope :find_match, lambda { |country_id, debt_type_id, amount, age|
-<<<<<<< HEAD
     	amount = amount.as_us_dollar.amount
-=======
-    	amount = amount*100
->>>>>>> e74b7e8... first commit to the market place app
     	country_block = country_id.nil? ? "" : "country_id = #{country_id} and" 
     	PriceModel.joins("inner join price_models_debt_types on price_models.id = price_models_debt_types.price_model_id 
     		and price_models_debt_types.debt_type_id = #{debt_type_id}

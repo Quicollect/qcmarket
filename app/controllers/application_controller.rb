@@ -20,16 +20,12 @@ class ApplicationController < ActionController::Base
       current_user.original_user = provider.original_user
     end
   end
-<<<<<<< HEAD
 
   before_filter do 
     set_locale
     add_breadcrumb I18n.t('menus.home'), '/'
   end
 
-=======
-    
->>>>>>> e74b7e8... first commit to the market place app
   after_filter do
     response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
     response.headers["Pragma"] = "no-cache"
@@ -42,12 +38,6 @@ class ApplicationController < ActionController::Base
   end
 
   helper :all
-
-<<<<<<< HEAD
-=======
-  
-  add_breadcrumb 'Home', '/'
->>>>>>> e74b7e8... first commit to the market place app
 
   # overriding default after sign_in_path
   def after_sign_out_path_for(resource)
@@ -112,7 +102,6 @@ class ApplicationController < ActionController::Base
     controller_path.classify.constantize
   end 
 
-<<<<<<< HEAD
   def default_url_options(options={})
     { locale: I18n.locale }
   end
@@ -123,9 +112,6 @@ protected
     I18n.locale = params[:locale] || I18n.default_locale
   end
 
-=======
-protected
->>>>>>> e74b7e8... first commit to the market place app
   def add_breadcrumb name, url = ''
     @breadcrumbs ||= []
     url = eval(url.to_s) if url =~ /_path|_url|@/

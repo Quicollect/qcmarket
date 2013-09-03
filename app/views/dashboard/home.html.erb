@@ -46,12 +46,8 @@
   <div class="span6">
     <div class="innerLR innerT">
       <h2 class="margin-none separator bottom">
-<<<<<<< HEAD
       <i class="icon-map-marker text-primary icon-fixed-width"></i> 
         <%=t (:'dashboard.open-debts')%>
-=======
-      <i class="icon-map-marker text-primary icon-fixed-width"></i> Open Debts
->>>>>>> e74b7e8... first commit to the market place app
       </h2> 
       <% pending_debts = Debts::Debt.viewable_debts(current_user).where.not(debt_status_id: Debts::DebtStatus.lookup(:closed)) %>
       <%= render partial: 'debts/partials/map', 

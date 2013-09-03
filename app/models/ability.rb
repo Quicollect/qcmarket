@@ -47,7 +47,6 @@ class Ability
         end
 
         # can manage their own debt placements
-<<<<<<< HEAD
         can [:read, :create, :update], [Debts::DebtPlacement] do | placement |
             placement.agency_id == user.account_id
         end
@@ -63,12 +62,6 @@ class Ability
             supported
         end
  
-=======
-        can [:read, :create, :update], Debts::DebtPlacement do | placement |
-            placement.agency_id == user.account_id
-        end
-            
->>>>>>> e74b7e8... first commit to the market place app
         can [:manage], [Resource, Document] do |resource|
             resource.account_id == user.account_id
         end

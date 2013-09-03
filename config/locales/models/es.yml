@@ -6,7 +6,7 @@ es:
         created: Creado
         email: "Correo electrónico"
         failed_attempts: "Intentos de conexión fallidos"
-        last_sign_in: "Última sesión"
+        last_sign_in_at: "Última sesión"
         name: Nombre
         password: Contraseña
         password_confirmation: "Confirme Contraseña"

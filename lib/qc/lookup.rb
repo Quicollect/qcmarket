@@ -1,9 +1,6 @@
 module Lookup
 	include Searchable
-<<<<<<< HEAD
 	include ActionView::Helpers::UrlHelper
-=======
->>>>>>> e74b7e8... first commit to the market place app
 
 	def lookup_name(str)
 		lookup_hash(:names)[str.downcase.to_sym]
@@ -21,7 +18,6 @@ module Lookup
 		lookup_hash(:ids)[id].name
 	end
 
-<<<<<<< HEAD
 	def short_text(id)
 		I18n.translate("lookups.#{self.name.demodulize.downcase}.#{self.get_name(id).downcase}.short")
 	end
@@ -32,9 +28,6 @@ module Lookup
 		I18n.translate("lookups.#{self.name.demodulize.downcase}.#{self.get_name(id).downcase}.long", 
 					account: account.nil? ? "" : "#{link_to account.name.upcase, url}").html_safe
 	end
-
-=======
->>>>>>> e74b7e8... first commit to the market place app
 private
 	
 	def lookup_hash(symbol)

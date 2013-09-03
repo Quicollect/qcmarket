@@ -2,11 +2,7 @@
   <%= render partial: 'debts/partials/buttons', locals: {resource: @debt} %>
 </div>
 
-<<<<<<< HEAD
 <%= simple_nested_form_for(@debt, url: url_for_ex(@debt), :html => {class: "well form-vertical" }) do |f| %>
-=======
-<%= simple_nested_form_for(@debt, url: debt_path(@debt), :html => {class: "well form-vertical" }) do |f| %>
->>>>>>> e74b7e8... first commit to the market place app
 
 <div class="row-fluid">
   <%= render 'shared/error_messages', object: f.object%>

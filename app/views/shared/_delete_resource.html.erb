@@ -2,11 +2,7 @@
 <% if !delete_resource.new_record? && can?(:delete, delete_resource) %>
     <%= link_to  eval(delete_resource.class.name.demodulize.downcase + 
     				"_path(#{delete_resource.id})"), 
-<<<<<<< HEAD
     		title: t("delete"), method: :delete, data: 
-=======
-    		title: "Delete", method: :delete, data: 
->>>>>>> e74b7e8... first commit to the market place app
     		{ confirm: "Are you sure you want to delete #{delete_resource.class.name.demodulize.downcase} '#{delete_resource.name}'?" }, 
 			class: "btn-action glyphicons remove_2 btn-danger no-spinner" do%>
 		<i></i>

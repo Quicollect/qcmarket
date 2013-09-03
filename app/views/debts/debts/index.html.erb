@@ -3,19 +3,11 @@
 <div class="row-fluid">
 	<div class="span8">
 		<div class="heading-buttons" style="margin-top: 0px;">
-<<<<<<< HEAD
 			<h1><%=t('.debts_repository')%> <span><%=t('.manage_debts')%></span></h1>
 			<div class="buttons pull-right" style="margin-top: 15px;">
 				<% if can? :create, Debts::Debt %>
 					<%= link_to new_debt_path, class: "btn btn-primary btn-icon glyphicons circle_plus" do %>
 						<i></i> <%=t('.new_debt')%>
-=======
-			<h1>Debts Repository <span>Manage your debts</span></h1>
-			<div class="buttons pull-right" style="margin-top: 15px;">
-				<% if can? :create, Debts::Debt %>
-					<%= link_to new_debt_path, class: "btn btn-primary btn-icon glyphicons circle_plus" do %>
-						<i></i> New Debt
->>>>>>> e74b7e8... first commit to the market place app
 					<% end %>
 				<% end %>
 			</div>
@@ -37,11 +29,7 @@
 						
 						<!-- Widget heading -->
 						<div class="widget-head">
-<<<<<<< HEAD
 							<h4 class="heading"><%=t('.outstanding_debts')%></h4>
-=======
-							<h4 class="heading">Outstanding Debts</h4>
->>>>>>> e74b7e8... first commit to the market place app
 							<!--a href="" class="details pull-right">view all</a-->
 						</div>
 						<!-- // Widget heading END -->
@@ -51,12 +39,7 @@
 								<li>
 									
 									<span class="glyphicons standard alarm"><i></i></span>
-									
-<<<<<<< HEAD
 									<span class="title post-glyphicons"><%=@debt_statistics[:total_pending]%> <%=t('.debts')%><br/>
-=======
-									<span class="title post-glyphicons"><%=@debt_statistics[:total_pending]%> debts<br/>
->>>>>>> e74b7e8... first commit to the market place app
 										<strong><%=humanized_money_with_symbol(@debt_statistics[:total_pending_amount])%></strong></span>
 									<span class="count"></span>
 								</li>
@@ -76,11 +59,7 @@
 					
 						<!-- Widget heading -->
 						<div class="widget-head">
-<<<<<<< HEAD
 							<h4 class="heading"><%=t('.resolved_debts')%></h4>
-=======
-							<h4 class="heading">Resolved debts (last month)</h4>
->>>>>>> e74b7e8... first commit to the market place app
 							<!--a href="" class="details pull-right">view all</a-->
 						</div>
 						<!-- // Widget heading END -->
@@ -89,17 +68,10 @@
 							<ul>
 								<li>
 									<span class="glyphicons standard coins"><i></i></span>
-<<<<<<< HEAD
 									<span class="title post-glyphicons"><%=@debt_statistics[:total_resolved]%> <%=t('.debts')%><br/>
 										<strong> 
 											<%=humanized_money_with_symbol(@debt_statistics[:total_resolved_amount_paid])%>
 											<%=t('out_of')%>
-=======
-									<span class="title post-glyphicons"><%=@debt_statistics[:total_resolved]%> debts<br/>
-										<strong> 
-											<%=humanized_money_with_symbol(@debt_statistics[:total_resolved_amount_paid])%>
-											out of
->>>>>>> e74b7e8... first commit to the market place app
 											<%=humanized_money_with_symbol(@debt_statistics[:total_resolved_amount])%>
 											(<%=@debt_statistics[:total_resolved_precentage]
 											%> %)
@@ -133,11 +105,7 @@
 	
 		<!-- Widget heading -->
 		<div class="widget-head">
-<<<<<<< HEAD
 			<h4 class="heading glyphicons list"><i></i> <%=t('.manage_debts')%></h4>
-=======
-			<h4 class="heading glyphicons list"><i></i> Manage debts</h4>
->>>>>>> e74b7e8... first commit to the market place app
 		</div>
 		<!-- // Widget heading END -->
 		
@@ -148,19 +116,11 @@
 				<div class="form-inline separator bottom">
 					<div class="row-fluid">
 						<div class="span8">
-<<<<<<< HEAD
 							<h4 class="heading"> <%=t('.total_debts')%>: <%= @debt_statistics[:total] %> </h4>
 						</div>
 						<div class="span4">
 							<div class="input-append pull-right">
 								<%= text_field_tag :search, params[:search], "placeholder" => t("search")+"..." %>
-=======
-							<h4 class="heading"> Total debts: <%= @debt_statistics[:total] %> </h4>
-						</div>
-						<div class="span4">
-							<div class="input-append pull-right">
-								<%= text_field_tag :search, params[:search], "placeholder" => "Search..." %>
->>>>>>> e74b7e8... first commit to the market place app
 								<span class="add-on"><i class="icon-search"></i></span>
 							</div>
 				         </div>

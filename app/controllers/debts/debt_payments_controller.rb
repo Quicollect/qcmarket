@@ -25,11 +25,7 @@ module Debts
 			@debt.amount_paid += @debt_payment.amount
 
 		    if @debt.save
-<<<<<<< HEAD
 		      create_event(@debt.id, :update, ["Debt payment #{@debt_payment.payment_date > DateTime.now ? 'will be' : 'was'} recieved on #{@debt_payment.payment_date} for the amount of #{@debt_payment.amount.to_s_with_currency}", "Description: #{@debt_payment.description}"])
-=======
-		      create_event(@debt.id, :update, ["Debt payment recieved on #{@debt_payment.payment_date} for the amount of #{@debt_payment.amount.to_s_with_currency}", "Description: #{@debt_payment.description}"])
->>>>>>> e74b7e8... first commit to the market place app
 		      flash[:success] = 'Debt payment was successfully created.'
 		      redirect_to debt_path(@debt)
 		    else

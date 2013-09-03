@@ -17,7 +17,6 @@ module ApplicationHelper
 		  "#{base_title} | #{page_title}"
 		end
 	end
-<<<<<<< HEAD
 	
 	def url_for_ex(resource)
 		name = resource.class.name.demodulize.downcase
@@ -35,15 +34,6 @@ module ApplicationHelper
 
 	def sortable(column, model=nil)
 	    title = model.nil? ? column.titleize : I18n.t("activerecord.attributes.#{model.to_s.underscore}.#{column}")
-=======
-
-	def time_ago_in_words_ex(date)
-		date.nil? ? 'N/A' : time_ago_in_words(date) +  " ago"
-	end
-
-	def sortable(column, title = nil)
-	    title ||= column.titleize
->>>>>>> e74b7e8... first commit to the market place app
 	    css_class = (column == sort_column) ? "current #{sort_direction}" : ""
 	    icon_class = (column == sort_column) ? ( sort_direction == "asc" ? "icon-sort-up" : "icon-sort-down" ) : "icon-sort"
 	    direction = (column == sort_column && sort_direction == "asc") ? "desc" : "asc"

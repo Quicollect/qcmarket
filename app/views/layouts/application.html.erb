@@ -43,7 +43,6 @@
     <!-- Main Container Fluid -->
   <div class="container-fluid menu-hidden sidebar-hidden-phone fluid menu-left">
     
-<<<<<<< HEAD
     <!-- Content -->
     <div id="content">   
 
@@ -93,66 +92,6 @@
 
     <div class="clearfix"></div>
     <%= render 'layouts/footer' %>
-
-=======
-        <!-- Sidebar menu & content wrapper -->
-    <div id="wrapper">
-
-      <%= render 'layouts/sidebar' if signed_in? %>
-        
-      <!-- Content -->
-      <div id="content">   
-
-        <%= render 'layouts/navbar' %>
-
-        <div id="inner-content" class="innerLR innerT">
-          <div class="overlay"></div>
-          <div id ="spinner" style="position:fixed;top:50%;left:50%"></div>
-
-          <% if flash.count > 0 %>
-              <div class="row-fluid">
-                <div class="span12">
-                  <% flash.each do |name, msg| %>
-                    <% if msg.is_a?(String) %>
-                    <div class="row-fluid">
-                      <div class="alert alert-<%=name%>" >
-                          <a class="close no-spinner" data-dismiss="alert">&#215;</a>
-                          <%=msg%>
-                      </div>
-                    </div>
-                    <% end %>
-                  <% end %>
-                </div> 
-              </div>
-          <% end %>
-
-
-          <% if params[:controller] != 'dashboard' && signed_in?%>
-            <div class="row-fluid">
-              <div class="span12">
-                <%= render partial: 'layouts/breadcrumbs'%>
-              </div> 
-            </div>
-            <div class="separator bottom"> </div>
-          <% end %>
-
-       
-          <%= yield %>
-          <%= yield :scripts %>
-
-          <div class="row-fluid">
-            <%= debug(params) if Rails.env.development? %>
-          </div>
-        </div>
-      
-      </div>
-      <!-- // Content END -->
-
-      <div class="clearfix"></div>
-      <%= render 'layouts/footer' %>
-
-    </div>
->>>>>>> e74b7e8... first commit to the market place app
     
     <!-- // Sidebar menu & content wrapper END -->
     
@@ -160,46 +99,6 @@
   
   <!-- // Main Container Fluid END -->
   
-<<<<<<< HEAD
-=======
-  <!-- Themer -->
-  <div id="themer" class="collapse">
-    <div class="wrapper">
-      <span class="close2">&times; close</span>
-      <h4>Themer <span>color options</span></h4>
-      <ul>
-        <li>Theme: <select id="themer-theme" class="pull-right"></select><div class="clearfix"></div></li>
-        <li>Primary Color: <input type="text" data-type="minicolors" data-default="#ffffff" data-slider="hue" data-textfield="false" data-position="left" id="themer-primary-cp" /><div class="clearfix"></div></li>
-        <li>
-          <span class="link" id="themer-custom-reset">reset theme</span>
-          <span class="pull-right"><label>advanced <input type="checkbox" value="1" id="themer-advanced-toggle" /></label></span>
-        </li>
-      </ul>
-      <div id="themer-getcode" class="hide">
-        <hr class="separator" />
-        <button class="btn btn-primary btn-small pull-right btn-icon glyphicons download" id="themer-getcode-less"><i></i>Get LESS</button>
-        <button class="btn btn-inverse btn-small pull-right btn-icon glyphicons download" id="themer-getcode-css"><i></i>Get CSS</button>
-        <div class="clearfix"></div>
-      </div>
-    </div>
-  </div>
-  <!-- // Themer END -->
-
-    <!-- Modal Gallery -->
-    <div id="modal-gallery" class="modal modal-gallery hide fade hidden-print" tabindex="-1">
-        <div class="modal-header">
-            <a class="close" data-dismiss="modal">&times;</a>
-            <h3 class="modal-title"></h3>
-        </div>
-        <div class="modal-body"><div class="modal-image"></div></div>
-        <div class="modal-footer">
-            <a class="btn btn-primary modal-next">Next <i class="icon-arrow-right icon-white"></i></a>
-            <a class="btn btn-info modal-prev"><i class="icon-arrow-left icon-white"></i> Previous</a>
-            <a class="btn btn-success modal-play modal-slideshow" data-slideshow="5000"><i class="icon-play icon-white"></i> Slideshow</a>
-            <a class="btn modal-download" target="_blank"><i class="icon-download"></i> Download</a>
-        </div>
-    </div>
->>>>>>> e74b7e8... first commit to the market place app
   </div>
   <%= javascript_include_tag "footer", "data-turbolinks-track" => true %>
   <%= render 'layouts/iejs' %>

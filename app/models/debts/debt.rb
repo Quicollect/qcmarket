@@ -77,13 +77,10 @@ module Debts
 			actions
 		end
 
-<<<<<<< HEAD
 		def current_active_placement
 			debt_placements.last if is_active_placement?
 		end
 
-=======
->>>>>>> e74b7e8... first commit to the market place app
 		def is_active_placement?
 			debt_placements.length > 0 && debt_placements.last.active
 		end
@@ -93,7 +90,6 @@ module Debts
 			self.debt_placements[self.debt_placements.length-1]
 		end
 
-<<<<<<< HEAD
 		def current_assigned_agency
 			agency = nil
 			placement = self.debt_placements.last
@@ -101,8 +97,6 @@ module Debts
 			agency
 		end
 
-=======
->>>>>>> e74b7e8... first commit to the market place app
 		def deletable?
 			allowed_actions.include? :deleted
 		end
