@@ -16,7 +16,7 @@
 
     <% if resources.length == 0 %> 
       <tr>
-        <td>No reviews!</td>
+        <td><%=t('.no_reviews')%></td>
       </tr>
     <% end %>
   </tbody>
@@ -25,7 +25,7 @@
 <% if resources.length > 0 %> 
   <% account = Account.find(current_user.account_id)%>
   <%= link_to "#{eval(account.class.name.downcase + '_path(' + current_user.account_id.to_s + ')')}#reviews" do%>
-    <span class="text-underline">view all</span> 
+    <span class="text-underline"><%=t('widgets.view_all')%></span> 
       <i class="icon-circle-arrow-right"></i>
   <%end%>
 <% end %>

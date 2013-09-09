@@ -13,6 +13,7 @@ module Debts
 		has_one :debt_status
 		belongs_to :country
 		has_many :debt_placements, class_name: "Debts::DebtPlacement", autosave: true
+		has_many :debt_shoppinglist_items
 		has_many :debt_payments
 		has_many :debt_files
 		has_many :resources, through: :debt_files

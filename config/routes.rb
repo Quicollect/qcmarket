@@ -44,6 +44,7 @@ QCMarket::Application.routes.draw do
   #post "debt_placements/create"
   get "debt_payments/new"
   #post "debt_payments/create"
+  get "debts/:debt_id/shoppinglist_items", to: "debts/debt_shoppinglist_items#create"
 
   get "debt_payments/:id/reviews/new", to: 'reviews#new', as: 'new_debt_placement_review'
   post "debt_payments/:id/reviews", to: 'reviews#create', as: 'debt_placement_review'
@@ -55,6 +56,7 @@ QCMarket::Application.routes.draw do
     resources :debts, only: [:index, :show, :edit, :new, :update, :create, :destroy]  do 
       resources :debt_placements, only: [:new, :create], path: "placements"
       resources :debt_payments, only: [:new, :create], path: "payments"
+      resources :debt_shoppinglist_items, only: [:destroy, :create], path: "shoppinglist_items"
     end 
     
     get "debts/:id/resources", to: 'debts#resources', as: 'debt_resources'

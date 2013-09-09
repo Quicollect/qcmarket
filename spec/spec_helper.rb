@@ -39,4 +39,10 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  config.before :all do
+    arr = ActiveRecord::Base.subclasses
+    arr.delete(ActiveRecord::SchemaMigration)
+    arr.each(&:delete_all)
+  end
 end

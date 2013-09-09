@@ -125,7 +125,7 @@ protected
   end
 
     # TODO: need to move to be async + make generic not just debt events
-  def create_event(id, type, text_arr = [])
+  def create_event(id, type, text_arr = [], prvt = false)
     text = ""
     if (text_arr.length > 0)
       text_arr.unshift ('The following has been changed:')
@@ -137,6 +137,6 @@ protected
                                account_id: current_user.account_id,
                                text: text,
                               entity_id: id,
-                              :private => false)
+                              :private => prvt)
   end
 end

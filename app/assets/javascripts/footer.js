@@ -32,7 +32,7 @@
 //= require ./theme/plugins/other/google-code-prettify/prettify.js
 
 // Gritter Notifications Plugin -->
-//= require ./theme/plugins/notifications/Gritter/js/jquery.gritter.min.js
+// require ./theme/plugins/notifications/Gritter/js/jquery.gritter.min.js
 
 // Notyfy Notifications Plugin -->
 //= require ./theme/plugins/notifications/notyfy/jquery.notyfy.js

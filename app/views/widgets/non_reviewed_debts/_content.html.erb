@@ -17,7 +17,7 @@
 
     <% if resources.length == 0 %> 
       <tr>
-        <td>No reviews pending!</td>
+        <td><%=t('.none_pending')%></td>
       </tr>
     <% end %>
   </tbody>
@@ -25,7 +25,7 @@
 
 <% if resources.length > 0 %> 
   <%= link_to debts_path + "?sort=updated_at&direction=asc" do%>
-    <span class="text-underline">view all</span> 
+    <span class="text-underline"><%=t('widgets.view_all')%></span> 
       <i class="icon-circle-arrow-right"></i>
   <%end%>
 <% end %>

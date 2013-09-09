@@ -17,6 +17,7 @@
 //= require gmaps4rails/gmaps4rails.googlemaps
 //= require jquery_nested_form
 //= require jquery_ujs
+//= require gritter
 //= require_directory ./qc/
 
 
@@ -39,6 +40,17 @@ $(function(){
 $(function () {
   $('.ajax-widget').delegate('.ajax-reload', 'click', function () {
     $.getScript(this.href);
+    return false;
+  });
+
+  $('.ajax-updates').delegate('.ajax-reload', 'click', function () {
+    var action = $(this).attr('data-method')
+    $.ajax( { 
+                dataType: "script",
+                url: this.href,
+                type: action, 
+                data: action == "delete" ? {"_method":"delete"} : {}
+            });
     return false;
   });
 

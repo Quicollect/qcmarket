@@ -31,6 +31,19 @@ class PriceModel < ActiveRecord::Base
 		self.debt_type
     end
 
+    scope :find_by_agency, lambda {| debt, agency_id |
+		amount = debt.amount.as_us_dollar.amount
+		debt_type_id = debt.debt_type_id
+		age = (DateTime.now - debt.charge_date).floor
+		PriceModel.joins("inner join price_models_debt_types on price_models.id = price_models_debt_types.price_model_id 
+    		and price_models_debt_types.debt_type_id = #{debt_type_id}
+    		inner join debt_types on price_models_debt_types.debt_type_id= debt_types.id").
+    		where("price_models.agency_id = #{agency_id} 
+    				and price_models.min_age <= #{age} and price_models.max_age >= #{age}
+    				and price_models.min_amount_cents <= #{amount} and price_models.max_amount_cents >= #{amount}
+    				and price_models.enabled = ?", true)
+    }
+
     scope :find_match, lambda { |country_id, debt_type_id, amount, age|
     	amount = amount.as_us_dollar.amount
     	country_block = country_id.nil? ? "" : "country_id = #{country_id} and" 

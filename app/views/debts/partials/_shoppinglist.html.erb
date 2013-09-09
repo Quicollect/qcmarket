@@ -1,0 +1,45 @@
+<div id="live-results" class="ajax-updates">
+    <% if debt.debt_shoppinglist_items.length > 0 %>
+    <div class="widget widget-heading-simple widget-body-white margin-none">
+        <div class="widget-header">
+            <h4 class="heading glyphicons shopping_cart"><i></i>
+              Consideration List
+            </h4>
+        </div>
+        <div class="widget-body">
+            <table class="table table-striped table-vertical-center table-projects table-bordered">
+                <thead>
+                </thead>
+                <tbody>
+                <% debt.debt_shoppinglist_items.each do | item |  %>
+                    <% agency = Agency.find(item.agency_id) %>
+                    <tr>
+                        <td class="center table-thumbnail">
+                            <span class="thumb">
+                                <%= image_tag agency.thumbnail %>
+                            </span>
+                        </td>
+                        <td class="important"><h5><%=link_to agency.name, agency_path(agency)%></h5></td>
+                        <td class="center stats">
+                            <span class="count">
+                                <%=debt.distance_to(agency).round(2)%>
+                            </span>
+                            <span>miles away</span>
+                        </td>
+                        <td class="center stats"><span>Score</span>
+                            <span class="count"><%=score_display(agency)%></span>
+                        </td>
+                        <td class="center stats"><span>Rating</span><span class="count">
+                            <%= stars_review(agency.avg_rating, :small) %></span>
+                        </td>
+                        <td class="center">
+                            <%= render partial: 'debts/partials/agency_actions', locals: {debt: debt, agency: agency, item: item } %>
+                        </td>
+                    </tr>
+                <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <%end%>
+</div>

@@ -64,4 +64,5 @@
  *= require_directory ./extra/
  *= require ./theme/plugins/sliders/jQRangeSlider/css/iThing
  *= require ./custom
+ *= require gritter
  */

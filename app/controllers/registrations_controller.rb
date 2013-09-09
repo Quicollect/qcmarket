@@ -5,7 +5,6 @@ class RegistrationsController < Devise::RegistrationsController
 
 	# TODO: 'normalize' this method. too much code and if/else
 	def create
-
 		# check first if captcha is needed (not a user / captcha is disabled)
 		if (!current_user && Rails.application.config.captcha)
 			if (!verify_recaptcha)
@@ -21,47 +20,23 @@ class RegistrationsController < Devise::RegistrationsController
 		
 		build_resource(sign_up_params)
 
-		if (current_user)
-			resource.account_id |= current_user.account_id
-		end
 
 		# now verify this user can create such user under this account
 		authorize! :create, resource
 
-		# if created by admin for its own account
-		if current_user
-			# chage this to limit only the roles the parent user have and receive it as parameter
-			# inherit roles from parent user accept admin and account_admin
-			current_user.roles.each do |role|
-				if (role != :admin && role != :account_admin)
-					resource.roles << role
-				end
-			end
-			
-			resource.skip_confirmation!
-			
-		# new user registered - we need to create an account to it & give it roles 
-		else
-			resource.roles << [:account_admin, :user, (params[:roles] == 'Agency' ? :agency : :creditor)]
-			
-			# now we create the accout to connect the user to
-			if resource.has_role? :agency
-				new_account = Agency.new(name: resource.name)	
-			else
-				new_account = Creditor.new(name: resource.name)
-			end
-
-			new_account.resolve_address
-
-			if !new_account.save
-				clean_up_passwords resource
-	      		return respond_with resource
-			end
-
-			resource.account_id = new_account.id
-		end
+		resource.roles << [:account_admin, :user, (params[:roles] == 'Agency' ? :agency : :creditor)]
 		
-		if resource.save
+		# now we create the accout to connect the user to
+		if resource.has_role? :agency
+			new_account = Agency.new(name: resource.name)	
+		else
+			new_account = Creditor.new(name: resource.name)
+		end
+
+		new_account.resolve_address
+		new_account.users << resource
+		
+		if new_account.save
 			if resource.active_for_authentication?
 				set_flash_message :notice, :signed_up if is_navigational_format?
 				sign_up(resource_name, resource)
@@ -89,7 +64,7 @@ class RegistrationsController < Devise::RegistrationsController
 
 private
 	def sign_up_params
-	  params.require(:user).permit(:name, :email, :password, :password_confirmation, :account_id)
+	  params.require(:user).permit(:name, :email, :password, :password_confirmation)
 	end
 
 	def after_inactive_sign_up_path_for(resource)

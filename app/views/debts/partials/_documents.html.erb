@@ -1,0 +1,27 @@
+<div class="widget widget-heading-simple widget-body-white margin-none">
+    <div class="widget-header">
+        <h4 class="heading glyphicons briefcase"><i></i>
+          Supporting Documents
+        </h4>
+    </div>
+    <div class="widget-body">
+    
+        <div class="row-fluid">
+            <% if debt.resources.length > 0 %>
+                <% debt.resources.each_with_index do | r, i |  %>
+
+                <%= link_to r.resource.url(:original), class: "glyphicons paperclip" do %>
+                  <i></i> <%="#{r.display_name} (#{number_to_human_size(r.resource_file_size)})" %>
+                <% end %>
+
+                <%= i == debt.resources.length-1 ? "" : "&nbsp;&nbsp;".html_safe %>
+
+                <% end %>
+            <% else %>
+            N/A
+            <% end %>
+            <div id="attached_resources">
+            </div>
+        </div>
+    </div>
+</div>

@@ -252,6 +252,12 @@ label.checkbox-label input[type=checkbox]{
 .highlight:target {
    background: #ffa !important;
 }
+.anchor-offset {
+    display: block;
+    height: 200px;
+    margin-top: -200px;
+    visibility: hidden;
+}
 
 
 .ajax-widget {

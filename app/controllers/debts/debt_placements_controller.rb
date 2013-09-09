@@ -5,6 +5,7 @@ module Debts
 
 		def new
 			@debt_placement = @debt.debt_placements.new(debts_debt_placement_params)
+			@debt_placement.price_model_id = PriceModel.find_by_agency(@debt, @debt_placement.agency_id)
 			@agency_contract = Agency.find(@debt_placement.agency_id).current_contract
 			render partial: 'new'
 		end
@@ -51,7 +52,7 @@ module Debts
 	    end
 
 	   	def debts_debt_placement_params
-	    	params.require(:debts_debt_placement).permit(:agency_id, :price_model_id, :agency_contract_id)
+	    	params.require(:debts_debt_placement).permit(:agency_id, :agency_contract_id)
 	  	end
 	end
 end

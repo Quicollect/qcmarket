@@ -1,8 +1,11 @@
 en:
   widgets:
+    view_all: "view all"
     recent_reviews:
       widget:
         recent_reviews: "Recent Reviews"
+      content:
+        no_reviews: "No reviews!"
     recent_activities:
       widget:
         recent_activities: "Recent Activities"
@@ -10,3 +13,8 @@ en:
         was_update: "was updated by"
         next: "next"
         previous: "previous"
+    non_reviewed_debts:
+      widget:
+        review_agencies: "Review Agencies"
+      content:
+        none_pending: "No reviews pending!"

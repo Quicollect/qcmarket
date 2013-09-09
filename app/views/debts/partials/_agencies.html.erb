@@ -37,15 +37,9 @@
 			<td class="center stats"><span>Rating</span><span class="count">
 				<%= stars_review(agency.avg_rating, :small) %></span>
 			</td>
-			<td class="center">
-			<%= link_to new_debt_debt_placement_path( 
-						debt_id: debt.id, debts_debt_placement: 
-						{agency_id: agency.id, price_model_id: price_model.id } ), 
-							:method=> :get,
-						class: "btn btn-primary btn-icon glyphicons pushpin text-center no-spinner",
-						:'data-toggle'=> "modal" do %>
-					<i></i> Assign
-			<% end %>
+			<td class="center ajax-updates">
+				<%= render partial: 'debts/partials/agency_actions', 
+					locals: {debt: @debt, agency: agency, item: @debt.debt_shoppinglist_items.find_by_agency_id(agency.id) } %>
 			</td>
 		</tr>
 		<% end %>	

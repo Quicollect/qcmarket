@@ -82,7 +82,7 @@ class Ability
 
     # creditor abilities
     if user.has_role? :creditor
-        can [:manage], [Debts::Debt, Resource, Document] do |obj|
+        can [:manage], [Debts::Debt, Resource, Document, Debts::DebtShoppinglistItem] do |obj|
             (obj.account_id == user.account_id) || !obj.account_id
         end
 

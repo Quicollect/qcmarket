@@ -24,7 +24,7 @@ QCMarket::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  config.log_level = :info
+  config.log_level = :debug
 
   # custom config values (this is for overriding Heroku limitation)
   config.proxy = nil

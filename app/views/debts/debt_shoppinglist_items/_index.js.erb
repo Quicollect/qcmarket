@@ -1,0 +1,8 @@
+// updateing the table results
+<%= extend_gritter :position => :bottom_left %>
+<% if success %>
+$('#live-results').html('<%= escape_javascript(render partial: "debts/partials/shoppinglist", locals: {debt: @debt}) %>');
+<%= add_gritter("Agency '#{@agency.name}' #{add ? 'added': 'removed'} successfully", image: :success, title:"Success!", time: 3000) %>
+<% else %>
+<%= add_gritter("Failed #{add ? 'adding': 'removing'} agency '#{@agency.name}'", image: :error, title: "Failure", time: 3000) %>
+<% end %> 
