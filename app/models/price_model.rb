@@ -1,16 +1,17 @@
 class PriceModel < ActiveRecord::Base
 	belongs_to :agency
-	has_and_belongs_to_many :debt_type, :join_table => 'price_models_debt_types'
+	has_and_belongs_to_many :debt_type, class_name: "Debts::DebtType", :join_table => 'price_models_debt_types'
+	accepts_nested_attributes_for :debt_type
 
-	monetize :min_amount_cents
-	monetize :max_amount_cents
+	monetize :min_amount_cents, allow_nil: false, :numericality => {
+	    :greater_than_or_equal_to => 0
+	  }
 
-
-  	accepts_nested_attributes_for :debt_type
+	monetize :max_amount_cents, allow_nil: false, :numericality => {
+    	:greater_than => :min_amount
+  	}
 
 	validates :name, presence: true
-	validates :min_amount, presence: true, numericality: { :greater_than_or_equal_to => 0 } 
-	validates :max_amount, presence: true, numericality: { :greater_than => :min_amount } 
 	validates :min_age, presence: true, numericality: { :greater_than_or_equal_to => 0 } 
 	validates :max_age, presence: true, numericality: { :greater_than => :min_age } 
 	validates :fee_precentage, presence: true, numericality: { :greater_than => 0, :less_than_or_equal_to => 100 } 

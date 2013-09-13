@@ -6,7 +6,7 @@
 			<th class="center" width="100"></th>
 			<th class="center" width="100"></th>
 			<th class="center" width="140"></th>
-			<th class="center" width="120"></th>
+			<th class="center" width="100"></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -38,8 +38,19 @@
 				<%= stars_review(agency.avg_rating, :small) %></span>
 			</td>
 			<td class="center ajax-updates">
-				<%= render partial: 'debts/partials/agency_actions', 
-					locals: {debt: @debt, agency: agency, item: @debt.debt_shoppinglist_items.find_by_agency_id(agency.id) } %>
+				<% can_add = @debt.debt_shoppinglist_items.find_by_agency_id(agency.id).nil? %>
+				<%= link_to debt_debt_shoppinglist_items_path( 
+                    debt_id: @debt.id, debts_debt_shoppinglist_item: 
+                    {agency_id: agency.id } ), 
+                        method: :post,
+                    class: "btn btn-primary ajax-reload no-spinner #{'disabled' if !can_add}",
+                    on_success: "disable_add_to_cart" do %>
+                    <% if can_add %>
+                		<i class="icon-shopping-cart"></i> Add
+                	<% else %>
+                		<i class="icon-check"></i> Listed
+                	<% end %>
+            	<% end %>
 			</td>
 		</tr>
 		<% end %>	
@@ -47,3 +58,11 @@
 </table>
 
 <%= will_paginate results, :params => { :anchor => "find-results" } %> 
+
+<script>
+function disable_add_to_cart(element)
+{
+	element.addClass('disabled');
+	element.html('<i class="icon-check"></i> Listed');
+}
+</script>

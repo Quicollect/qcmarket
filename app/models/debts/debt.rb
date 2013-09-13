@@ -156,7 +156,7 @@ module Debts
 			}
 		end
 
-private
+	private
 		def is_status?(symbol)
 			symbol == Debts::DebtStatus.symbol(self.debt_status_id)
 		end

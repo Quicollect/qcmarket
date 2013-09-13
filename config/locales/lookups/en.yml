@@ -16,6 +16,9 @@ en:
       delete:
         short: "Deleted"
         long: "was deleted by %{account}"
+      notification:
+        short: "Notified"
+        long: "was sent by %{account}"
     debtstatus:
       draft:
         short: "Draft"
@@ -41,3 +44,36 @@ en:
       deleted:
         short: "Deleted"
         long: "Deleted by %{account}"
+    debttype:
+      commercial:
+        short: "A corporation"
+      consumer:
+        short: "An individual"
+    debtsegment:
+      financial:
+        short: "Financial"
+      medical:
+        short: "Medical"
+      energy:
+        short: "Energy"
+      telco:
+        short: "Telco/Media"
+      water:
+        short: "Water"
+      public:
+        short: "Public Sector"
+      commerce:
+        short: "Commerce"
+      education:
+        short: "Education"
+      other:
+        short: "Other"
+    shoppinglistitemstatus:
+      listed:
+        short: "Listed"
+      contacted:
+        short: "Contacted"
+      accepted:
+        short: "Accepted"
+      placed:
+        short: "Placed"

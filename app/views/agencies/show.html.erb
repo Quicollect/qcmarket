@@ -49,7 +49,7 @@
 										<% services.each do | a_service | %>
 											<% segment = Debts::DebtSegment.find(a_service.debt_segment_id) %>
 											<td>
-												<i title='<%="#{segment.name}"%>' class='<%="#{segment.thumbnail}"%> icon-large icon-fixed-width'></i>
+												<i title='<%="#{Debts::DebtSegment.short_text(segment.id)}"%>' class='<%="#{segment.thumbnail}"%> icon-large icon-fixed-width'></i>
 											</td>
 										<% end %>
 									</tr>

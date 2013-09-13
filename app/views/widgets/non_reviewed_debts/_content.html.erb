@@ -8,7 +8,7 @@
         <td><%= link_to agency.name, agency_path(agency) %></td>
         <td><%=t('updated')%> <%=time_ago_in_words_ex(debt.updated_at)%></td>
         <td>
-            <%= link_to new_debt_placement_review_path(dp), class: "no-spinner", role: "button", :"data-toggle" => "modal", :"modal-title" => "Rate #{agency.name}" do %>
+            <%= link_to new_debt_placement_reviews_path(dp), class: "no-spinner", role: "button", :"data-toggle" => "modal", :"modal-title" => "Rate #{agency.name}" do %>
               <i class="icon-star icon-2x"></i>
             <% end %>
         </td>

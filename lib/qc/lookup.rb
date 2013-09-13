@@ -42,11 +42,12 @@ private
 					@hash[:names][item.name.downcase.to_sym] = item
 					@hash[:ids][item.id] = item
 				end
+
 				Rails.cache.write(self.name.to_sym, @hash, expires_in: 1.day)
 				Rails.logger.info "#{DateTime.now} | QC | lookup #{self.name} was loaded with #{@hash[:ids].length} items" 
 			end
 		end
-
+		
 		return @hash[symbol]
 	end
 end

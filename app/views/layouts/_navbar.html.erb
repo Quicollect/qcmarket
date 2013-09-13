@@ -5,15 +5,15 @@
   <button type="button" class="btn btn-navbar pull-left visible-phone">
     <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
   </button>
+
+  <%= link_to(image_tag("quicollect-logo-light-small.png", :alt =>  "Quicollect"), signed_in? ? root_path : sign_in_path, 
+      class: "pull-left #{signed_in? ? '': 'no-spinner'}", style: "margin: 10px") %>
   
   <% if signed_in? %>
   <!-- // Menu Toggle Button END -->
-  
+
   <!-- Full Top Style -->
   <ul class="topnav pull-left">
-    <li style="width:150px">
-      <%= image_tag 'quicollect-logo-light-small.png', style: "margin-left: 25px" %>
-    </li>
     <li class="<%= 'active' if params[:controller] == 'dashboard' %>">
         <%= link_to root_path, class: "glyphicons home" do %>
           <i></i> <%=t 'menus.home' %>

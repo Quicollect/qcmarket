@@ -41,14 +41,15 @@ QCMarket::Application.routes.draw do
   resources :resources
 
   get "debt_placements/new"
-  #post "debt_placements/create"
   get "debt_payments/new"
-  #post "debt_payments/create"
-  get "debts/:debt_id/shoppinglist_items", to: "debts/debt_shoppinglist_items#create"
-
   get "debt_payments/:id/reviews/new", to: 'reviews#new', as: 'new_debt_placement_review'
-  post "debt_payments/:id/reviews", to: 'reviews#create', as: 'debt_placement_review'
+  post "debt_payments/:id/reviews", to: 'reviews#create', as: 'debt_placement_reviews'
   
+  get "debts/:id/items/:item_id/proposal/new", to: 'debts/debt_proposals#new', as: 'new_debt_proposal'
+  post "debts/:id/items/:item_id/proposals", to: 'debts/debt_proposals#create', as: 'debt_proposals'
+
+
+
   scope module: "debts" do 
     get "debts/find/:id", to: 'debts#find', as: 'find_debt_agency'
     post "debts/:id/status_change", to: 'debts#status_change', as: 'status_change_debt'

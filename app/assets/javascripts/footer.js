@@ -64,6 +64,8 @@
 // Ba-Resize Plugin -->
 //= require ./theme/plugins/other/jquery.ba-resize.js
 
+// wizard -->
+//= require ./bootstrap/extend/twitter-bootstrap-wizard/jquery.bootstrap.wizard.js
 
 //  Flot Charts Plugin -->
 //= require ./theme/plugins/charts/flot/jquery.flot.js

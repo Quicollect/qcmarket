@@ -21,12 +21,12 @@
       <%= f.input :title,  input_html: { class: "span8"} %>
 
       <%= f.input :debt_type_id,
-              collection: Debts::DebtType.all.collect {|a| [a.name, a.id ] },
+              collection: Debts::DebtType.all.collect {|a| [Debts::DebtType.short_text(a.id), a.id ] },
               selected: (debt.debt_type_id.nil? ? 0 : debt.debt_type_id),
             input_html: { class: 'selectpicker span8' } %>
 
       <%= f.input :debt_segment_id,
-              collection: Debts::DebtSegment.all.collect {|a| [a.name, a.id ] },
+              collection: Debts::DebtSegment.all.collect {|a| [Debts::DebtSegment.short_text(a.id), a.id ] },
               selected: (debt.debt_segment_id.nil? ? 0 : debt.debt_segment_id),
               input_html: { class: 'selectpicker span8' } %>
 
@@ -59,7 +59,7 @@
 </div>
 
 <div class="row-fluid">
-  <%= f.input :description, as: :text, input_html: { class: "span10", rows: "4", 
+  <%= f.input :description, as: :text, input_html: { class: "span9", rows: "4", 
             placeholder: "Please describe..." } %>
 </div>
 

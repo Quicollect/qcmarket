@@ -20,6 +20,9 @@
                             </span>
                         </td>
                         <td class="important"><h5><%=link_to agency.name, agency_path(agency)%></h5></td>
+                        <td class="center">
+                            <i rel="tooltip" title="<%=Debts::ShoppinglistItemStatus.short_text(item.shoppinglist_item_status_id)%>" class="icon-2x <%=item_to_fontawesome(item)%>"></i>
+                        </td>
                         <td class="center stats">
                             <span class="count">
                                 <%=debt.distance_to(agency).round(2)%>
@@ -32,7 +35,7 @@
                         <td class="center stats"><span>Rating</span><span class="count">
                             <%= stars_review(agency.avg_rating, :small) %></span>
                         </td>
-                        <td class="center">
+                        <td width="100" class="center">
                             <%= render partial: 'debts/partials/agency_actions', locals: {debt: debt, agency: agency, item: item } %>
                         </td>
                     </tr>

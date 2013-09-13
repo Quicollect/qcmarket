@@ -1,6 +1,8 @@
-<div class="separator bottom">
-  <%= render partial: 'debts/partials/buttons', locals: {resource: @debt} %>
-</div>
+<% if !@debt.new_record? %>
+  <div class="separator bottom">
+    <%= render partial: 'debts/partials/buttons', locals: {resource: @debt} %>
+  </div>
+<% end %>
 
 <%= simple_nested_form_for(@debt, url: url_for_ex(@debt), :html => {class: "well form-vertical" }) do |f| %>
 
@@ -9,26 +11,41 @@
 </div>
 
 <div class="wizard">
+  <% if @debt.new_record? %>
+  <div class="widget widget-tabs widget-wizard-pills widget-tabs-gray">
+  <% else %>
   <div class="widget widget-tabs widget-tabs-double widget-tabs-vertical row-fluid row-merge widget-tabs-gray">
+  <% end %>
   
     <!-- Widget heading -->
-    <div class="widget-head span3">
+    <div class="widget-head<%=@debt.new_record? ? '' : ' span3'%>">
       <ul>
+        <% if @debt.new_record? %>
+          <li class="status">
+            <span class="r">Step <span class="step-current">1</span> of <span class="steps-total">3</span></span><span class="r text-primary">Completed: <span class="steps-complete">0</span></span>
+          </li>
+        <% end %>
+
         <%= generate_tab('general', @debt, 
                 [:title, :charge_date, :amount, :description, :debt_type_id, :debt_status_id, :debt_segment_id],
-                {class: 'active' , icon: 'coins' ,title: 'Debt Details', detailts: 'Details about the debt' }) %>
+                {class: 'active' , icon: 'coins' ,title: 'Debt Details', detailts: 'Details about the debt', index: '1' }) %>
 
         <%= generate_tab('contact', @debt,
                [:phone, :fax, :email, :address, :city, :zipcode, :state_id, :country_id],
-                {icon: 'user' ,title: 'Debtor Details', detailts: 'Details about the debtor?', id: 'contact-tab' }) %>
+                {icon: 'user' ,title: 'Debtor Details', detailts: 'Details about the debtor?', id: 'contact-tab', index: '2' }) %>
 
         <%= generate_tab('docs', @debt, [], 
-                {icon: 'briefcase' ,title: 'Supporting Documents', detailts: 'Add supporting documents about the debt and debtor?' }) %>
+                {icon: 'briefcase' ,title: 'Supporting Documents', detailts: 'Add supporting documents about the debt and debtor?', index: '3' }) %>
       </ul>
+      <% if @debt.new_record? %>
+        <div class='pull-right' style="margin: 8px 30px 0px 0px">
+              <i class="icon-magic icon-3x"></i>
+        </div>
+      <% end %>
     </div>
     <!-- // Widget heading END -->
     
-    <div class="widget-body span9">
+    <div class="widget-body<%=@debt.new_record? ? '' : ' span9'%>">
       <div class="tab-content">
       
         <div class="tab-pane active" id="general">
@@ -54,6 +71,17 @@
 
         <div class="clearfix"></div> 
       </div>
+
+      <% if @debt.new_record? %>
+      <div class="pagination margin-bottom-none pull-right">
+          <ul>
+            <li class="previous primary"><a href="javascript:;">Previous</a></li>
+            <li class="next primary" style="display: inline;"><a href="javascript:;">Next</a></li>
+            <li class="next finish primary" style="display: none;"><a href="javascript:;">Finish</a></li>
+          </ul>
+      </div>
+      <div class="clearfix"></div> 
+      <% end %>
     </div>
   </div>
 </div>

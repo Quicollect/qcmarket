@@ -15,7 +15,9 @@ en:
       debts/debt:
         title: "Title"
         debt_status_id: "Status"
+        debt_segment_id: "Segment"
         country_id: "Country"
-        charge_date: "Debt Age"
+        charge_date: "Due since"
         updated_at: "Last Updated"
         amount: "Amount"
+        debt_type_id: "Debtor is"

@@ -186,6 +186,14 @@ span.help-inline {
     z-index: 100000;
 }
 
+.error-overlay-wiz {
+    margin-left: 20px;
+    position: absolute;
+    z-index: 100000;
+}
+
+
+
 /* remove right border for a select element in the side bar */
 html.sidebar-full #menu .slim-scroll > ul, html.sidebar-full #menu > ul {
     border-right: 0px solid rgb(51, 51, 51) !important;
@@ -231,10 +239,16 @@ label.checkbox-label input[type=checkbox]{
 
 /* fixing coloring for sortable columned table */
 .table-primary thead th a {
-  border-color: #C73226;
-  background-color: #C73226;
   color: #fff;
   font-size: 14px;
+}
+
+.table-primary tbody td a {
+  color: #263248;
+}
+
+.table-primary tbody td a:hover {
+  color: #7E8AA2;
 }
 
 
@@ -270,3 +284,39 @@ label.checkbox-label input[type=checkbox]{
     color: #FFF !important;
     background-color: #F00 !important;
 }
+
+
+// icon with text next to it
+.glyphicons.qc-standard {
+  padding: 0;
+}
+.glyphicons.qc-standard i {
+  margin-right: 8px;
+}
+.glyphicons.qc-standard i:before {
+  color: #64625f;
+  position: relative;
+  top: 6px;
+  left: auto;
+}
+
+
+// icon buttons
+.btn-icon {
+    padding: 5px 8px;
+    margin-right: 2px;
+}
+
+.btn-icon i:before {
+    cursor: pointer;
+}
+
+// drop down menu with icons of font awesome
+.left-aligned li a i {
+    margin-right: 10px;
+}
+
+.left-aligned li a {
+    text-align: left;
+}
+

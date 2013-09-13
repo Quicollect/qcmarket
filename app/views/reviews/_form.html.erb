@@ -3,7 +3,7 @@
   <h3>Review <%=@agency.name%></h3>
 </div>
 
-<%= simple_form_for([@debt_placement ,@review], url: debt_placement_review_path(@debt_placement.id, @review), :html => {class: "well form-vertical"}) do |f| %>
+<%= simple_form_for([@debt_placement ,@review], url: debt_placement_reviews_path(@debt_placement.id, @review), :html => {class: "well form-vertical"}) do |f| %>
 <div class="modal-body">
   Please provide review information about the agency and your latest expirience with it regadring
   Debt <%=link_to @debt.title, debt_path(@debt) %>

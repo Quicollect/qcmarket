@@ -8,11 +8,11 @@ es:
     debts: 
       index: 
         debts: Deudas
-        new_debt: "Nueva deuda"
-        manage_debts: "Gestionar su deudas"
-        debts_repository: "Deudas Repositorio"
-        outstanding_debts: "Excepcional deudas"
-        resolved_debts: "Resuelto deudas"
-        manage_debts: "Gestionar deudas"
-        total_debts: "Total deudas"
+        new_debt: "Nueva Deuda"
+        debts_repository: "Su Deudas"
+        outstanding_debts: "Excepcional Deudas"
+        resolved_debts: "Resuelto Deudas"
+        manage_debts: "Gestionar Deudas"
+        total_debts: "Total Deudas"
+        debt_age: "Edad de la deuda"
 

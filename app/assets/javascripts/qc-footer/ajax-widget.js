@@ -28,3 +28,10 @@ function refetch_widget_data(element, data_url) {
   var spinner = new Spinner(widget_opt).spin(element);
   $.getScript(data_url);
 }
+
+$(function () {
+   $('.ajax-widget').delegate('.ajax-reload', 'click', function () {
+     $.getScript(this.href);
+     return false;
+   });
+});

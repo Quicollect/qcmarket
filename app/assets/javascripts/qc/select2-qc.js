@@ -13,8 +13,9 @@ function register_select(id, arr, values)
  * supported options:
  * id, url, placeholder, selectedText, per_page
  */
-function register_select2(options={})
+function register_select2(options)
 {
+  options = options || {};
   $(function () {
     
     $("#"+options.id).select2({

@@ -5,7 +5,7 @@ module Debts
 
 		def new
 			@debt_placement = @debt.debt_placements.new(debts_debt_placement_params)
-			@debt_placement.price_model_id = PriceModel.find_by_agency(@debt, @debt_placement.agency_id)
+			@debt_placement.price_model_id = PriceModel.find_by_agency(@debt, @debt_placement.agency_id).first.id
 			@agency_contract = Agency.find(@debt_placement.agency_id).current_contract
 			render partial: 'new'
 		end
@@ -13,7 +13,8 @@ module Debts
 		def create
 			if (!@debt.allowed_actions.include? :assigned)
 				flash[:error] = 'Cannot assign/re-assign debt at its current state.'
-				render action: 'new'
+				redirect_to debt_path(@debt)
+				return
 			end
 
 			@debt.debt_status_id = Debts::DebtStatus.lookup(:assigned)
@@ -25,6 +26,13 @@ module Debts
 			# that price model is enabled etc.
 			@agency = Agency.find(params[:debts_debt_placement][:agency_id])
 			@price_model = @agency.price_models.find(params[:debts_debt_placement][:price_model_id])
+			
+			if (@price_model.id != PriceModel.find_by_agency(@debt, @agency.id).first.id)
+				flash[:error] = 'Cannot assign debt. Mismtach between price models accepted than one assigned by the system.'
+				redirect_to debt_path(@debt)
+				return
+			end
+
 			@agency_contract = @agency.agency_contracts.find(params[:debts_debt_placement][:agency_contract_id])
 
 			# this should not happen but can if someone updated the contact while someone
@@ -40,10 +48,9 @@ module Debts
 		    if @debt.save
 		      create_event(@debt.id, :statuschange, ["Debt was assigned to agency #{@agency.name.upcase} (#{@agency.id})"])
 		      flash[:success] = 'Debt was successfully assigned to agency.'
-		      redirect_to debt_path(@debt)
-		    else
-		      render action: 'new'
 		    end
+
+		    redirect_to debt_path(@debt)
 		end
 
 	private
@@ -52,7 +59,7 @@ module Debts
 	    end
 
 	   	def debts_debt_placement_params
-	    	params.require(:debts_debt_placement).permit(:agency_id, :agency_contract_id)
+	    	params.require(:debts_debt_placement).permit(:agency_id, :agency_contract_id, :price_model_id)
 	  	end
 	end
 end

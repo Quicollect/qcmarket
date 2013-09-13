@@ -32,8 +32,8 @@ module ApplicationHelper
 	  I18n.t :x_days, :count => days, :scope => :'datetime.distance_in_words'
 	end
 
-	def sortable(column, model=nil)
-	    title = model.nil? ? column.titleize : I18n.t("activerecord.attributes.#{model.to_s.underscore}.#{column}")
+	def sortable(column, model=nil, text=nil)
+	    title = model.nil? ? text : I18n.t("activerecord.attributes.#{model.to_s.underscore}.#{column}")
 	    css_class = (column == sort_column) ? "current #{sort_direction}" : ""
 	    icon_class = (column == sort_column) ? ( sort_direction == "asc" ? "icon-sort-up" : "icon-sort-down" ) : "icon-sort"
 	    direction = (column == sort_column && sort_direction == "asc") ? "desc" : "asc"
@@ -45,17 +45,23 @@ module ApplicationHelper
   	def generate_tab(name, resource, members = [], options = {})		
 		errors = error_count(resource, members)
 		error_str = errors > 0 ? 
-				"<span class='badge fix badge-primary error-overlay'>#{errors}</span>"  :
+				"<span class='badge fix badge-primary #{resource.new_record? ? 'error-overlay-wiz': 'error-overlay'}'>#{errors}</span>"  :
 				""
-
+		
 		id_str = "id='#{options[:id]}'" if options[:id]
-
-		"<li #{id_str} class='#{options[:class]}'> 
-          <a href='##{name}' class='glyphicons #{options[:icon]} no-spinner' data-toggle='tab'>
-         #{error_str}
-          <i></i>
-          <span class='strong'>#{options[:title]}</span><span>#{options[:details]}</span></a>
-        </li>".html_safe
+		if (resource.new_record?)
+			"<li #{id_str} class='#{'no-padding'} #{options[:class]}'>
+				#{error_str}
+				<a class='no-spinner' href='##{name}' data-toggle='tab'>#{options[:index]}</a>
+			</li>".html_safe
+		else
+			"<li #{id_str} class='#{options[:class]}'> 
+	          <a href='##{name}' class='glyphicons #{options[:icon]} no-spinner' data-toggle='tab'>
+	         #{error_str}
+	          <i></i>
+	          <span class='strong'>#{options[:title]}</span><span>#{options[:details]}</span></a>
+	        </li>".html_safe
+		end
 	end
 
 	def error_count(resource, members)

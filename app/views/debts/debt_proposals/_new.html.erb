@@ -1,0 +1,25 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	<h3>Sending debt proposal request</h3>
+</div>
+<%= simple_form_for(:debt_proposal, url: debt_proposals_path(id: @debt.id, item_id: @item.id), :html => {class: "well form-vertical" }) do |f| %>
+	<div class="modal-body">
+		You are about to send debt opportunity for debt <strong id="debtname"><%=@debt.title%></strong> to agency <strong id="agencyname"><%=@agency.name%></strong> via email <strong><%=@agency.email%></strong>.
+		<p> Do you wish to proceed? </p>
+		
+		<p class="separator text-center"></p>
+		
+		<div class="pull-right">
+			<%= button_tag(type: 'submit', id: "submit-btn", class: "btn btn-primary btn-icon glyphicons ok text-center form-submit") do %>
+    			<i></i> Approve
+  			<% end %>
+
+			<%= link_to '#', :'data-dismiss' => "modal", class: "btn btn-default btn-icon glyphicons ban text-center" do %>
+			    <i></i> Cancel
+		  	<% end %>
+		</div>
+	</div>
+<% end %>
+
+
+

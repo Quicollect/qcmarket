@@ -1,30 +1,37 @@
+<div class="btn-group" style="margin: 5px 0px 5px 0px;">
+     <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+        Actions
+        <span class="caret"></span>
+     </a>
 
-<% if !debt.is_active_placement? %>
-	<%= link_to new_debt_debt_placement_path( 
-				debt_id: debt.id, debts_debt_placement: 
-				{agency_id: agency.id } ), 
-					:method=> :get,
-				class: "btn-primary btn-action glyphicons pushpin no-spinner",
-				title: "Assign",
-				:'data-toggle'=> "modal" do %>
-			<i></i>
-	<% end %>
-<% end %>
+    <ul class="dropdown-menu pull-right left-aligned">
+        <li class="<%='disabled' if debt.is_active_placement?%>">
+            <%= link_to new_debt_debt_placement_path( 
+                        debt_id: debt.id, debts_debt_placement: 
+                        {agency_id: agency.id } ), 
+                            :method=> :get,
+                        class: "no-spinner",
+                        :'data-toggle'=> "modal" do %>
+                    <i class="icon-pushpin"></i> Assign debt
+            <% end %>
+        </li>
 
-<% if item.nil? %>
-	<%= link_to debt_debt_shoppinglist_items_path( 
-				debt_id: debt.id, debts_debt_shoppinglist_item: 
-				{agency_id: agency.id } ), 
-					:method=> :get,
-				title: "Add to consideration list",
-				class: "btn-primary btn-action glyphicons shopping_cart ajax-reload no-spinner" do %>
-			<i></i>
-	<% end %>
-<% else %>
-    <%= link_to debt_debt_shoppinglist_item_path( debt_id: debt.id, id: item.id ),
-        :method=> :delete,
-        title: "remove from consideration list",
-        class: "btn-primary btn-action glyphicons remove_2 ajax-reload no-spinner" do %>
-    <i></i>
-    <% end %>
-<% end %>
+        <li class="<%='disabled' if agency.email.blank?%>">
+            <%= link_to new_debt_proposal_path( 
+                        id: debt.id, item_id: item.id), 
+                            :method=> :get,
+                        class: "no-spinner",
+                        :'data-toggle'=> "modal" do %>
+                    <i class="icon-envelope"></i> Send opportunity
+            <% end %>
+        </li>
+
+        <li>
+            <%= link_to debt_debt_shoppinglist_item_path( debt_id: debt.id, id: item.id ),
+                :method=> :delete,
+                class: "ajax-reload no-spinner" do %>
+                <i class="icon-remove"></i> Remove from list
+            <% end %>
+        </li>
+    </ul>
+</div>

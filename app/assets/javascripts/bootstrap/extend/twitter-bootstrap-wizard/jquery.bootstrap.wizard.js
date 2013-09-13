@@ -74,8 +74,7 @@ var bootstrapWizardCreate = function(element, options) {
 		if($settings.onPrevious && typeof $settings.onPrevious === 'function' && $settings.onPrevious($activeTab, $navigation, obj.previousIndex())===false){
 			return false;
 		}
-
-		$index = obj.previousIndex();
+		$index = obj.previousIndex()+1; // TODO: dont know why but index seems off
 		if($index < 0) {
 		} else {
 			$navigation.find('li:eq('+$index+') a').tab('show');
