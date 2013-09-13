@@ -45,10 +45,10 @@ class Debt < ActiveRecord::Base
         Debt.where(account_id: user.account_id, deleted: false )
       else
         account_id = user.account_id;
-        Debt.includes(:debt_placements).
+        Debt.includes(:placements).
           where("account_id = #{account_id} or debt_placements.agency_id = #{account_id}").
           where(deleted: false).
-          references(:debt_placements)
+          references(:placements)
       end
     end
 

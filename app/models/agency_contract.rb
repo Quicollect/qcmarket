@@ -1,6 +1,6 @@
 class AgencyContract < ActiveRecord::Base
 	belongs_to :agency
-	has_many :debt_placements
+	has_many :debt_placements, class_name: "Debts::Placement"
 
 	before_save :pre_save
 

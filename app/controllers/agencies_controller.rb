@@ -13,7 +13,7 @@ class AgenciesController < AccountsController
 		@account_reviews_numnber = @account.reviews.length
 
 		# TODO: some statistics. needs to be precalcualted and cached
-		relevent_debts = Debt.joins(:debt_placements).where("debt_placements.agency_id = #{@account.id}", 'accepted_at is not null')
+		relevent_debts = Debt.joins(:placements).where("debt_placements.agency_id = #{@account.id}", 'accepted_at is not null')
 		stat_hash = Hash.new(0)
 		relevent_debts.each { |d| stat_hash [ "#{Debts::Segment.short_text(d.debt_segment_id)} (#{Debts::Type.get_name(d.debt_type_id)})" ] += 1}
 		@statistics = {by_segment: stat_hash}

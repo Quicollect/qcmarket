@@ -5,7 +5,7 @@ class Agency < Account
 	has_many :reviews, :dependent => :destroy
 	has_many :price_models, :dependent => :destroy
 	has_many :agency_contracts, :dependent => :destroy
-	has_many :debt_placements
+	has_many :debt_placements, class_name: "Debts::Placement"
 	
 	
 	accepts_nested_attributes_for :agency_services, :allow_destroy => true
