@@ -13,15 +13,15 @@ class AgenciesController < AccountsController
 		@account_reviews_numnber = @account.reviews.length
 
 		# TODO: some statistics. needs to be precalcualted and cached
-		relevent_debts = Debts::Debt.joins(:debt_placements).where("debt_placements.agency_id = #{@account.id}", 'accepted_at is not null')
+		relevent_debts = Debt.joins(:debt_placements).where("debt_placements.agency_id = #{@account.id}", 'accepted_at is not null')
 		stat_hash = Hash.new(0)
-		relevent_debts.each { |d| stat_hash [ "#{Debts::DebtSegment.short_text(d.debt_segment_id)} (#{Debts::DebtType.get_name(d.debt_type_id)})" ] += 1}
+		relevent_debts.each { |d| stat_hash [ "#{Debts::Segment.short_text(d.debt_segment_id)} (#{Debts::Type.get_name(d.debt_type_id)})" ] += 1}
 		@statistics = {by_segment: stat_hash}
 
 		values = []		
-		relevant_debt_placements = Debts::DebtPlacement.joins(:debt).where("agency_id =  #{@account.id} and accepted_at is not null")
+		relevant_debt_placements = Debts::Placement.joins(:debt).where("agency_id =  #{@account.id} and accepted_at is not null")
 		relevant_debt_placements.each { | p | 
-			total_payments = p.debt_payments.sum {| payment| payment.amount.amount }
+			total_payments = p.payments.sum {| payment| payment.amount.amount }
 			values << (100.0* total_payments / relevent_debts.find(p.debt_id).amount.amount)
 		}
 
@@ -100,7 +100,7 @@ private
 				services.each do | s |
 					params[:agency][:agency_services_attributes] << 
 							{"id" => s.id.to_s, "_destroy" => (!ids[s.debt_segment_id]).to_s, 
-								"debt_type_id" => Debts::DebtType.lookup(type).to_s, 
+								"debt_type_id" => Debts::Type.lookup(type).to_s, 
 								"debt_segment_id" => s.debt_segment_id.to_s}
 
 					ids.delete(s.debt_segment_id)
@@ -111,7 +111,7 @@ private
 			ids.each do | id, k |
 				params[:agency][:agency_services_attributes] << 
 							{"id" => nil.to_s, "_destroy" => "false", 
-								"debt_type_id" => Debts::DebtType.lookup(type).to_s, 
+								"debt_type_id" => Debts::Type.lookup(type).to_s, 
 								"debt_segment_id" => id.to_s }
 			end
 		end

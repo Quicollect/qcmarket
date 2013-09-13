@@ -22,7 +22,7 @@
     <%= f.label :debt_type, class: 'control-label' %>
     <div class="controls">
       <%= f.select :debt_type_ids, 
-                  Debts::DebtType.all.collect {|a| [a.name, a.id ] },
+                  Debts::Type.all.collect {|a| [a.name, a.id ] },
                   {},
                   {class: "selectpicker", multiple:"", title:"Select debt types"} %>
     </div>

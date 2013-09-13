@@ -1,10 +1,10 @@
 module Debts
-	class DebtShoppinglistItemsController < ApplicationController
-		load_and_authorize_resource class: Debts::DebtShoppinglistItem
+	class ShoppinglistItemsController < ApplicationController
+		load_and_authorize_resource class: Debts::ShoppinglistItem
 	  	before_action :set_debt
 
 		def create
-			@shoppinglist_item = @debt.debt_shoppinglist_items.new(debts_debt_shoppinglist_item_params)
+			@shoppinglist_item = @debt.shoppinglist_items.new(debts_shoppinglist_item_params)
 			@shoppinglist_item.account_id = current_user.account_id
 			@shoppinglist_item.shoppinglist_item_status_id = Debts::ShoppinglistItemStatus.lookup(:listed)
 			
@@ -19,13 +19,13 @@ module Debts
 
 		    respond_to do |format|
 			  format.js { 
-			  		render partial: "debts/debt_shoppinglist_items/index", locals: { debt: @debt, success: @success, add: true } 
+			  		render partial: "debts/shoppinglist_items/index", locals: { debt: @debt, success: @success, add: true } 
 			  	}
 			end
 		end
 
 		def destroy
-			@shoppinglist_item = Debts::DebtShoppinglistItem.find(params[:id])
+			@shoppinglist_item = @debt.shoppinglist_items.find(params[:id])
 			@agency = Agency.find(@shoppinglist_item.agency_id)
 			
 			@success = false
@@ -36,18 +36,18 @@ module Debts
 
 		    respond_to do |format|
 			  format.js { 
-			  		render partial: "debts/debt_shoppinglist_items/index", locals: { debt: @debt, success: @success, add: false } 
+			  		render partial: "debts/shoppinglist_items/index", locals: { debt: @debt, success: @success, add: false } 
 			  	}
 			end
 		end
 
 	private
 	    def set_debt
-	      @debt = Debts::Debt.find(params[:debt_id])
+	      @debt = Debt.find(params[:debt_id])
 	    end
 
-	   	def debts_debt_shoppinglist_item_params
-	    	params.require(:debts_debt_shoppinglist_item).permit(:agency_id, :description)
+	   	def debts_shoppinglist_item_params
+	    	params.require(:debts_shoppinglist_item).permit(:agency_id, :description)
 	  	end
 	end
 end

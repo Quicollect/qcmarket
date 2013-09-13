@@ -13,7 +13,7 @@ private
 	# is better then to override the save method which is even more risky
 	def pre_save
 		# if attached to existing debt placement and content has changed duplicate it 
-		if !new_record? && content_changed? && Debts::DebtPlacement.where(agency_contract_id: self.id).length > 0
+		if !new_record? && content_changed? && Debts::Placement.where(agency_contract_id: self.id).length > 0
 			@new_record = true
 			self.id = nil
 			self.created_at = nil

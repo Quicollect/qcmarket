@@ -40,29 +40,41 @@ QCMarket::Application.routes.draw do
   resources :documents
   resources :resources
 
-  get "debt_placements/new"
-  get "debt_payments/new"
-  get "debt_payments/:id/reviews/new", to: 'reviews#new', as: 'new_debt_placement_review'
-  post "debt_payments/:id/reviews", to: 'reviews#create', as: 'debt_placement_reviews'
+  # placements
+  get "debts/:debt_id/placements/new", to: 'debts/placements#new', as: 'new_debt_placement'
+  post "debts/:debt_id/placements/create", to: 'debts/placements#create', as: 'debt_placements'
+
+  # payments
+  get "debts/:debt_id/payments/new", to: 'debts/payments#new', as: 'new_debt_payment'
+  post "debts/:debt_id/payments/create", to: 'debts/payments#create', as: 'debt_payments'
+
+  # reviews
+  get "debts/:debt_id/placements/:placement_id/reviews/new", to: 'reviews#new', as: 'new_debt_placement_review'
+  post "debts/:debt_id/placements/:placement_id/reviews", to: 'reviews#create', as: 'debt_placement_reviews'
+
+  # shoppinglist
+  delete "debts/:debt_id/shoppinglist_items/:id", to: 'debts/shoppinglist_items#destroy', as: 'debt_shoppinglist_item'
+  post "debts/:debt_id/shoppinglist_items", to: 'debts/shoppinglist_items#create', as: 'debt_shoppinglist_items'
   
-  get "debts/:id/items/:item_id/proposal/new", to: 'debts/debt_proposals#new', as: 'new_debt_proposal'
-  post "debts/:id/items/:item_id/proposals", to: 'debts/debt_proposals#create', as: 'debt_proposals'
+  # proposals
+  get "debts/:debt_id/items/:item_id/proposal/new", to: 'debts/proposals#new', as: 'new_debt_proposal'
+  post "debts/:debt_id/items/:item_id/proposals", to: 'debts/proposals#create', as: 'debt_proposals'
 
 
 
-  scope module: "debts" do 
+  #scope module: "debts" do 
     get "debts/find/:id", to: 'debts#find', as: 'find_debt_agency'
     post "debts/:id/status_change", to: 'debts#status_change', as: 'status_change_debt'
 
     resources :debts, only: [:index, :show, :edit, :new, :update, :create, :destroy]  do 
-      resources :debt_placements, only: [:new, :create], path: "placements"
-      resources :debt_payments, only: [:new, :create], path: "payments"
-      resources :debt_shoppinglist_items, only: [:destroy, :create], path: "shoppinglist_items"
+      #resources :placements, only: [:new, :create], path: "placements"
+      #resources :payments, only: [:new, :create], path: "payments"
+      #resources :shoppinglist_items, only: [:destroy, :create], path: "shoppinglist_items"
     end 
     
     get "debts/:id/resources", to: 'debts#resources', as: 'debt_resources'
     get "debts/page/:page", to: 'debts#index'
-  end
+  #end
 
   scope module: "timeline" do 
     post "timeline/events", to: 'events#create', as: 'timeline_events'

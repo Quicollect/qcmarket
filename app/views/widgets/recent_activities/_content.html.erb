@@ -9,7 +9,7 @@
               <span class="glyphicons activity-icon <%= event_to_glyphicon(e)%>"><i></i></span>
               <span class="ellipsis">
                 <% account = Account.find(e.account_id) %>
-                '<%=  Debts::Debt.find(e.entity_id).name %>'
+                '<%=  Debt.find(e.entity_id).name %>'
                 <%= Timeline::EventType.long_text(e.event_type, account) %> (<%= User.find(e.user_id).name %>)
                 <span class="meta">on <%= e.created_at.strftime("%d %B, %Y") %>
                   <span><%=time_ago_in_words_ex(e.created_at)%></span></span>

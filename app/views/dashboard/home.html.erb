@@ -49,7 +49,7 @@
       <i class="icon-map-marker text-primary icon-fixed-width"></i> 
         <%=t (:'dashboard.open-debts')%>
       </h2> 
-      <% pending_debts = Debts::Debt.viewable_debts(current_user).where.not(debt_status_id: Debts::DebtStatus.lookup(:closed)) %>
+      <% pending_debts = Debt.viewable_debts(current_user).where.not(debt_status_id: Debts::Status.lookup(:closed)) %>
       <%= render partial: 'debts/partials/map', 
           locals: { markers: pending_debts.to_gmaps4rails } %>
     </div>

@@ -23,7 +23,7 @@ module LookupsHelper
 	end
 
 	def status_to_glyphicon(status)
-		sym_status_to_glyphicon(Debts::DebtStatus.symbol(status))
+		sym_status_to_glyphicon(Debts::Status.symbol(status))
 	end 
 
 	def event_to_glyphicon(event)

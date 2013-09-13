@@ -32,11 +32,11 @@
                                 <% end %>
                             </li>
                             
-                            <% if can?(:create, Debts::DebtPayment.new(debt_id: @debt.id)) &&
-                                Debts::DebtStatus.symbol(@debt.debt_status_id) == :accepted 
+                            <% if can?(:create, Debts::Payment.new(debt_id: @debt.id)) &&
+                                Debts::Status.symbol(@debt.debt_status_id) == :accepted 
                                 %>
                                 <li>
-                                    <%= link_to new_debt_debt_payment_path( 
+                                    <%= link_to new_debt_payment_path( 
                                                 debt_id: @debt.id),
                                                     :method=> :get,
                                                 class: "btn-icon glyphicons coins no-spinner",
@@ -104,7 +104,7 @@
                                 <li>
                                     <span class="glyphicons standard <%=status_to_glyphicon(@debt.debt_status_id)%>"><i></i></span>
                                     <span class="title post-glyphicons"> debt status <br/>
-                                        <strong> <%=Debts::DebtStatus.long_text(@debt.debt_status_id, @debt.current_assigned_agency)%>
+                                        <strong> <%=Debts::Status.long_text(@debt.debt_status_id, @debt.current_assigned_agency)%>
                                         </strong>
                                     </span>
                                     <span class="count"></span>

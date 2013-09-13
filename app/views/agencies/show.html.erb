@@ -38,7 +38,7 @@
 						</ul>
 						<div class="separator bottom"></div>
 						<table><tbody>
-							<% Debts::DebtType.all.each do |debt_type| %>
+							<% Debts::Type.all.each do |debt_type| %>
 								
 								<% services = @account.agency_services.where(debt_type_id: debt_type) %>
 								<% if services.length > 0 %>
@@ -47,9 +47,9 @@
 											<%=debt_type.name%> Services:
 										</td>
 										<% services.each do | a_service | %>
-											<% segment = Debts::DebtSegment.find(a_service.debt_segment_id) %>
+											<% segment = Debts::Segment.find(a_service.debt_segment_id) %>
 											<td>
-												<i title='<%="#{Debts::DebtSegment.short_text(segment.id)}"%>' class='<%="#{segment.thumbnail}"%> icon-large icon-fixed-width'></i>
+												<i title='<%="#{Debts::Segment.short_text(segment.id)}"%>' class='<%="#{segment.thumbnail}"%> icon-large icon-fixed-width'></i>
 											</td>
 										<% end %>
 									</tr>

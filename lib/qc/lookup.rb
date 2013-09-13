@@ -19,13 +19,13 @@ module Lookup
 	end
 
 	def short_text(id)
-		I18n.translate("lookups.#{self.name.demodulize.downcase}.#{self.get_name(id).downcase}.short")
+		I18n.translate("lookups.#{self.name.sub('::', '/').downcase}.#{self.get_name(id).downcase}.short")
 	end
 
 	def long_text(id, account=nil)
 		url = eval("Rails.application.routes.url_helpers.#{account.class.name.downcase}_path(account)") if (account)
 
-		I18n.translate("lookups.#{self.name.demodulize.downcase}.#{self.get_name(id).downcase}.long", 
+		I18n.translate("lookups.#{self.name.sub('::', '/').downcase}.#{self.get_name(id).downcase}.long", 
 					account: account.nil? ? "" : "#{link_to account.name.upcase, url}").html_safe
 	end
 private
@@ -35,8 +35,8 @@ private
 			@hash = Rails.cache.read(self.name.to_sym)
 			if (@hash.nil?)
 				@hash = {}
-				@hash[:names] = {}
-				@hash[:ids] = {}
+				@hash[:names] = Hash.new(Country.new(name: '', id: -1))
+				@hash[:ids] = Hash.new(Country.new(name: '', id: -1))
 				
 				all.each do | item |
 					@hash[:names][item.name.downcase.to_sym] = item

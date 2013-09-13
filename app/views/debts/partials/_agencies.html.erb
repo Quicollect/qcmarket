@@ -38,9 +38,9 @@
 				<%= stars_review(agency.avg_rating, :small) %></span>
 			</td>
 			<td class="center ajax-updates">
-				<% can_add = @debt.debt_shoppinglist_items.find_by_agency_id(agency.id).nil? %>
-				<%= link_to debt_debt_shoppinglist_items_path( 
-                    debt_id: @debt.id, debts_debt_shoppinglist_item: 
+				<% can_add = @debt.shoppinglist_items.find_by_agency_id(agency.id).nil? %>
+				<%= link_to debt_shoppinglist_items_path( 
+                    debt_id: @debt.id, debts_shoppinglist_item: 
                     {agency_id: agency.id } ), 
                         method: :post,
                     class: "btn btn-primary ajax-reload no-spinner #{'disabled' if !can_add}",

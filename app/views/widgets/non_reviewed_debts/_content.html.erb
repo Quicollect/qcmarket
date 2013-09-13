@@ -3,7 +3,7 @@
     <% resources.each do | dp | %>
       <tr>
         <% agency = Agency.find(dp.agency_id) %>
-        <% debt = Debts::Debt.find(dp.debt_id) %>
+        <% debt = Debt.find(dp.debt_id) %>
         <td><%= link_to debt.title, debt_path(debt) %></td>
         <td><%= link_to agency.name, agency_path(agency) %></td>
         <td><%=t('updated')%> <%=time_ago_in_words_ex(debt.updated_at)%></td>

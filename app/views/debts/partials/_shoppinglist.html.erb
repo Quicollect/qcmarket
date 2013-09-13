@@ -1,5 +1,5 @@
 <div id="live-results" class="ajax-updates">
-    <% if debt.debt_shoppinglist_items.length > 0 %>
+    <% if debt.shoppinglist_items.length > 0 %>
     <div class="widget widget-heading-simple widget-body-white margin-none">
         <div class="widget-header">
             <h4 class="heading glyphicons shopping_cart"><i></i>
@@ -11,7 +11,7 @@
                 <thead>
                 </thead>
                 <tbody>
-                <% debt.debt_shoppinglist_items.each do | item |  %>
+                <% debt.shoppinglist_items.each do | item |  %>
                     <% agency = Agency.find(item.agency_id) %>
                     <tr>
                         <td class="center table-thumbnail">

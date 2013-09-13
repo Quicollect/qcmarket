@@ -4,13 +4,12 @@ en:
       others_say: "What others had to say:"
       score: "Score"
   debts:
-    debts:
-      index:
-        debts: "Debts"
-        new_debt: "New Debt"
-        debts_repository: "Your Debts"
-        outstanding_debts: "Outstanding Debts"
-        resolved_debts: "Resolved Debts"
-        manage_debts: "Manage Debts"
-        total_debts: "Total Debts"
-        debt_age: "Debt Age"
+    index:
+      debts: "Debts"
+      new_debt: "New Debt"
+      debts_repository: "Your Debts"
+      outstanding_debts: "Outstanding Debts"
+      resolved_debts: "Resolved Debts"
+      manage_debts: "Manage Debts"
+      total_debts: "Total Debts"
+      debt_age: "Debt Age"

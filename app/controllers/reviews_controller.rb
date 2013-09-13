@@ -68,8 +68,8 @@ class ReviewsController < ApplicationController
     end
 
     def load_defaults
-      @debt_placement = Debts::DebtPlacement.find(params[:id])
-      @debt = Debts::Debt.find(@debt_placement.debt_id)
+      @debt_placement = Debts::Placement.find(params[:id])
+      @debt = Debt.find(@debt_placement.debt_id)
       @agency = Agency.find(@debt_placement.agency_id)
     end
 

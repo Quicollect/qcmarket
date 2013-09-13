@@ -1,6 +1,6 @@
 es: 
   lookups: 
-    debtstatus: 
+    debts/status: 
       accepted: 
         long: "Aceptado por %{account}"
         short: aceptado
@@ -25,7 +25,7 @@ es:
       resolved: 
         long: "Resuelto por %{account}"
         short: resuelto
-    eventtype: 
+    timeline/eventtype: 
       creation: 
         long: "fue creado por %{account}"
         short: creado
@@ -41,12 +41,12 @@ es:
       userevent: 
         long: "fue comentado por %{account}"
         short: Comentadas
-    debttype:
+    debts/type:
       commercial:
         short: "A corporation"
       consumer:
         short: "An individual"
-    debtsegment:
+    debts/segment:
       financial:
         short: "Financial"
       medical:

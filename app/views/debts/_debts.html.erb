@@ -3,12 +3,12 @@
 <table class="table table-bordered table-condensed table-striped table-primary table-vertical-center checkboxs js-table-sortable">
 	<thead>
 		<tr>
-			<th><%= sortable "title", Debts::Debt %></th>
-			<th class="center"><%= sortable "debt_status_id", Debts::Debt %></th>
-			<th class="center"><%= sortable "country_id", Debts::Debt %></th>
+			<th><%= sortable "title", Debt %></th>
+			<th class="center"><%= sortable "debt_status_id", Debt %></th>
+			<th class="center"><%= sortable "country_id", Debt %></th>
 			<th class="center"><%= t('activerecord.attributes.debts/debt.amount')%></th>
 			<th class="center"><%= sortable "charge_date", nil, t('debts.debts.index.debt_age') %></th>
-			<th class="center"><%= sortable "updated_at", Debts::Debt %></th>
+			<th class="center"><%= sortable "updated_at", Debt %></th>
 			<th class="center"><%= t('actions') %></th>
 		</tr>
 	</thead>
@@ -21,7 +21,7 @@
 				<%= "</del>".html_safe if debt.deleted %>
 			</td>
 			<td>
-				<span class="glyphicons qc-standard <%=status_to_glyphicon(debt.debt_status_id)%>"><i></i><%=Debts::DebtStatus.short_text(debt.debt_status_id)%></span>
+				<span class="glyphicons qc-standard <%=status_to_glyphicon(debt.debt_status_id)%>"><i></i><%=Debts::Status.short_text(debt.debt_status_id)%></span>
 			</td>
 			<td class="center" rel="tooltip" title="<%=debt.address%>">
                 <%= Country.find_ex(debt.country_id).i18n_name %>
@@ -36,7 +36,7 @@
 				<span class="pull-right">
 					<% if !debt.deleted %>
 
-						<% if can? :edit, Debts::Debt %>
+						<% if can? :edit, Debt %>
 							<%= link_to edit_debt_path(debt), 
 									title: t("edit"), class: "btn-action glyphicons pencil btn-success" do%>
 								<i></i>

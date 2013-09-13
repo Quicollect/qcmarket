@@ -13,7 +13,7 @@ class Agency < Account
 	accepts_nested_attributes_for :agency_contracts
 
 	def services(symbol)
-		agency_services.where(debt_type_id: Debts::DebtType.lookup(symbol))
+		agency_services.where(debt_type_id: Debts::Type.lookup(symbol))
 	end
 
 	def distance=(distance)

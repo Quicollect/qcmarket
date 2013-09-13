@@ -6,8 +6,8 @@
 
     <ul class="dropdown-menu pull-right left-aligned">
         <li class="<%='disabled' if debt.is_active_placement?%>">
-            <%= link_to new_debt_debt_placement_path( 
-                        debt_id: debt.id, debts_debt_placement: 
+            <%= link_to new_debt_placement_path( 
+                        debt_id: debt.id, debts_placement: 
                         {agency_id: agency.id } ), 
                             :method=> :get,
                         class: "no-spinner",
@@ -18,7 +18,7 @@
 
         <li class="<%='disabled' if agency.email.blank?%>">
             <%= link_to new_debt_proposal_path( 
-                        id: debt.id, item_id: item.id), 
+                        debt_id: debt.id, item_id: item.id), 
                             :method=> :get,
                         class: "no-spinner",
                         :'data-toggle'=> "modal" do %>
@@ -27,7 +27,7 @@
         </li>
 
         <li>
-            <%= link_to debt_debt_shoppinglist_item_path( debt_id: debt.id, id: item.id ),
+            <%= link_to debt_shoppinglist_item_path( debt_id: debt.id, id: item.id ),
                 :method=> :delete,
                 class: "ajax-reload no-spinner" do %>
                 <i class="icon-remove"></i> Remove from list

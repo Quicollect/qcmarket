@@ -1,6 +1,6 @@
 en:
   lookups:
-    eventtype:
+    timeline/eventtype:
       creation:
         short: "Created"
         long: "was created by %{account}"
@@ -19,7 +19,7 @@ en:
       notification:
         short: "Notified"
         long: "was sent by %{account}"
-    debtstatus:
+    debts/status:
       draft:
         short: "Draft"
         long: "Draft (not assigned)"
@@ -44,12 +44,12 @@ en:
       deleted:
         short: "Deleted"
         long: "Deleted by %{account}"
-    debttype:
+    debts/type:
       commercial:
         short: "A corporation"
       consumer:
         short: "An individual"
-    debtsegment:
+    debts/segment:
       financial:
         short: "Financial"
       medical:
@@ -68,7 +68,7 @@ en:
         short: "Education"
       other:
         short: "Other"
-    shoppinglistitemstatus:
+    debts/shoppinglistitemstatus:
       listed:
         short: "Listed"
       contacted:

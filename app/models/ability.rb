@@ -37,25 +37,25 @@ class Ability
         end
         
         # only debts which are assigned to it
-        can [:read, :index, :status_change], Debts::Debt do | debt |
-            debt.account_id == user.account_id || Debts::DebtPlacement.exists?(active: true, debt_id: debt.id, agency_id: user.account_id)
+        can [:read, :index, :status_change], Debt do | debt |
+            debt.account_id == user.account_id || Debts::Placement.exists?(active: true, debt_id: debt.id, agency_id: user.account_id)
         end
 
         # only events which belongs to debt assign to it
         can [:read, :create, :index], Timeline::DebtEvent do | event |
-            event.account_id == user.account_id || Debts::DebtPlacement.exists?(active: true, debt_id: event.entity_id, agency_id: user.account_id)
+            event.account_id == user.account_id || Debts::Placement.exists?(active: true, debt_id: event.entity_id, agency_id: user.account_id)
         end
 
         # can manage their own debt placements
-        can [:read, :create, :update], [Debts::DebtPlacement] do | placement |
+        can [:read, :create, :update], [Debts::Placement] do | placement |
             placement.agency_id == user.account_id
         end
 
         # can manage their own debt payments
-        can [:read, :create, :update], [Debts::DebtPayment] do | payment |
+        can [:read, :create, :update], [Debts::Payment] do | payment |
             supported = true
             if (payment.debt_id)
-                debt_placement = Debts::Debt.find(payment.debt_id).current_active_placement
+                debt_placement = Debt.find(payment.debt_id).current_active_placement
                 supported = debt_placement && debt_placement.agency_id == user.account_id
             end
 
@@ -82,11 +82,11 @@ class Ability
 
     # creditor abilities
     if user.has_role? :creditor
-        can [:manage], [Debts::Debt, Resource, Document, Debts::DebtShoppinglistItem] do |obj|
+        can [:manage], [Debt, Resource, Document, Debts::ShoppinglistItem] do |obj|
             (obj.account_id == user.account_id) || !obj.account_id
         end
 
-        cannot :destroy, Debts::Debt do | obj |
+        cannot :destroy, Debt do | obj |
             !obj.deletable?
         end
 
@@ -105,7 +105,7 @@ class Ability
 
         # can see debt events only if belongs to the creditor debts
         can [:read, :create, :index], Timeline::DebtEvent do | event |
-            Debts::Debt.find(event.entity_id).account_id == user.account_id
+            Debt.find(event.entity_id).account_id == user.account_id
         end
     end
 
@@ -126,7 +126,7 @@ class Ability
 
         # lookup values are always accessible via read
         # note this this is not critical as the code never tries to authorize them
-        can [:read], [Debts::DebtSegment, Debts::DebtType, Country]
+        can [:read], [Debts::Segment, Debts::Type, Country]
     end
 
     # guests can create new users only by letting the system assign them a new account
@@ -138,7 +138,7 @@ class Ability
         u.id == user.id
     end
 
-    cannot :delete, Debts::Debt do | obj |
+    cannot :delete, Debt do | obj |
         !obj.deletable?
     end
 

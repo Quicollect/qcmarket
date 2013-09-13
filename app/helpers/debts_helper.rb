@@ -19,7 +19,7 @@ module DebtsHelper
 		code = link_to "<i></i> #{action_str}".html_safe, '#status-change', 
 				:'data-toggle' => "modal", 
 		        :'html-map' => "modal-title=#{title + " Debt"};modal-action=#{title.downcase}", 
-		        :'value-map' => "debt_status_id=#{Debts::DebtStatus.lookup(action)}", 
+		        :'value-map' => "debt_status_id=#{Debts::Status.lookup(action)}", 
 		        class: "btn-icon glyphicons #{sym_status_to_glyphicon(action)} no-spinner" 
 
         "<li> #{code} </li>".html_safe

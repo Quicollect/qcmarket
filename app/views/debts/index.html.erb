@@ -5,7 +5,7 @@
 		<div class="heading-buttons" style="margin-top: 0px;">
 			<h1><%=t('.debts_repository')%> <span></span></h1>
 			<div class="buttons pull-right" style="margin-top: 15px;">
-				<% if can? :create, Debts::Debt %>
+				<% if can? :create, Debt %>
 					<%= link_to new_debt_path, class: "btn btn-primary btn-icon glyphicons circle_plus" do %>
 						<i></i> <%=t('.new_debt')%>
 					<% end %>

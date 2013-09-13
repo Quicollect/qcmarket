@@ -1,5 +1,5 @@
 module Debts
-	class DebtProposalsController < ApplicationController
+	class ProposalsController < ApplicationController
 	  	before_action :set_objects
 
 	  	def new
@@ -21,8 +21,8 @@ module Debts
 
 	private
 	    def set_objects
-	      @debt = Debts::Debt.find(params[:id])
-	      @item = Debts::DebtShoppinglistItem.find(params[:item_id])
+	      @debt = Debt.find(params[:debt_id])
+	      @item = Debts::ShoppinglistItem.find(params[:item_id])
 	    end
 	end
 end

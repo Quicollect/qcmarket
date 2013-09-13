@@ -9,13 +9,13 @@ class DashboardController < ApplicationController
   end
 
   def dated_debts
-    @resources = Debts::Debt.get_not_updated_since(current_user, DateTime.now-5).limit(5)
+    @resources = Debt.get_not_updated_since(current_user, DateTime.now-5).limit(5)
     ajax_respose
   end
 
   def non_reviewed_debts
     ownership_condition =  (current_user.is_admin? ? '' : "debts.account_id = #{current_user.account_id}")
-    @resources = Debts::DebtPlacement.includes(:debt, :review).where('reviews.id is null').where('resolved_at is not null').where(ownership_condition).references(:reviews)
+    @resources = Debts::Placement.includes(:debt, :review).where('reviews.id is null').where('resolved_at is not null').where(ownership_condition).references(:reviews)
     ajax_respose
   end
 

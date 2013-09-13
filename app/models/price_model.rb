@@ -1,6 +1,6 @@
 class PriceModel < ActiveRecord::Base
 	belongs_to :agency
-	has_and_belongs_to_many :debt_type, class_name: "Debts::DebtType", :join_table => 'price_models_debt_types'
+	has_and_belongs_to_many :debt_type, class_name: "Debts::Type", :join_table => 'price_models_debt_types'
 	accepts_nested_attributes_for :debt_type
 
 	monetize :min_amount_cents, allow_nil: false, :numericality => {

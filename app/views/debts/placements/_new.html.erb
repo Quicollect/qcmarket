@@ -2,7 +2,7 @@
 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 	<h3>Assign debt to agency</h3>
 </div>
-<%= simple_form_for([@debt, @debt_placement], url: debt_debt_placements_path([@debt.id, @debt_placement]), :html => {class: "well form-vertical" }) do |f| %>
+<%= simple_form_for([@debt, @debt_placement], url: debt_placements_path([@debt.id, @debt_placement]), :html => {class: "well form-vertical" }) do |f| %>
 	<div class="modal-body">
 		<%=f.input :agency_id, as: :hidden, input_html: { :value => @debt_placement.agency_id } %>
 		<%=f.input :price_model_id, as: :hidden, input_html: { :value => @debt_placement.price_model_id } %>

@@ -2,7 +2,7 @@
 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 	<h3>Add debt payment</h3>
 </div>
-<%= simple_form_for([@debt, @debt_payment], url: debt_debt_payments_path([@debt.id, @debt_payment]), :html => {class: "well form-vertical" }) do |f| %>
+<%= simple_form_for([@debt, @debt_payment], url: debt_payments_path([@debt.id, @debt_payment]), :html => {class: "well form-vertical" }) do |f| %>
 	<div class="modal-body">
 		You are about to add a payment for debt <%=link_to @debt.name, debt_path(@debt)%>
 		<div class="separator bottom"></div>

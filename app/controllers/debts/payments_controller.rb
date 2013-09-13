@@ -1,27 +1,27 @@
 module Debts
-	class DebtPaymentsController < ApplicationController
-		load_and_authorize_resource class: Debts::DebtPayment
+	class PaymentsController < ApplicationController
+		load_and_authorize_resource class: Debts::Payment
 	  	before_action :set_debt
 
 	  	include CurrenciesHelper
 
 		def new
-			@debt_payment = @debt.debt_payments.new(debt_placement_id: @debt.debt_placements.last.id)
+			@debt_payment = @debt.payments.new(debt_placement_id: @debt.placements.last.id)
 			render partial: 'new'
 		end
 
 		def create
-			@debt_payment = @debt.debt_payments.new(debts_debt_payment_params)
+			@debt_payment = @debt.payments.new(debts_payment_params)
 			@debt_payment.amount_currency = @debt.amount_currency
 
-			if (!@debt.debt_placements.last.active)
+			if (!@debt.placements.last.active)
 				flash[:error] = 'Cannot add payment for debt without an active placement'
 				render partial: 'new'
 				return
 			end
 			
 			# TODO: need to add some validations
-			@debt_payment.debt_placement_id = @debt.debt_placements.last.id
+			@debt_payment.debt_placement_id = @debt.placements.last.id
 			@debt.amount_paid += @debt_payment.amount
 
 		    if @debt.save
@@ -35,11 +35,11 @@ module Debts
 
 	private
 	    def set_debt
-	      @debt = Debts::Debt.find(params[:debt_id])
+	      @debt = Debt.find(params[:debt_id])
 	    end
 
-	   	def debts_debt_payment_params
-	    	params.require(:debts_debt_payment).permit(:payment_date, :amount, :description)
+	   	def debts_payment_params
+	    	params.require(:debts_payment).permit(:payment_date, :amount, :description)
 	  	end
 	end
 end

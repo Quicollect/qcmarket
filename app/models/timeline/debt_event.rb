@@ -1,7 +1,7 @@
 module Timeline
 	class DebtEvent < Timeline::Event
 
-		belongs_to :debt, class_name: 'Debts::Debt', touch: true
+		belongs_to :debt, class_name: 'Debt', touch: true
 		
 		# this allows us to connect it to the debt (for the touch operation)
 		def debt_id

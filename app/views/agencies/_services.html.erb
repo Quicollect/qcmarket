@@ -34,10 +34,10 @@
 
 <script>
 register_select("select-commercial", 
-                  <%= (Debts::DebtSegment.all.collect { |a| {id: a.id, text: Debts::DebtSegment.short_text(a.id)} } ).to_json.html_safe %>,
+                  <%= (Debts::Segment.all.collect { |a| {id: a.id, text: Debts::Segment.short_text(a.id)} } ).to_json.html_safe %>,
                   <%= (agency.services(:commercial).all.collect {|a| a.debt_segment_id }).to_s.html_safe %>);
 
 register_select("select-consumer", 
-                  <%= (Debts::DebtSegment.all.collect {|a| {id: a.id, text: Debts::DebtSegment.short_text(a.id)} }).to_json.html_safe %>,
+                  <%= (Debts::Segment.all.collect {|a| {id: a.id, text: Debts::Segment.short_text(a.id)} }).to_json.html_safe %>,
                   <%= (agency.services(:consumer).all.collect {|a| a.debt_segment_id }).to_s.html_safe %>);
 </script>
