@@ -6,8 +6,16 @@ class SystemMailer < ActionMailer::Base
   	mail(to: ENV["SYSTEM_EMAIL"], subject: 'New user registration')
   end
 
-  def request_for_proposal(debt, email)
+  def request_for_proposal(debt, proposal, agency)
   	@debt = debt
-  	mail(to: email, bcc: ENV["SYSTEM_EMAIL"], subject: 'New debt available')
+  	@proposal = proposal
+  	@agency = agency
+  	mail(to: agency.email, bcc: ENV["SYSTEM_EMAIL"], subject: 'New debt available')
+  end
+
+  def debt_details(debt, agency)
+  	@debt = debt
+  	@agency = agency
+  	mail(to: agency.email, bcc: ENV["SYSTEM_EMAIL"], subject: "Debt details (#{@debt.title})")
   end
 end

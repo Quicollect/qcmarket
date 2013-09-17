@@ -4,7 +4,7 @@ module LookupsHelper
 			when :draft
 				"notes_2"
 			when :assigned
-				"message_flag"
+				"pushpin"
 			when :accepted
 				"check"
 			when :rejected		
@@ -34,7 +34,7 @@ module LookupsHelper
 			when :update
 				"edit"
 			when :statuschange
-				"pushpin"
+				"flag"
 			when :userevent
 				"comments"
 			when :delete

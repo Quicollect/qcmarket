@@ -1,4 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
+	
 	def new
 		super
   	end
@@ -61,6 +62,7 @@ class RegistrationsController < Devise::RegistrationsController
     	authorize! :update, User.find_by_id(params[:id])
     	super
     end
+
 
 private
 	def sign_up_params

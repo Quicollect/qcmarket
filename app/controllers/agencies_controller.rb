@@ -80,7 +80,7 @@ private
 
       params.require(:agency).permit(:name, :enabled, :verified, 
       				:address, :city, :zipcode, :state_id, :country_id, 
-      				:email, :phone, :fax, :website,
+      				:email, :contact_name, :phone, :fax, :website,
       				:notes, :logo_resource_id, agency_services_attributes:
       				[:id, :_destroy, :debt_type_id, :debt_segment_id],
       				price_models_attributes: 

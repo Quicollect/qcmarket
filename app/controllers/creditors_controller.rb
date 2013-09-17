@@ -48,12 +48,10 @@ class CreditorsController < AccountsController
   end
 
 
-private
+protected
     # Only allow a trusted parameter "white list" through.
     def creditor_params
-      params.require(:creditor).permit(:name, :logo_resource_id, :enabled, 
-                    :address, :city, :zipcode, :state_id, :country_id,
-                    :phone, :fax, :website, :notes)
+      account_params
     end
 
     # Use callbacks to share common setup or constraints between actions.

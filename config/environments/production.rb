@@ -83,6 +83,8 @@ QCMarket::Application.configure do
   # custom config values (this is for overriding Heroku limitation)
   config.proxy = nil
 
+  Rails.application.routes.default_url_options[:host] = 'platform.quicollect.com' 
+
   config.action_mailer.default_url_options = { host: ENV["MAILER_HOST"], protocol: 'http://'}
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true

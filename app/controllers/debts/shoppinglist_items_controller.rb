@@ -12,7 +12,7 @@ class Debts::ShoppinglistItemsController < ApplicationController
 
 		@success = false
 	    if @shoppinglist_item.save
-	      create_event(@debt.id, :update, ["Adding agency '#{@agency.name}' as potential service provider", "Description: #{@shoppinglist_item.description}"], true)
+	      create_event(@debt.id, :update, ["Adding agency '#{@agency.name}' as potential service provider", "Description: #{@shoppinglist_item.description}"], {:private => true})
 	      @success = true
 	  	end
 
@@ -29,7 +29,7 @@ class Debts::ShoppinglistItemsController < ApplicationController
 		
 		@success = false
 	    if @shoppinglist_item.destroy
-	      create_event(@debt.id, :update, ["Removing agency '#{@agency.name}' as potential service provider"], true)
+	      create_event(@debt.id, :update, ["Removing agency '#{@agency.name}' as potential service provider"], {:private => true})
 	      @success = true
 	    end
 

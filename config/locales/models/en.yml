@@ -21,3 +21,15 @@ en:
         updated_at: "Last Updated"
         amount: "Amount"
         debt_type_id: "Debtor is"
+      agency:
+        name: "Name"
+        country_id: "Country"
+        website: "Website"
+      price_model:
+        enable: "Enable"
+        name: "Name"
+        min_amount: "Amount Range"
+        max_amount: "Amount Range"
+        min_age: "Age Range"
+        max_age: "Age Range"
+        fee_precentage: "Precentage Fee"

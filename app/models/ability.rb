@@ -131,6 +131,7 @@ class Ability
 
     # guests can create new users only by letting the system assign them a new account
     can :create, User, account_id: nil
+    can :show, Debts::Proposal
 
     # things no one can do
     cannot :delete, User do | u |

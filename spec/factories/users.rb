@@ -10,4 +10,8 @@ FactoryGirl.define do
 	factory :invalid_user, parent: :user do |f| 
 		f.email { "" }
 	end
+
+	factory :fixed_user, parent: :user do |f| 
+		f.email { "oded.cohen972@gmail.com" }
+	end 
 end

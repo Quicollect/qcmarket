@@ -1,7 +1,0 @@
-<div class="row-fluid">
-	<div rel="tooltip" title="<%=resource.address%>">
-		<%= image_tag("location-icon.png", class: "icon_row thumbnail", title: "Location") %>
-		<%= Country.find_ex(resource.country_id).i18n_name %>
-		<%= image_sprite resource.country_id %>
-	</div>
-</div>

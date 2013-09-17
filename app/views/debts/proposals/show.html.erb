@@ -1,0 +1,95 @@
+<div class="hero-unit well">
+	<h2>New debt available!</h2>
+	<hr class="separator">
+	<!-- Row -->
+	<div class="row-fluid">
+
+		<!-- Column -->
+		<div class="span7">
+			<div class="">
+				<%= simple_form_for(@proposal, url: accept_debt_proposal_path, :html => {class: "well form-vertical" }) do |f| %>
+				<div class="modal-body">
+					<%=f.input :key, as: :hidden, input_html: { :value => @proposal.key } %>
+
+					To get the full details of the debt and be able to contact the debt owner directly, please accept the following terms and conditions:
+					<div class="separator text-center"></div>
+					
+					<div style="min-height:150px;">
+						<p><strong>Quicollect terms and conditions</strong></p>
+						N/A
+					</div>
+					
+					<div class="separator text-center"></div>
+
+					<label class="checkbox-label">
+						<input id="accept" value="accept" name="topic" type="checkbox" onClick="termsAgreementChange();">
+						I accept the terms &amp; conditions
+					</label>
+					
+					<p class="separator text-center"></p>
+					
+					<div class="pull-right">
+						<%= button_tag(type: 'submit', disabled: "disabled", id: "submit-btn", class: "btn btn-primary btn-icon glyphicons ok text-center form-submit") do %>
+			    			<i></i> Approve
+			  			<% end %>
+
+						<%= link_to 'http://www.quicollect.com', class: "btn btn-default btn-icon glyphicons ban text-center" do %>
+						    <i></i> Cancel
+					  	<% end %>
+					</div>
+				</div>
+			<% end %>
+			</div>
+		</div>
+		<!-- // Column END -->
+		
+		<div class="offset1 span4">
+			<div class="row-fluid">
+				<div class="box-generic">
+					<div class="separator bottom">
+						<span class="text-large"><%=@debt.title%></span><br>
+						<span><%= humanized_money_with_symbol @debt.amount%></span>
+						<span>
+							<div class="row-fluid">
+								<%= render partial: "debts/partials/address_line", locals: {resource: @debt}%>
+							</div>
+						</span>
+						<span>
+							Age: <%= @debt.age %> days
+						</span>
+					</div>
+					<div class="ribbon-wrapper"><div class="ribbon primary">N e w !</div></div>
+				</div>
+			</div>
+			
+			<div style="min-height:155px"></div>
+
+			<div class="row-fluid">
+				<%=render partial: 'help'%> 
+			</div>
+		</div>
+	</div>
+	<!-- // Row END -->
+
+</div>
+
+
+
+
+<script>
+
+function termsAgreementChange() {
+	if ($("#accept").attr('checked')) {
+		$("#submit-btn").removeAttr("disabled");
+	}
+	else {
+		$("#submit-btn").attr("disabled", "disabled");    
+	}
+}
+
+</script>
+
+
+
+
+							

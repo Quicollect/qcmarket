@@ -24,8 +24,7 @@
 				<span class="glyphicons qc-standard <%=status_to_glyphicon(debt.debt_status_id)%>"><i></i><%=Debts::Status.short_text(debt.debt_status_id)%></span>
 			</td>
 			<td class="center" rel="tooltip" title="<%=debt.address%>">
-                <%= Country.find_ex(debt.country_id).i18n_name %>
-                <%= image_sprite debt.country_id %>
+				<%= render partial: "debts/partials/address_line", locals: {resource: debt}%>
 			</td>
 			<td class="center">
 				<%=humanized_money_with_symbol debt.amount %>

@@ -1,13 +1,13 @@
 require 'support/random_lookup'
 
 FactoryGirl.define do 
-	factory :debt, class: Debts::Debt do |f| 
+	factory :debt do |f| 
 		f.title { Faker::Lorem.sentence }
 	    f.description { Faker::Lorem.paragraph }
-	    f.debt_status_id { Debts::DebtStatus.lookup(:draft) }
-	    f.debt_type_id { RandomLookup.rand_id(Debts::DebtType) }
+	    f.debt_status_id { Debts::Status.lookup(:draft) }
+	    f.debt_type_id { RandomLookup.rand_id(Debts::Type) }
 	    f.charge_date { Date.today - Random.rand(365) }
-	    f.debt_segment_id { RandomLookup.rand_id(Debts::DebtSegment) }
+	    f.debt_segment_id { RandomLookup.rand_id(Debts::Segment) }
 	   	f.account_id { RandomLookup.rand_id(Creditor) }
 	   	f.email { Faker::Internet.email }
 	    f.fax { Faker::PhoneNumber.phone_number }

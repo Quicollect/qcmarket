@@ -85,6 +85,7 @@ private
 		action_url
 	end
 
+protected
 	# Use callbacks to share common setup or constraints between actions.
     def set_account
       @account = Account.find(params[:id]) if params[:id]
@@ -94,6 +95,6 @@ private
     def account_params
       params.require(model_name.downcase.to_sym).permit(:name, :logo_resource_id, :enabled, 
                     :address, :city, :zipcode, :state_id, :country_id,
-                    :phone, :fax, :website, :notes)
+                    :email, :contact_name, :phone, :fax, :website, :notes)
     end
 end

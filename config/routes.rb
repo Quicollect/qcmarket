@@ -59,6 +59,8 @@ QCMarket::Application.routes.draw do
   # proposals
   get "debts/:debt_id/items/:item_id/proposal/new", to: 'debts/proposals#new', as: 'new_debt_proposal'
   post "debts/:debt_id/items/:item_id/proposals", to: 'debts/proposals#create', as: 'debt_proposals'
+  get "debts/proposals/show", to: 'debts/proposals#show', as: 'show_debt_proposal'
+  patch "debts/proposals/accept", to: 'debts/proposals#accept', as: 'accept_debt_proposal'
 
 
 

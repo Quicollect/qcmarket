@@ -10,16 +10,7 @@ class ApplicationController < ActionController::Base
     params[resource] &&= send(method) if respond_to?(method, true)
   end
 
-  before_filter do
-    authenticate_user!
-
-    # default is always to allow switch back (switch_user gem)
-    provider = SwitchUser::Provider.init(self)
-    if (current_user)
-      provider.remember_current_user(true) if !provider.original_user.present?
-      current_user.original_user = provider.original_user
-    end
-  end
+  before_filter :authenication_process
 
   before_filter do 
     set_locale
@@ -38,6 +29,17 @@ class ApplicationController < ActionController::Base
   end
 
   helper :all
+
+  def authenication_process
+    authenticate_user!
+
+    # default is always to allow switch back (switch_user gem)
+    provider = SwitchUser::Provider.init(self)
+    if (current_user)
+      provider.remember_current_user(true) if !provider.original_user.present?
+      current_user.original_user = provider.original_user
+    end
+  end
 
   # overriding default after sign_in_path
   def after_sign_out_path_for(resource)
@@ -124,19 +126,22 @@ protected
     end
   end
 
-    # TODO: need to move to be async + make generic not just debt events
-  def create_event(id, type, text_arr = [], prvt = false)
+  # TODO: need to move to be async + make generic not just debt events
+  def create_event(id, type, text_arr = [], options = {})
     text = ""
     if (text_arr.length > 0)
       text_arr.unshift ('The following has been changed:')
       text = text_arr.join('%%%')
     end
 
+    options[:private] = options[:private] || false
+    options[:user] = options[:user] || current_user
+
     Timeline::DebtEvent.create(event_type: Timeline::EventType.find_by_name(type).id,
-                               user_id: current_user.id,
-                               account_id: current_user.account_id,
+                               user_id: options[:user].id,
+                               account_id: options[:user].account_id,
                                text: text,
                               entity_id: id,
-                              :private => prvt)
+                              :private => options[:private])
   end
 end

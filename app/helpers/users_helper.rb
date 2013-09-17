@@ -14,4 +14,8 @@ module UsersHelper
 		    'icon-lock'
 		end
 	end
+
+	def user_name_ex(element)
+		element.user_id ? User.find(element.user_id).name : "anonymous user"
+	end
 end

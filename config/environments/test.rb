@@ -31,6 +31,8 @@ QCMarket::Application.configure do
 
   config.captcha = false
 
+  Rails.application.routes.default_url_options[:host] = 'localhost'
+
   # mailer options
   config.action_mailer.default_url_options = { host: ENV["MAILER_HOST"], protocol: 'http://'}
   config.action_mailer.raise_delivery_errors = true

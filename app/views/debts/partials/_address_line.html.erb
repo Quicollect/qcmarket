@@ -1,0 +1,3 @@
+<%= "#{State.get_name(resource.state_id)}, " if resource.state_id && resource.state_id > 0%>
+<%= Country.find_ex(resource.country_id).i18n_name %>
+<%= image_sprite resource.country_id %>

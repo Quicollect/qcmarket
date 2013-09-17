@@ -6,6 +6,6 @@ class Debts::Placement < ActiveRecord::Base
 	belongs_to :price_model
 
 	has_many :debt_payments, class_name: "Debts::Payment"
-	has_one :review
+	has_one :review, foreign_key: :debt_placement_id
 	has_one :agency_contract
 end

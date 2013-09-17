@@ -112,6 +112,7 @@ GEM
     multi_json (1.7.9)
     mysql2 (0.3.13)
     nested_form (0.3.2)
+    newrelic_rpm (3.6.7.152)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     orm_adapter (0.4.0)
@@ -240,6 +241,7 @@ DEPENDENCIES
   money-rails
   mysql2
   nested_form
+  newrelic_rpm
   nokogiri
   paperclip (~> 3.0)
   passenger

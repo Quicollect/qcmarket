@@ -18,6 +18,11 @@
       <div class="offset2 span5">
         <%= f.input :email, input_html: { class: "span10"} %>
       </div>
+      <% if defined? f.object.contact_name %>
+      <div class="span5">
+        <%= f.input :contact_name, input_html: { class: "span10"} %>
+      </div>
+      <% end %>
     </div>
 
     

@@ -11,32 +11,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130913181356) do
+ActiveRecord::Schema.define(version: 20130914160639) do
 
   create_table "accounts", force: true do |t|
     t.string   "accountable_type",                 null: false
     t.string   "name"
     t.string   "website"
-    t.string   "phone"
-    t.string   "fax"
-    t.string   "email"
-    t.string   "address"
     t.text     "notes"
-    t.integer  "country_id"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.boolean  "gmaps",            default: true
     t.boolean  "enabled",          default: true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "verified",         default: false
     t.integer  "logo_resource_id"
+    t.boolean  "gmaps"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.integer  "country_id"
+    t.string   "address"
+    t.string   "email"
+    t.string   "fax"
+    t.string   "phone"
     t.string   "city",             default: ""
     t.string   "zipcode",          default: ""
     t.integer  "state_id"
+    t.string   "contact_name"
   end
 
-  add_index "accounts", ["country_id"], name: "index_accounts_on_country_id", using: :btree
+  create_table "agencies", force: true do |t|
+    t.string   "name"
+    t.string   "website"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "address"
+    t.string   "country"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.boolean  "gmaps",      default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "agency_contracts", force: true do |t|
     t.integer  "agency_id"
@@ -105,6 +118,19 @@ ActiveRecord::Schema.define(version: 20130913181356) do
   add_index "debt_placements", ["agency_id"], name: "index_debt_placements_on_agency_id", using: :btree
   add_index "debt_placements", ["debt_id"], name: "index_debt_placements_on_debt_id", using: :btree
   add_index "debt_placements", ["price_model_id"], name: "index_debt_placements_on_price_model_id", using: :btree
+
+  create_table "debt_proposals", force: true do |t|
+    t.string   "key"
+    t.integer  "debt_id"
+    t.integer  "item_id"
+    t.datetime "expires"
+    t.boolean  "accepted",   default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "debt_proposals", ["debt_id"], name: "index_debt_proposals_on_debt_id", using: :btree
+  add_index "debt_proposals", ["key"], name: "index_debt_proposals_on_key", using: :btree
 
   create_table "debt_segments", force: true do |t|
     t.string   "name"
@@ -270,29 +296,28 @@ ActiveRecord::Schema.define(version: 20130913181356) do
   add_index "states", ["country_id"], name: "index_states_on_country_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                              default: "", null: false
+    t.string   "encrypted_password",     limit: 128, default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string   "remember_token"
-    t.integer  "sign_in_count",          default: 0
+    t.integer  "sign_in_count",                      default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.integer  "account_id",                          null: false
+    t.integer  "account_id",                                      null: false
     t.string   "name"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",        default: 0
+    t.integer  "failed_attempts",                    default: 0
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "roles_mask",             default: 0
+    t.integer  "roles_mask",                         default: 0
+    t.string   "unconfirmed_email"
   end
 
   add_index "users", ["account_id"], name: "index_users_on_account_id", using: :btree

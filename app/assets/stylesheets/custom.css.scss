@@ -257,10 +257,20 @@ label.checkbox-label input[type=checkbox]{
 }
 
 
+/*
+ * overriding the detault colors of the FlatKit
+ */
 .alert-notice {
     background-color: #05484d;
     border-color: #05484d;
 }
+
+.alert {
+    background-color: #05484d;
+    border-color: #05484d;
+}
+
+///////
 
 
 .highlight:target {
@@ -320,3 +330,23 @@ label.checkbox-label input[type=checkbox]{
     text-align: left;
 }
 
+/// colors
+.sub-primary
+{
+    background: none repeat scroll 0% 0% rgb(38, 50, 72);
+    color: rgb(255,255,255);
+}
+
+.sub-primary i:before {
+    color: rgb(126, 138, 162);
+}
+
+.sub-primary2
+{
+    background: none repeat scroll 0% 0% rgb(126, 138, 162s);
+    color: rgb(255,255,255);
+}
+
+.sub-primary2 i:before {
+    color: rgb(255,255,255);
+}

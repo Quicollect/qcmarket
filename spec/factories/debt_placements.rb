@@ -1,6 +1,6 @@
 
 FactoryGirl.define do 
-	factory :debt_placement, class: Debts::DebtPlacement do |f| 
+	factory :debt_placement, class: Debts::Placement do |f| 
 		f.name { "#{Faker::Name.first_name} #{Faker::Name.last_name}" }
 		f.email { Faker::Internet.email }
 		f.password { "12345678" }

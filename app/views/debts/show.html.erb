@@ -120,8 +120,7 @@
                 <ul class="icons-ul">
                     <li rel="tooltip" title="<%=@debt.address%>">
                         <i class="icon-home icon-li icon-fixed-width"></i>
-                        <%= Country.find_ex(@debt.country_id).i18n_name %>
-                        <%= image_sprite @debt.country_id %>
+                        <%= render partial: "debts/partials/address_line", locals: {resource: @debt}%>
                     </li>
                     <li>
                         <i class="icon-calendar icon-li icon-fixed-width"></i>

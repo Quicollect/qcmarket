@@ -14,6 +14,7 @@ class Debt < ActiveRecord::Base
 	has_many :placements, class_name: "Debts::Placement", autosave: true
 	has_many :shoppinglist_items, class_name: "Debts::ShoppinglistItem"
 	has_many :payments, class_name: "Debts::Payment"
+	has_many :proposals, class_name: "Debts::Proposal"
 	has_many :files, class_name: "Debts::File"
 	has_many :resources, through: :files
 
