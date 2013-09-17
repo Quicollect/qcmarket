@@ -3,19 +3,45 @@
 	<hr class="separator">
 	<!-- Row -->
 	<div class="row-fluid">
+		<div class="span4">
+			<div class="row-fluid">
+				<div class="box-generic">
+					<div class="separator bottom">
+						<h3><%=@debt.title%></h3>
+						<p></p>
+						<span><%= humanized_money_with_symbol @debt.amount%></span>
+						<span>
+							<div class="row-fluid">
+								<%= render partial: "debts/partials/address_line", locals: {resource: @debt}%>
+							</div>
+						</span>
+						<span>
+							Age: <%= @debt.age %> days
+						</span>
+					</div>
+					<div class="ribbon-wrapper"><div class="ribbon primary">N e w !</div></div>
+				</div>
+			</div>
+			
+			<div style="min-height:155px"></div>
 
-		<!-- Column -->
-		<div class="span7">
-			<div class="">
-				<%= simple_form_for(@proposal, url: accept_debt_proposal_path, :html => {class: "well form-vertical" }) do |f| %>
-				<div class="modal-body">
+			<div class="row-fluid">
+				<%=render partial: 'help'%> 
+			</div>
+		</div>
+
+		<div class="offset1 span7">
+			<div class="box-generic">
+				<%= simple_form_for(@proposal, url: accept_debt_proposal_path, :html => {class: "form-vertical" }) do |f| %>
+				<div>
 					<%=f.input :key, as: :hidden, input_html: { :value => @proposal.key } %>
+					<h3>Quicollect terms and conditions</h3>
+					<p></p>
 
 					To get the full details of the debt and be able to contact the debt owner directly, please accept the following terms and conditions:
 					<div class="separator text-center"></div>
 					
-					<div style="min-height:150px;">
-						<p><strong>Quicollect terms and conditions</strong></p>
+					<div style="min-height:120px;">	
 						N/A
 					</div>
 					
@@ -37,35 +63,11 @@
 						    <i></i> Cancel
 					  	<% end %>
 					</div>
+
+					<div class="clearfix"></div>
+
 				</div>
 			<% end %>
-			</div>
-		</div>
-		<!-- // Column END -->
-		
-		<div class="offset1 span4">
-			<div class="row-fluid">
-				<div class="box-generic">
-					<div class="separator bottom">
-						<span class="text-large"><%=@debt.title%></span><br>
-						<span><%= humanized_money_with_symbol @debt.amount%></span>
-						<span>
-							<div class="row-fluid">
-								<%= render partial: "debts/partials/address_line", locals: {resource: @debt}%>
-							</div>
-						</span>
-						<span>
-							Age: <%= @debt.age %> days
-						</span>
-					</div>
-					<div class="ribbon-wrapper"><div class="ribbon primary">N e w !</div></div>
-				</div>
-			</div>
-			
-			<div style="min-height:155px"></div>
-
-			<div class="row-fluid">
-				<%=render partial: 'help'%> 
 			</div>
 		</div>
 	</div>

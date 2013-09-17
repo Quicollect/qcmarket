@@ -35,8 +35,8 @@ private
 			@hash = Rails.cache.read(self.name.to_sym)
 			if (@hash.nil?)
 				@hash = {}
-				@hash[:names] = Hash.new(Country.new(name: '', id: -1))
-				@hash[:ids] = Hash.new(Country.new(name: '', id: -1))
+				@hash[:names] = Hash.new(self.new(name: '', id: -1))
+				@hash[:ids] = Hash.new(self.new(name: '', id: -1))
 				
 				all.each do | item |
 					@hash[:names][item.name.downcase.to_sym] = item

@@ -5,6 +5,11 @@ require 'uri'
 module Addressable
 	BASE_GEO_URL = 'http://maps.googleapis.com/maps/api/geocode/json?address='
 
+	def get_distance_text(obj)
+		distance = self.distance_to(obj)
+		distance ? distance.round(2) : 'Unknown';
+	end
+
     def picture_json(color)
     	picture = "http://www.google.com/intl/en_us/mapfiles/ms/micons/#{color}-dot.png"
 		{
@@ -19,7 +24,8 @@ module Addressable
 
 
   	def full_address
-		"#{address} #{city}#{state_id ? ', ' + State.get_name(state_id) : ''}, #{zipcode} #{country ? ', ' + country.name : ''}"
+		addr = "#{address} #{city}".strip
+		"#{addr}#{format_address_part(State.get_name(state_id), addr.blank? ? '' : ',')}#{format_address_part(zipcode, ',')}#{format_address_part(Country.get_name(country_id), ',')}".strip
   	end
 
 	def resolve_address
@@ -48,13 +54,11 @@ module Addressable
 
 			json = JSON.parse(response)
 			
-			if (json["results"].length > 1)
-				raise "found #{json["results"].length} matching resolutions"
-			elsif (json["status"] == "OK")
+			if (json["status"] == "OK")
+				Rails.logger.warn "QC | found #{json["results"].length} matching resolutions (using first)" if json["results"].length > 1
 				self.latitude = json["results"][0]["geometry"]["location"]["lat"].to_f
 				self.longitude = json["results"][0]["geometry"]["location"]["lng"].to_f	
-				#self.address = json["results"][0]["formatted_address"]
-				
+
 				# set country
 				set_data(json["results"][0])
 			else
@@ -67,17 +71,20 @@ module Addressable
 		return [self.latitude, self.longitude]
 	end
 private
+	def format_address_part(val, prefix)
+		val.blank? ? "" : "#{prefix} #{val}".strip
+	end
 	
 	def set_data (result)
 		result["address_components"].each do | a |
 			if (a["types"] && a["types"][0] == "country")
 				Rails.logger.info "QC | resolved to country '#{a["long_name"]}'"
 				c = Country.lookup_name(a["long_name"])
-				self.country_id = c.id if c 
+				self.country_id = c.id if c > 0
 			elsif (a["types"] && a["types"][0] == "administrative_area_level_1")
 				Rails.logger.info "QC | resolved to state '#{a["long_name"]}'"
 				s = State.lookup_name(a["long_name"])
-				self.state_id = s.id if s
+				self.state_id = s.id if s > 0
 			elsif (a["types"] && a["types"][0] == "postal_code")
 				Rails.logger.info "QC | resolved to zipcode '#{a["long_name"]}'"
 				self.zipcode = a["long_name"] if a["long_name"].length > 0

@@ -1,6 +1,8 @@
+<% if !@agency.new_record? %>
 <div class="separator bottom">
   <%= render partial: 'accounts/edit/buttons', locals: {account: @agency} %>
 </div>
+<% end %>
 
 <%= simple_nested_form_for(@agency, :html => {class: "well form-vertical" }) do |f| %>
 
@@ -9,34 +11,51 @@
 </div>
 
 <div class="wizard">
+  <% if @agency.new_record? %>
+  <div class="widget widget-tabs widget-wizard-pills widget-tabs-gray">
+  <% else %>
   <div class="widget widget-tabs widget-tabs-double widget-tabs-vertical row-fluid row-merge widget-tabs-gray">
+  <% end %>
   
     <!-- Widget heading -->
-    <div class="widget-head span3">
+    <div class="widget-head<%=@agency.new_record? ? '' : ' span3'%>">
       <ul>
+        <% if @agency.new_record? %>
+          <li class="status">
+            <span class="r">Step <span class="step-current">1</span> of <span class="steps-total">5</span></span><span class="r text-primary">Completed: <span class="steps-complete">0</span></span>
+          </li>
+        <% end %>
+
         <%= generate_tab('general', @agency, 
                 [:name, :logo_resource_id, :website, :notes],
-                {class: 'active' , icon: 'user' ,title: 'General', detailts: 'Who are you?' }) %>
+                {class: 'active' , icon: 'user' ,title: 'General', detailts: 'Who are you?', index: 1 }) %>
 
         <%= generate_tab('services', @agency, [],
-                {icon: 'sampler' ,title: 'Services', detailts: 'What are you specilties?' }) %>
+                {icon: 'sampler' ,title: 'Services', detailts: 'What are you specilties?', index: 2 }) %>
 
         <%= generate_tab('price-models', @agency, 
                 [:name, :min_age, :max_age, :min_amount, :max_amount, :fee_precentage],
-                {icon: 'calculator' ,title: 'Price Models', detailts: 'How much do you charge?', id: 'price-models-tab' }) %>
+                {icon: 'calculator' ,title: 'Price Models', detailts: 'How much do you charge?', id: 'price-models-tab', index: 3 }) %>
 
         <%= generate_tab('contact', @agency, 
                 [:phone, :fax, :email, :address, :city, :zipcode, :state_id, :country_id],
-                {icon: 'globe_af' ,title: 'Contact Information', detailts: 'Where are you located?', id: 'contact-tab' }) %>
+                {icon: 'globe_af' ,title: 'Contact Information', detailts: 'Where are you located?', id: 'contact-tab', index: 4 }) %>
 
         <%= generate_tab('terms', @agency, [],
-                {icon: 'certificate' ,title: 'Terms & Conditions', detailts: '' }) %>
+                {icon: 'certificate' ,title: 'Terms & Conditions', detailts: '', index: 5 }) %>
 
       </ul>
+
+      <% if @agency.new_record? %>
+        <div class='pull-right' style="margin: 8px 30px 0px 0px">
+              <i class="icon-magic icon-3x"></i>
+        </div>
+      <% end %>
+
     </div>
     <!-- // Widget heading END -->
     
-    <div class="widget-body span9">
+    <div class="widget-body<%=@agency.new_record? ? '' : ' span9'%>">
       <div class="tab-content">
 
         <div class="tab-pane active" id="general">
@@ -68,6 +87,18 @@
 
         <div class="clearfix"></div> 
       </div>
+
+      <% if @agency.new_record? %>
+      <div class="pagination margin-bottom-none pull-right">
+          <ul>
+            <li class="previous primary"><a href="javascript:;">Previous</a></li>
+            <li class="next primary" style="display: inline;"><a href="javascript:;">Next</a></li>
+            <li class="next finish primary" style="display: none;"><a href="javascript:;">Finish</a></li>
+          </ul>
+      </div>
+      <div class="clearfix"></div> 
+      <% end %>
+
     </div>
   </div>
 </div>

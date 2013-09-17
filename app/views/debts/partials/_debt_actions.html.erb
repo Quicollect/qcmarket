@@ -1,0 +1,86 @@
+<div class="btn-group" style="margin: 5px 0px 5px 0px;">
+    <button class="btn btn-primary dropdown-toggle clearfix" data-toggle="dropdown">
+        <span class="filter-option pull-left"><strong><%=title%></strong></span>
+        &nbsp;<span class="caret"></span>
+    </button>
+
+    <ul class="dropdown-menu pull-right left-aligned">
+        <% if can?(:edit, debt) %>
+        <li>
+            <%= link_to edit_debt_path(debt), 
+                class: "btn-icon glyphicons pencil" do %>
+                <i></i> Edit
+            <% end %>
+        </li>
+        <% end %>
+
+        <li>
+            <%= link_to '#nowevent', 
+                class: "btn-icon glyphicons comments no-spinner addcomment" do %>
+                <i></i> Add event
+            <% end %>
+        </li>
+        
+        <% if can?(:create, Debts::Payment.new(debt_id: debt.id)) &&
+            Debts::Status.symbol(debt.debt_status_id) == :accepted 
+            %>
+            <li>
+                <%= link_to new_debt_payment_path( 
+                            debt_id: debt.id),
+                                :method=> :get,
+                            class: "btn-icon glyphicons coins no-spinner",
+                            :'data-toggle'=> "modal" do %>
+                        <i></i> Add Payment
+                <% end %>
+            </li>
+
+        <% end %>
+
+        <% allowed_actions = debt.allowed_actions %>
+        <% if results.nil? && allowed_actions.include?(:assigned)%> 
+            <% if debt.is_active_placement? %>
+                <%= debt_action(:assigned, "Reassign") %>
+            <% else %>
+                <li>
+                    <%= link_to find_debt_agency_path(debt) + "#agencies-list", 
+                            class: "btn-icon glyphicons search" do %>
+                        <i></i> Find Agencies
+                    <% end %>
+                </li>
+            <% end %>
+        <% end %>
+
+        <% if allowed_actions.include? :accepted %>
+            <%= debt_action(:accepted, "Accept") %>
+        <% end %>
+
+        <% if allowed_actions.include? :rejected %>
+            <%= debt_action(:rejected, "Reject") %>
+        <% end %>
+
+        <% if allowed_actions.include? :inforequired %>
+            <%= debt_action(:inforequired, "Info Request", "Request additional info for") %>
+        <% end %>
+
+        <% if allowed_actions.include? :resolved %>
+            <%= debt_action(:resolved, "Resolve") %>
+        <% end %>
+
+        <% if allowed_actions.include? :closed %>
+            <%= debt_action(:closed, "Close") %>
+        <% end %>
+
+        <% if can?(:delete, debt) && allowed_actions.include?(:deleted) %>
+            <li class="divider"></li>
+            <li>
+                <%= link_to edit_debt_path(debt), 
+                	title: t("delete"), method: :delete, data: 
+    				{ confirm: "Are you sure you want to delete debt '#{debt.name}'?" },
+                    class: "btn-icon glyphicons bin" do %>
+                    <i></i> Delete
+                <% end %>
+            </li>
+        <% end %>
+    </ul>
+</div>
+

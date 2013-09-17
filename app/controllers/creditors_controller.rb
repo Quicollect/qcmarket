@@ -11,7 +11,7 @@ class CreditorsController < AccountsController
 
    # GET /creditors/new
   def new
-    @creditor = Creditor.new
+    @account = Creditor.new
     add_breadcrumb "New"
     render 'edit'
   end
@@ -19,15 +19,15 @@ class CreditorsController < AccountsController
   # PATCH/PUT /creditor/1
   def update
     # first we update without saving
-    @creditor.attributes = creditor_params
+    @account.attributes = creditor_params
 
     # now if something changed in the address we resolve it again
-    @creditor.resolve_address if (@creditor.full_address_changed? || !@creditor.geocoded?)
+    @account.resolve_address if (@creditor.full_address_changed? || !@creditor.geocoded?)
 
-    if @creditor.save
+    if @account.save
       flash[:success] = 'Creditor was successfully updated.'
       flash[:warning] = 'Address failed to be resolved. Creditor geo assignment will not be possible as a result.' if !@creditor.geocoded?
-      redirect_to @creditor
+      redirect_to @account
     else
       render action: 'edit'
     end
@@ -35,15 +35,15 @@ class CreditorsController < AccountsController
 
     # POST /creditors
   def create
-    @creditor = Creditor.new(creditor_params)
-    @creditor.resolve_address
+    @account = Creditor.new(creditor_params)
+    @account.resolve_address
     
-    if @creditor.save
+    if @account.save
       flash[:success] = 'Creditor was successfully created.'
       flash[:warning] = 'Address failed to be resolved. Creditor geo assignment will not be possible as a result.' if !@creditor.geocoded?
-      redirect_to @creditor
+      redirect_to @account
     else
-      render action: 'new'
+      render action: 'edit'
     end
   end
 
@@ -52,10 +52,5 @@ protected
     # Only allow a trusted parameter "white list" through.
     def creditor_params
       account_params
-    end
-
-    # Use callbacks to share common setup or constraints between actions.
-    def set_creditor
-      @creditor = Creditor.find(params[:id])
     end
 end

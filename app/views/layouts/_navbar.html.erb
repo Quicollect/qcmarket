@@ -24,7 +24,8 @@
           <i></i> <%=t 'menus.debts' %>
         <% end %>
     </li>
-    <li class="dropdown dd-1 <%= 'active' if ['accounts', 'agencies', 'users', 'documents'].include? params[:controller]%>">
+    <li class="dropdown dd-1 <%= 'active' if ((['accounts', 'users', 'documents'].include? params[:controller]) || 
+                (params[:controller] == 'agencies' && params[:id] == current_user.account_id))%>">
       <a class="glyphicons nameplate_alt no-spinner" data-toggle="dropdown" href=""><i></i>
           <%=t 'menus.company' %> 
         <span class="caret"></span>
@@ -56,6 +57,27 @@
         </li>
       </ul>
     </li>
+    
+    <% if current_user.original_user.is_admin? %>
+    <li class="dropdown dd-1 <%= 'active' if ((['creditors', 'agencies'].include? params[:controller]) && params[:id] != current_user.account_id) %>">
+      <a class="glyphicons cogwheel no-spinner" data-toggle="dropdown" href=""><i></i>
+          <%=t 'menus.admin' %> 
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu pull-left">
+        <li>
+            <%= link_to agencies_path, class: "glyphicons dog" do %>
+               <%=t('menus.agencies')%><i></i>
+              <% end %>
+        </li>
+        <li>
+            <%= link_to creditors_path, class: "glyphicons turtle" do %>
+               <%=t('menus.creditors')%><i></i>
+              <% end %>
+        </li>
+      </ul>
+    </li>
+    <% end %>
   </ul>
   <!-- // Full Top Style END -->
         
@@ -78,7 +100,7 @@
         </a>
       <ul class="dropdown-menu pull-right">
         <li>
-          <%= link_to account_edit_path(current_user.account_id), class: "glyphicons cogwheel" do %>
+          <%= link_to account_edit_path(current_user.account_id), class: "glyphicons settings" do %>
            <%=t('menus.company_setting')%> <i></i>
           <% end %>
         </li>

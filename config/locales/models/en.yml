@@ -25,6 +25,10 @@ en:
         name: "Name"
         country_id: "Country"
         website: "Website"
+      creditor:
+        name: "Name"
+        country_id: "Country"
+        website: "Website"
       price_model:
         enable: "Enable"
         name: "Name"

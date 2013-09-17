@@ -20,5 +20,8 @@ en:
     users: "Users"
     public: "Public view"
     edit: "Edit"
+    admin: "Admin"
+    agencies: "Agencies"
+    creditors: "Creditors"
   dashboard:
     open-debts: "Open Debts"

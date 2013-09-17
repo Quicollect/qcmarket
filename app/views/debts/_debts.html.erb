@@ -31,20 +31,8 @@
 			</td>
 			<td class="center"><%=days_ago_in_words(debt.charge_date) %></td>
 			<td class="center"><%=time_ago_in_words_ex( debt.updated_at ) %></td>
-			<td>
-				<span class="pull-right">
-					<% if !debt.deleted %>
-
-						<% if can? :edit, Debt %>
-							<%= link_to edit_debt_path(debt), 
-									title: t("edit"), class: "btn-action glyphicons pencil btn-success" do%>
-								<i></i>
-							<% end %>
-						<% end %>	
-
-						<%= render partial: 'shared/delete_resource', object: debt%>
-					<% end %>
-				</span>
+			<td class="center">
+				<%= render partial: 'debts/partials/debt_actions', locals: {debt: debt, results: nil, title: ''}%>
 			</td>
 		</tr>
 	<% end %>	
