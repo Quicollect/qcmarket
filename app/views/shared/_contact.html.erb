@@ -1,11 +1,15 @@
+<% if options[:main_title] %>
 <h4><%=options[:main_title]%></h4>
+<% end %>
 <div class="separator bottom"></div>
 <div class="row-fluid">
   <div class="span12">
     <div class="row-fluid">
       <div class="span2">
         <strong><%=options[:channels_title]%></strong>
+        <% if options[:channels_explain]  %>
         <p class="muted"><%=options[:channels_explain]%></p>
+        <% end %>
       </div>
       <div class="span5">
         <%= f.input :phone, input_html: { class: "span10"} %>
@@ -29,7 +33,9 @@
     <div class="row-fluid">
       <div class="span2">
         <strong><%=options[:address_title]%></strong>
+        <% if options[:address_explain] %>
         <p class="muted"><%=options[:address_explain]%></p>
+        <% end %>
       </div>
 
       <div class="span5">

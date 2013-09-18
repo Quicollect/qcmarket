@@ -13,3 +13,6 @@ en:
       manage_debts: "Manage Debts"
       total_debts: "Total Debts"
       debt_age: "Debt Age"
+  documents:
+    index:
+      total: "Total docs and images"

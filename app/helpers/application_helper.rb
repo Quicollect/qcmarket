@@ -18,9 +18,10 @@ module ApplicationHelper
 		end
 	end
 	
-	def url_for_ex(resource)
+	def url_for_ex(resource, prefix="")
 		name = resource.class.name.demodulize.downcase
-		resource.new_record? ? eval("#{name.pluralize}_path") : eval("#{name}_path(resource)")
+		prefix = "#{prefix}_" if !prefix.blank?
+		resource.new_record? ? eval("#{prefix}#{name.pluralize}_path") : eval("#{prefix}#{name}_path(resource)")
 	end
 
 	def time_ago_in_words_ex(date)

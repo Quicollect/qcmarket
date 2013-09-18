@@ -115,8 +115,8 @@
 				<!-- Total products & Sort by options -->
 				<div class="form-inline separator bottom">
 					<div class="row-fluid">
-						<div class="span8">
-							<h4 class="heading"> <%=t('.total_debts')%>: <%= @debt_statistics[:total] %> </h4>
+						<div class="span8 total-table">
+							<%=t('.total_debts')%>: <%= @debts.total_entries %>
 						</div>
 						<div class="span4">
 							<div class="input-append pull-right">

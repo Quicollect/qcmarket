@@ -13,10 +13,10 @@ es:
   dashboard: 
     open-debts: "Deudas abiertas"
   menus: 
-    company: Empresa
-    company_setting: "Empresa Configuración"
+    company: "My Quicollect"
+    company_setting: "Company Profile"
     debts: Deudas
-    documents: Documentos
+    documents: "Docs and Images"
     edit: Editar
     here: "Usted está aquí:"
     home: Casa

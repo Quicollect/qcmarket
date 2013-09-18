@@ -351,8 +351,15 @@ label.checkbox-label input[type=checkbox]{
     color: rgb(255,255,255);
 }
 
+// double height buttons with only 1 line of text
 .force-double {
     margin: 5px 0px 5px 0px;
     font-size: 16px !important;
     vertical-align: center; 
+}
+
+
+// the total number of entities display above the table
+.total-table {
+    line-height: 28px;
 }

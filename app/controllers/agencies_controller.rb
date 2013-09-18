@@ -50,7 +50,8 @@ class AgenciesController < AccountsController
     	@account = Agency.new
     	@account.agency_services.build
     	@account.agency_contracts.build
-
+    	@account.country_id = Country.lookup(:'united states')
+    	@agency = @account
     	add_breadcrumb "New"
   	end
 

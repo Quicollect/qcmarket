@@ -1,7 +1,7 @@
 <div class="widget widget-heading-simple widget-body-white basic">
 	<div class="widget-head heading-buttons">
 		<h1><i class="icon-folder-open text-primary icon-fixed-width"></i>
-			Documents
+			<%=t("menus.documents")%>
 	    </h1>
 
 	    <div class="buttons pull-right">
@@ -19,8 +19,8 @@
 			<!-- Total products & Sort by options -->
 			<div class="form-inline separator bottom">
 				<div class="row-fluid">
-					<div class="span8">
-						<h4 id="total-documents" class="heading"> Total documents: <%=@total_documents%> </h4>
+					<div id="total-documents" class="span8 total-table">
+						<%=t('.total')%>: <%=@documents.total_entries%>
 					</div>
 					<div class="span4">
 						<div class="input-append pull-right">

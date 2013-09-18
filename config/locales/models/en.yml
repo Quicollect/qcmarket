@@ -25,10 +25,12 @@ en:
         name: "Name"
         country_id: "Country"
         website: "Website"
+        address: "Street Address"
       creditor:
         name: "Name"
         country_id: "Country"
         website: "Website"
+        address: "Street Address"
       price_model:
         enable: "Enable"
         name: "Name"
@@ -37,3 +39,5 @@ en:
         min_age: "Age Range"
         max_age: "Age Range"
         fee_precentage: "Precentage Fee"
+      account:
+        address: "Street Address"

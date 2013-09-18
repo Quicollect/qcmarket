@@ -18,6 +18,9 @@
 						      <%= button_tag(type: 'submit', class: "glyphicons ok btn btn-primary btn-icon btn-small") do %>
 						          <i></i> Post
 						        <% end %>
+						        <%= button_tag(id: "cancel-comment",  class: "btn btn-default btn-icon btn-small glyphicons ban no-spinner") do %>
+								    <i></i> Cancel
+								  <% end %>
 						      </div>
 						  </div>
 		                <% end %>
@@ -29,3 +32,12 @@
 		</div>
 	</div>
 </li>
+
+
+<script>
+  // check if we don't alerady have a new comment open and open it
+  $("#cancel-comment").click(function(event) {
+          $('#new-comment').remove();
+          return false;
+      });
+ </script>

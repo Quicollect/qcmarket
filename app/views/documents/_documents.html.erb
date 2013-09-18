@@ -6,7 +6,9 @@
 			<li class="span2">
 				<div style="margin-bottom: 13px; opacity: 1;" class="widget widget-heading-simple widget-body-primary widget-pinterest">
 					<div class="widget-body padding-none" title="<%=document.display_name%>">
-						<a class="thumb no-spinner" href="<%=document.resource.url(:medium)%>" data-gallery="gallery" data-download="<%=document.resource.url(:original)%>">
+						<!-- need to check why the glary don't work. for now we change the href to the original 
+						     instead of the :medium -->
+						<a class="thumb no-spinner" href="<%=document.resource.url(:original)%>" data-gallery="gallery" data-download="<%=document.resource.url(:original)%>">
 								<img src="<%=document.resource.url(:thumb)%>" alt="<%=document.display_name%>" 
 								style="width:100px; height:100px; display: block; margin-left: auto; margin-right: auto;">
 						</a>

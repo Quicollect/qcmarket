@@ -14,6 +14,15 @@
 			<div class="span8 right-vertical">
 				<div class="row-fluid">
 					<div class="span11">
+						<% if can? :edit, @account %>
+						<span class="pull-right"> 
+							<%= link_to url_for_ex(@account, "edit"), 
+				                class: "btn btn-primary btn-icon glyphicons pencil",
+				                style: "margin-top:6px" do %>
+				                <i></i> <%=t('menus.edit')%>
+				            <% end %>
+						</span>
+						<% end %>
 						<h1><%=@account.name.upcase%></h1>
 						<h2>"This is something catchy..."</h2>
 						

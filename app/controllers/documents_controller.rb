@@ -4,7 +4,7 @@ class DocumentsController < ApplicationController
   before_action :set_account
   before_action :set_document, only: [:show, :edit, :update, :destroy]
 
-  add_breadcrumb "Documents", :documents_path
+  add_breadcrumb I18n.t("menus.documents"), :documents_path
 
   helper_method :sort_column, :sort_direction
 

@@ -53,7 +53,9 @@ class DebtsController < ApplicationController
 
   # GET /debts/new
   def new
-    @debt = Debt.new(account_id: current_user.account_id, debt_status_id: Debts::Status.lookup(:draft))
+    @debt = Debt.new(account_id: current_user.account_id, 
+                      debt_status_id: Debts::Status.lookup(:draft),
+                      country_id: Account.find(current_user.account_id).country_id)
     add_breadcrumb 'New'
     render 'edit'
   end

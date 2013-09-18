@@ -12,6 +12,7 @@ class CreditorsController < AccountsController
    # GET /creditors/new
   def new
     @account = Creditor.new
+    @account.country_id = Country.lookup(:'united states')
     add_breadcrumb "New"
     render 'edit'
   end
